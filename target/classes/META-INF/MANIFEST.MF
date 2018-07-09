@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: fiware_oiliot_mediation
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: root
+Implementation-Vendor-Id: com.oliot
+Build-Jdk: 1.8.0_60
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/fiware_oiliot_mediation
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+	background-color: #666;
+	padding: 30px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+	float: left;
+	width: 10%;
+	height: 2800px; /* only for demonstration, should be removed */
+	background: #ccc;
+	padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+article {
+	float: left;
+	padding: 20px;
+	width: 90%;
+	background-color: #f1f1f1;
+	height: 2800px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Style the footer */
+footer {
+	background-color: #777;
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media ( max-width : 600px) {
+	nav, article {
+		width: 100%;
+		height: auto;
+	}
+}
+</style>
+</head>
+<body onload="callFunctions()">
+
+
+	<header>
+		<h2>FIWARE to EPCIS Mediation Gateway</h2>
+	</header>
+
+	<section>
+		<nav>
+			<ul>
+				<li><a href="/home">Home Page</a></li>
+				<li><a href="/FiwareDataModel">FIWARE Data List</a></li>
+				<li><a href="/test">Meat Data Model</a></li>
+				<li><a href="/meat">Test Data Model</a></li>
+			</ul>
+		</nav>
+
+		<article>
+			<h1>Home Page</h1>
+			<img th:src="@{FIware_EPCIS_Mediation_Gateway.png}"
+				alt="Mountain View" style="width: 1000px; height: 200px;"></img>
+
+			<p>
+			<h3>Note:</h3>
+			Current Implementation is only for Meat traceability. List of all
+			available FIWARE data model are available <a href="/FiwareDataModel">Here</a>
+			</p>
+
+			<input type="hidden" name="and" id="fiwareURLHiddenButten"
+				value="${fiwareURL}"></input>
+
+			<h2>Key Information</h2>
+
+			<table border="1" style="text-align: left">
+				<tr>
+					<th>FIWARE URL:</th>
+					<th>
+						<h5 th:text="${fiwareURL}"></h5>
+					</th>
+				</tr>
+				<tr>
+					<th>EPCIS URL:</th>
+					<th>
+						<h5 th:text="${epcisURl}"></h5>
+					</th>
+				</tr>
+				<tr>
+					<th>Mediation Gateway URL:</th>
+					<th>
+						<h5 th:text="${mediationGatewayURL}"></h5>
+					</th>
+				</tr>
+				<tr>
+					<th>Source code:</th>
+					<th>https://github.com/yalewkidane?tab=repositories</th>
+
+				</tr>
+			</table>
+			<!--  ######################  Tutorial       Subscription  #########################################################   -->
+			<div class="w3-panel w3-sand">
+				<h2>Tutorial</h2>
+			</div>
+
+			<div class="w3-panel w3-blue">
+				<h2>Subscription</h2>
+			</div>
+
+
+			<p>
+				In the case of subscription, to use this mediation gateway, you have
+				to follow the following rule to set up the notification URL. The
+				notification URL must include "Data model group name" and "data
+				model name". See all the list of data model group name and data
+				model name <a href="/FiwareDataModel">Here</a>
+			<table border="1" style="text-align: left">
+				<tr>
+					<th>URL: <i>http://{IP}:{PORT}/{Data MODEL GROUP
+							NAME}/{DATA MODEL NAME}</i></th>
+				</tr>
+			</table>
+
+			</p>
+
+
+			<table style="text-align: left" width="100%">
+				<tr>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp; ID: &nbsp; <input type="text"
+						id="SubscriptionGetURLText"
+						value="http://143.248.57.28:1026/v2/entities/Room1" size="50">
+
+						&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="GET"
+						name="no" width="100" height="100" onclick="httpGetTest()"></input>
+
+
+					</th>
+					<th><input type="button" value="Generate Subscription Sample"
+						name="no" width="100" height="100"
+						onclick="Generate_subscription()"></input></th>
+				</tr>
+
+				<tr>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="Text1"
+							id="SubFiwareResultText" cols="87" rows="20">FIWARE Sample</textarea></th>
+					<th><textarea name="Text1" id="subscriptionSample" cols="87"
+							rows="20">Sub Sample</textarea></th>
+				</tr>
+				<tr>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+
+					<th><input type="button" value="Subscribe" name="no"
+						width="100" height="100" onclick="postSubscribition()"></input></th>
+				</tr>
+				<tr>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+
+					<th><textarea name="Text1" id="subscriptionStatusResult"
+							cols="100" rows="5">status</textarea></th>
+				</tr>
+
+
+
+			</table>
+
+
+
+			<!--  ######################  Simple API Development Environment  #########################################################   -->
+
+			<div class="w3-panel w3-blue">
+				<h3>Simple API Development Environment</h3>
+			</div>
+
+
+			<table style="text-align: left" width="100%">
+				<tr>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp; URL: &nbsp; <input type="text"
+						id="check" value="http://..." size="60">
+
+						&nbsp;&nbsp;Method: &nbsp; <select id="method">
+							<option value="get">GET</option>
+							<option value="post">POST</option>
+							<option value="patch">PATCH</option>
+							<option value="delete">DELETE</option>
+					</select> &nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="Submit"
+						name="no" width="100" height="100" onclick="httpGet()"></input>
+					</th>
+					<th></th>
+				</tr>
+				<th>&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="Text1"
+						id="resultText" cols="100" rows="20">Body</textarea></th>
+				<th><textarea name="Text1" id="resultText" cols="70" rows="20">Result</textarea></th>
+				<tr>
+
+				</tr>
+			</table>
+
+			<table style="text-align: left" width="100%">
+				<tr>
+					<th>FIWARE API examples</th>
+				</tr>
+
+				<tr>
+					<th><textarea name="Text1" id="fiwareExamples" cols="150"
+							rows="10">Examples</textarea></th>
+				</tr>
+
+				<tr>
+					<th>EPCIS API examples</th>
+				</tr>
+
+				<tr>
+					<th><textarea name="Text1" id="resultText" cols="150"
+							rows="10">Examples</textarea></th>
+				</tr>
+
+			</table>
+
+
+
+
+
+
+		</article>
+	</section>
+
+	<footer>
+		<p>Yalew Kidane, KAIST, Ph.D. student : yalewkidane@kaist.ac.kr,
+			yalewkidane@gmail.com</p>
+	</footer>
+
+
+
+	<!--  ######################  Simple API Development Environment  #########################################################   -->
+
+
+	<script>
+		function postSubscribition() {
+			var ip = location.host;
+			theUrl = "http://" + ip + "/Subscribe";
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("POST", theUrl, false); // false for synchronous requestddd
+			var subscribtionText = document
+					.getElementById('subscriptionSample').value;
+			xmlHttp.send(subscribtionText);
+			var response = xmlHttp.responseText;
+			// var obj = JSON.parse(response);
+			// var pretty = JSON.stringify(obj, undefined, 4);
+			document.getElementById('subscriptionStatusResult').value = response;
+		}
+
+		function httpGetTest() {
+			var ip = location.host;
+
+			//theUrl="http://"+ip+"/GetByUrl";
+			theUrl = "http://" + ip + "/GetByUrl?url="
+					+ document.getElementById("SubscriptionGetURLText").value;
+			//theUrl=document.getElementById("SubscriptionGetURLText").value;
+
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("GET", theUrl, false); // false for synchronous requestddd
+			xmlHttp.send(null);
+			//return xmlHttp.responseText;
+			var response = xmlHttp.responseText;
+			// document.getElementById("SubFiwareResultText").value=response;
+			//document.getElementById("SubFiwareResultText").value=theUrl + "\n" + xmlHttp.responseText;
+			//var xml=xmlHttp.responseText;
+			var obj = JSON.parse(response);
+			var pretty = JSON.stringify(obj, undefined, 4);
+			document.getElementById('SubFiwareResultText').innerHTML = pretty;
+
+		}
+
+		function Generate_subscription() {
+
+			var obj = {};
+
+			var getResult = document.getElementById('SubFiwareResultText').value;
+			var objGetResult = JSON.parse(getResult);
+			var keys = [];
+			for ( var k in objGetResult) {
+				if (!(k == "id" || k == "type")) {
+					keys.push(k);
+				}
+
+			}
+
+			//description
+			var description = "A subscription to get info about "
+					+ objGetResult.id;
+			obj.description = description;
+
+			//subject
+			var subject = {};
+			var entities = [];
+			var entity = {};
+			entity.id = objGetResult.id;
+			entity.type = objGetResult.type;
+			entities.push(entity);
+			subject.entities = entities;
+			var condition = {};
+			condition.attrs = keys;
+			subject.condition = condition;
+			obj.subject = subject;
+
+			//notification
+			var ip = location.host;
+			var urlTex = "http://" + ip + "/Subscribe/" + objGetResult.type;
+			var notification = {};
+			var http = {};
+			http.url = urlTex;
+			notification.http = http;
+			notification.attrs = keys;
+			obj.notification = notification;
+
+			//expires
+			obj.expires = "2040-01-01T14:00:00.00Z";
+
+			//throttling
+			obj.throttling = 5;
+
+			var myJSON = JSON.stringify(obj, undefined, 4);
+			//document.getElementById("demo").innerHTML = myJSON;
+			document.getElementById('subscriptionSample').value = myJSON;
+
+		}
+
+		function testJavaScript(textID, textAreaID) {
+			var URL = document.getElementById(textID).value
+			var totUrl = URL + "try";
+			document.getElementById(textareaID).value = totUrl;
+			return totUrl;
+		}
+
+		function callFunctions() {
+			setExampleTestArea();
+		}
+
+		function setExampleTestArea() {
+			var Room_example = '{"id": "Room1","type": "Room", "pressure": {"type": "Integer", "value": 722,"metadata":' 
+			+'{}},"temperature": {"type": "Float","value": 27,"metadata": {}}}';
+				
+			var Car_example='{"id": "Car1","type": "Car","speed": {"type": "Float","value": 115,"metadata": {}}}';
+			
+			var example={};
+			example.Room_example=JSON.parse(Room_example);
+			example.Car_example=JSON.parse(Car_example);
+			
+			
+			update_example={};
+			update_method="PATCH";
+			update_url="localhost:1026/v2/entities/Room1/attrs";
+			update_body='{"temperature": {"value": 26.5,"type": "Float"},"pressure": {"value": 763,"type": "Float"}}';
+			update_example.update_method=update_method;
+			update_example.update_url=update_url;
+			update_example.update_body=JSON.parse(update_body);
+			example.update_example=update_example;
+			var pretty = JSON.stringify(example, undefined, 4);
+			document.getElementById('fiwareExamples').innerHTML = pretty;
+			
+			
+		}
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #666;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 15%;
+    height: 1200px; /* only for demonstration, should be removed */
+    background: #ccc;
+    padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+article {
+    float: left;
+    padding: 20px;
+    width: 85%;
+    background-color: #f1f1f1;
+    height: 1200px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+</style>
+</head>
+<body>
+
+
+<header>
+  <h2>FIWARE to EPCIS Mediation Gateway</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="/home">Home Page</a></li>
+      <li><a href="/FiwareDataModel">FIWARE DATA LIST</a></li>
+      <li><a href="/test">Meat Data Model</a></li>
+      <li><a href="/meat">Test Data Model</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>HoMe Page</h1>
+    
+    <table border="1" style="text-align: left" width="100%">
+		<tr>
+			<th>No </th>
+			<th>Data Model Group </th>
+			<th> Data Model Name</th>
+			<th> Link /Subscribe - - - </th>
+		</tr>
+		<tr>
+			<td>1 </td>
+			<td rowspan="2">Test </td>
+			<td> Room</td>
+			<td> <a href="/FiwareDataModel">/Test</a> </td>				
+		</tr>
+		<tr>
+			<td>1 </td>
+			<td> Car</td>
+			<td> <a href="/FiwareDataModel">/Test</a> </td>				
+		</tr>
+		<tr>
+			<td>2 </td>
+			<td>Meat</td>
+			<td> Meat</td>
+			<td> <a href="/FiwareDataModel">Meat</a> </td>				
+		</tr>
+		<tr>
+			<td>3 </td>
+			<td>Alert </td>
+			<td> Alert</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Alert/doc/spec/index.html">/Alert</a> </td>				
+		</tr>
+		<tr>
+			<td>5 </td>
+			<td rowspan="2">Building </td>
+			<td> Building</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Building/Building/doc/spec/index.html">/Building/Building</a> </td>				
+		</tr>
+		<tr>
+			<td>6 </td>
+			<td> BuildingOperation</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Building/BuildingOperation/doc/spec/index.html">/Building/BuildingOperation</a> </td>				
+		</tr>
+
+		<tr>
+			<td>8 </td>
+			<td rowspan="2">CivicIssueTracking </td>
+			<td> Open311ServiceRequest</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/IssueTracking/Open311_ServiceRequest/doc/spec/index.html">/CivicIssueTracking/Open311ServiceRequest</a> </td>				
+		</tr>
+		<tr>
+			<td>9 </td>
+			<td> Open311ServiceType</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/IssueTracking/Open311_ServiceType/doc/spec/index.html">/CivicIssueTracking/Open311ServiceType</a> </td>				
+		</tr>
+		
+		<tr>
+			<td>11 </td>
+			<td rowspan="2">Device </td>
+			<td> Device</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Device/Device/doc/spec/index.html">/Device/Device</a> </td>				
+		</tr>
+		<tr>
+			<td>12 </td>
+			<td> DeviceModel</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Device/DeviceModel/doc/spec/index.html">/Device/DeviceModel</a> </td>				
+		</tr>
+		
+		<tr>
+			<td>14 </td>
+			<td rowspan="4">Environment </td>
+			<td> AeroAllergenObserved</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Environment/AeroAllergenObserved/doc/spec/index.html">/Environment/AeroAllergenObserved</a> </td>				
+		</tr>
+		<tr>
+			<td>15 </td>
+			<td> AirQualityObserved</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Environment/AirQualityObserved/doc/spec/index.html">/Environment/AirQualityObserved</a> </td>				
+		</tr>
+		<tr>
+			<td>16 </td>
+			<td> NoiseLevelObserved</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Environment/NoiseLevelObserved/doc/spec/index.html">/Environment/NoiseLevelObserved</a> </td>				
+		</tr>
+		<tr>
+			<td>17 </td>
+			<td> WaterQualityObserved</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Environment/WaterQualityObserved/doc/spec/index.html">/Environment/WaterQualityObserved</a> </td>				
+		</tr>
+		<tr>
+			<td>18 </td>
+			<td>Indicator </td>
+			<td> KeyPerformanceIndicator</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/KeyPerformanceIndicator/doc/spec/index.html">/Indicator/KeyPerformanceIndicator</a> </td>				
+		</tr>
+		
+		<tr>
+			<td>20 </td>
+			<td rowspan="5">Parking </td>
+			<td> OffStreetParking</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Parking/OffStreetParking/doc/spec/index.html">/Parking/OffStreetParking</a> </td>				
+		</tr>
+		<tr>
+			<td>21 </td>
+			<td> OnStreetParking</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Parking/OnStreetParking/doc/spec/index.html">/Parking/OnStreetParking</a> </td>				
+		</tr>
+		<tr>
+			<td>22 </td>
+			<td> ParkingAccess</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Parking/ParkingAccess/doc/spec/index.html">/Parking/ParkingAccess</a> </td>				
+		</tr>
+		<tr>
+			<td>23 </td>
+			<td> ParkingGroup</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Parking/ParkingGroup/doc/spec/index.html">/Parking/ParkingGroup</a> </td>				
+		</tr>
+		<tr>
+			<td>24 </td>
+			<td> ParkingSpot</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Parking/ParkingSpot/doc/spec/index.html">/Parking/ParkingSpot</a> </td>				
+		</tr>
+		  
+		<tr>
+			<td>20 </td>
+			<td rowspan="4">ParksAndGardens </td>
+			<td> FlowerBed</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/ParksAndGardens/FlowerBed/doc/spec/index.html">/ParksAndGardens/FlowerBed</a> </td>				
+		</tr>
+		<tr>
+			<td>21 </td>
+			<td> Garden</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/ParksAndGardens/Garden/doc/spec/index.html">/ParksAndGardens/Garden</a> </td>				
+		</tr>
+		<tr>
+			<td>22 </td>
+			<td> GreenspaceRecord</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/ParksAndGardens/GreenspaceRecord/doc/spec/index.html">/ParksAndGardens/GreenspaceRecord</a> </td>				
+		</tr>
+		<tr>
+			<td>23 </td>
+			<td> Park</td>
+			<td> <a href="https://schema.org/Park">/ParksAndGardens/Park</a> </td>				
+		</tr>
+		
+		
+		<tr>
+			<td>20 </td>
+			<td rowspan="4">PointOfInterest </td>
+			<td> PointOfInterest</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/PointOfInterest/PointOfInterest/doc/spec/index.html">/PointOfInterest/PointOfInterest</a> </td>				
+		</tr>
+		<tr>
+			<td>21 </td>
+			<td> Beach</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/ParksAndGardens/Garden/doc/spec/index.html">/PointOfInterest/Beach</a> </td>				
+		</tr>
+		<tr>
+			<td>22 </td>
+			<td> Museum</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/PointOfInterest/Museum/doc/spec/index.html">/PointOfInterest/Museum</a> </td>				
+		</tr>
+		<tr>
+			<td>23 </td>
+			<td> TouristInformationCenter</td>
+			<td> <a href="https://schema.org/TouristInformationCenter">/PointOfInterest/TouristInformationCenter</a> </td>				
+		</tr>
+		
+		
+		<tr>
+			<td>20 </td>
+			<td rowspan="4">StreetLighting </td>
+			<td>Streetlight</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/StreetLighting/Streetlight/doc/spec/index.html">/StreetLighting/Streetlight</a> </td>				
+		</tr>
+		<tr>
+			<td>21 </td>
+			<td> StreetlightControlCabinet</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/StreetLighting/StreetlightControlCabinet/doc/spec/index.html">/StreetLighting/StreetlightControlCabinet</a> </td>				
+		</tr>
+		<tr>
+			<td>22 </td>
+			<td> StreetlightGroup</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/StreetLighting/StreetlightGroup/doc/spec/index.html">/StreetLighting/StreetlightGroup</a> </td>				
+		</tr>
+		<tr>
+			<td>23 </td>
+			<td> StreetlightModel</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/StreetLighting/StreetlightModel/doc/spec/index.html">/StreetLighting/StreetlightModel</a> </td>				
+		</tr>
+		
+	
+		<tr>
+			<td>20 </td>
+			<td rowspan="4">Transportation </td>
+			<td>Road</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Transportation/Road/doc/spec/index.html">/Transportation/Road</a> </td>				
+		</tr>
+		<tr>
+			<td>21 </td>
+			<td> TrafficFlowObserved</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Transportation/TrafficFlowObserved/doc/spec/index.html">/Transportation/TrafficFlowObserved</a> </td>				
+		</tr>
+		<tr>
+			<td>22 </td>
+			<td> Vehicle</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Transportation/Vehicle/Vehicle/doc/spec/index.html">/Transportation/Vehicle</a> </td>				
+		</tr>
+		<tr>
+			<td>23 </td>
+			<td> VehicleModel</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Transportation/Vehicle/VehicleModel/doc/spec/index.html">/Transportation/VehicleModel</a> </td>				
+		</tr>
+		    
+	    
+	    <tr>
+			<td>20 </td>
+			<td rowspan="3">WasteManagement </td>
+			<td>WasteContainer</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/WasteManagement/WasteContainer/doc/spec/index.html">/WasteManagement/WasteContainer</a> </td>				
+		</tr>
+		<tr>
+			<td>21 </td>
+			<td> WasteContainerIsle</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/WasteManagement/WasteContainerIsle/doc/spec/index.html">/WasteManagement/WasteContainerIsle</a> </td>				
+		</tr>
+		<tr>
+			<td>22 </td>
+			<td> WasteContainerModel</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/WasteManagement/WasteContainerModel/doc/spec/index.html">/WasteManagement/WasteContainerModel</a> </td>				
+		</tr>
+	
+		<tr>
+			<td>20 </td>
+			<td rowspan="3">Weather </td>
+			<td>WeatherAlarm</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Weather/WeatherAlarm/doc/spec/index.html">/Weather/WeatherAlarm</a> </td>				
+		</tr>
+		<tr>
+			<td>21 </td>
+			<td> WeatherForecast</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Weather/WeatherForecast/doc/spec/index.html">/Weather/WeatherForecast</a> </td>				
+		</tr>
+		<tr>
+			<td>22 </td>
+			<td> WeatherObserved</td>
+			<td> <a href="http://fiware-datamodels.readthedocs.io/en/latest/Weather/WeatherObserved/doc/spec/index.html">/Weather/WeatherObserved</a> </td>				
+		</tr>
+		  
+	</table>
+    </article>
+</section>
+
+<footer>
+  <p>Yalew Kidane, KAIST, Ph.D. student : yalewkidane@kaist.ac.kr, yalewkidane@gmail.com</p>
+</footer>
+
+</body>
+</html>
+  
+
+	

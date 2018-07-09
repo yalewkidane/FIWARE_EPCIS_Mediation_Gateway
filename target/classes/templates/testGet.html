@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>BIS Query Translator</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function TestHttpGet()
+{
+	
+	var ip = location.host;
+	
+	theUrl="http://"+ip+"/testGetM";
+
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    //return xmlHttp.responseText;
+    document.getElementById("TestresultText").value=xmlHttp.responseText;
+    var xml=xmlHttp.responseText;
+    
+    //parse the xml
+   
+
+    
+	}
+</script>
+
+<input type="text" id="url" value="http://143.248.57.128:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:santander:bus:stop:info&amp;masterDataLimit=2" size="150"></input>
+   
+   
+
+<table style="text-align: right" width="100%">
+		<tr>
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th align="right" valign="top"><input type="button" value="GET" name="no" width="100" height="100" onclick="TestHttpGet()"></input></th>
+			<th>
+			<textarea name="Text1" id="TestresultText" cols="200" rows="20"></textarea></th>
+
+		</tr>
+	</table>
+	
+	
+	
+
+</body>
+</html>

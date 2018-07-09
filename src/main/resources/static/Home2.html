@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>BIS Query Translator</title>
+
+<!--  
+
+<style type="text/css">
+      #basicMap {
+         
+    width:1000%;
+    float:right;
+    background-color:grey;
+    height:600px;
+      }
+    </style>
+    
+    <script src="OpenLayers.js"></script>
+    <script>
+      function init() {
+        map = new OpenLayers.Map("basicMap");
+        
+        var lon            = -3.8044400;
+        var lat            = 43.4647200;
+        
+        var mapnik         = new OpenLayers.Layer.OSM();
+        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        var position       = new OpenLayers.LonLat(lon,lat).transform( fromProjection, toProjection);
+        var zoom           = 5; 
+
+        map.addLayer(mapnik);
+        
+        var markers = new OpenLayers.Layer.Markers( "Markers" );
+        map.addLayer(markers);
+        //markers.addMarker(new OpenLayers.Marker(position));
+        
+
+        var size = new OpenLayers.Size(21,25);
+        var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+        var icon = new OpenLayers.Icon("@{architecture1.png}", size, offset);
+        markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(lon,lat),icon));
+        markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(lon,lat),icon.clone()));
+        
+        map.setCenter(position, zoom );
+      }
+    </script>
+    
+    
+  -->  
+  
+
+<script>	
+
+var lessthan=document.getElementById("greter_id").value;
+
+var gmarkers=[];
+
+
+	function showMap(){
+	var xmlResult=document.getElementById("resultText").value;
+	var parser = new DOMParser();
+    xmlDoc = parser.parseFromString(xmlResult,"text/xml");
+    
+    //document.getElementById("url").value=xmlDoc.getElementsByTagName("attribute")[0].childNodes[0].nodeValue;
+    
+	var i = 0;
+	var text1 = "";
+		var limit_Cont=document.getElementById("limit").value;
+		text1+="limit="+limit_Cont;
+		var e_in = document.getElementById("city");
+		var city_in = e_in.options[e_in.selectedIndex].value;
+		text1+="city="+city_in;
+		var offset=11;
+		if(city_in=="busan"){
+			offset=12;
+			map.setCenter(new google.maps.LatLng(35.1153233333,129.0332616667));
+		}else{
+			offset=11;
+			map.setCenter(new google.maps.LatLng(35.1153233333,129.0332616667));
+		}
+			
+		
+		//alert(234);
+		
+		var location=xmlDoc.getElementsByTagName("attribute")[offset+6].childNodes[0].nodeValue;
+		location=location.substring(1, location.length-1)
+		var res = location.split(",");
+		//map.setZoom(10);
+		//map.setCenter(new google.maps.LatLng(res[1], [0]));
+		
+		while (true) {
+			if(i==limit_Cont)
+				break;
+			location=xmlDoc.getElementsByTagName("attribute")[(i*offset)+6].childNodes[0].nodeValue;
+			location=location.substring(1, location.length-1)
+			res = location.split(",");
+			addMarker(res[1], res[0]);
+			text1+=res[1]+"--"+res[0]+"    ";
+		i++;
+		}
+		
+		document.getElementById("check").value=text1;//"Succeded";//xmlDoc.getElementsByTagName("attribute")[0].childNodes[0].nodeValue;;
+		
+		
+		//addMarker(37.820667, -122.478526);
+		//addMarker(36.820667, -122.478526);
+		//map.setCenter(new google.maps.LatLng(36.820667, -122.478526));
+		//setCenter();
+	}
+	
+	function addMarker(lat, lng){
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(lat, lng),
+			map: map
+			});
+		
+		//gmarkers.push(marker);
+	}
+	
+	
+	
+	
+	function TestMarker() {
+        //CentralPark = new google.maps.LatLng(37.7699298, -122.4469157);
+        addMarker(37.7699298, -122.4469157);
+	 }
+</script>
+
+
+  <style>
+#mymap {
+widht:100%;
+height:700px;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+var map;
+function init(){
+	var mapDiv=document.getElementById("mymap");
+	var mapOptions ={
+		center: new google.maps.LatLng(37.820667, -122.478526),
+		zoom: 15,
+		mapTypeId: google.maps.MapTypeId.ROADMAP   //SATELLITE
+	};
+	 map  = new google.maps.Map(mapDiv, mapOptions);
+	TestMarker();
+}
+window.onload = init;
+</script>
+  
+    
+<script type="text/javascript">
+	function codeAddress() {
+		e = document.getElementById("service");
+		var service = e.options[e.selectedIndex].value;
+		
+		
+		if(service=="busEstimation"){
+			document.getElementById("busStopID").value="urn:epc:id:sgtin:88000269.200.7";
+			document.getElementById("busLineID").value="urn:epc:id:sgtin:88000269.101.2";
+			
+			document.getElementById("busStopID").disabled = false;
+			document.getElementById("busLineID").disabled = false;
+		}else{
+			document.getElementById("busStopID").value="";
+			document.getElementById("busLineID").value="";
+			
+			document.getElementById("busStopID").disabled = true;
+			document.getElementById("busLineID").disabled = true;
+		}
+	}
+	window.onload = codeAddress;
+</script>
+
+
+
+</head>
+<body onload="init();">
+
+	
+
+
+	<h1>EPCIS Query Translator for Bus Information System</h1>
+
+<p><b>Table of List of Query Services</b> </p>
+
+
+
+<table border="1">
+  <tr>
+    <th>List of Query</th>
+    <th>API</th>
+     <th>Architecture</th>
+  </tr>
+  <tr>
+    <td>Subscribe</td>
+    <td><a href="/Subscribe/{queryName}/{subscriptionID}">/Subscribe/{queryName}/{subscriptionID}</a></td>
+    <td rowspan="6"><img th:src="@{architecture1.png}" alt="Mountain View" style="width:800px;height:600px;"></img></td>
+  </tr>
+  <tr>
+    <td>Unsubscribe</td>
+    <td><a href="/Unsubscribe/{subscriptionID}">/Unsubscribe/{subscriptionID}</a></td>
+  </tr>
+   <tr>
+    <td>Get Query Names</td>
+    <td><a href="/GetQueryNames">/GetQueryNames</a></td>
+  </tr>
+  <tr>
+    <td>Get Standard Version</td>
+    <td><a href="/GetStandardVersion">/GetStandardVersion</a></td>
+  </tr>
+  <tr>
+    <td>Standard Poll</td>
+    <td><a href="/Poll/{queryName}">/Poll/{queryName}</a></td>
+  </tr>
+   <tr>
+    <td>Named Event Query</td>
+    <td><a href="/Poll/NamedEventQuery/{name}">/Poll/NamedEventQuery/{name}</a></td>
+  </tr>
+</table>
+
+<h2>[Bus Information System(BIS) Info]</h2>
+<p><b>[Capture BIS Master data ]</b> </p>
+
+	<table border="1">
+		<tr>
+			<th>Description</th>
+			<th>Type</th>
+			<th>City</th>
+			<th>Method</th>
+			<th>API</th>
+			<th>Example</th>
+		</tr>
+		<tr>
+			<td>[Start BIS Master data Capturing]</td>
+			<td>[Bus Stop]</td>
+			<td>[Santander]</td>
+			<td>POST</td>
+			<td>http://{IP}:{PORT}/BIS/CaptureMasterData?city=santander&amp;type=busStop</td>
+			<td>http://143.248.55.159:8090/BIS/CaptureMasterData?city=santander&amp;type=busStop</td>
+		</tr>
+		<tr>
+			<td>[Start BIS Master data Capturing]</td>
+			<td>[Bus Line]</td>
+			<td>[Santander]</td>
+			<td>POST</td>
+			<td>http://{IP}:{PORT}/BIS/CaptureMasterData?city=santander&amp;type=busLine</td>
+			<td>http://143.248.55.159:8090/BIS/CaptureMasterData?city=santander&amp;type=busLine</td>
+		</tr>
+		<tr>
+			<td>[Start BIS Master data Capturing]</td>
+			<td>[Bus Stop]</td>
+			<td>[Busan]</td>
+			<td>POST</td>
+			<td>http://{IP}:{PORT}/BIS/CaptureMasterData?city=busan&amp;type=busStop</td>
+			<td>http://143.248.55.159:8090/BIS/CaptureMasterData?city=busan&amp;type=busStop</td>
+		</tr>
+		<tr>
+			<td>[Start BIS Master data Capturing]</td>
+			<td>[Bus Line]</td>
+			<td>[Busan]</td>
+			<td>POST</td>
+			<td>http://{IP}:{PORT}/BIS/CaptureMasterData?city=busan&amp;type=busLine</td>
+			<td>http://143.248.55.159:8090/BIS/CaptureMasterData?city=busan&amp;type=busLine</td>
+		</tr>
+	</table>
+
+
+<h2>EPCIS Query Interface </h2>
+<p><b>[Get EPCIS Master data for BIS] [Bus Stop, Bus Line]</b> </p>
+
+	<table border="1">
+		<tr>
+			<th>Description</th>
+			<th>Type</th>
+			<th>City</th>
+			<th>Method</th>
+			<th>API</th>
+			<th>Example</th>
+		</tr>
+		<tr>
+			<td>[Get BIS Master data ]</td>
+			<td>[Bus Stop]</td>
+			<td>[Santander]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName={vocabularyName}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:santander:bus:stop:info"> http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:santander:bus:stop:info </a></td>
+		</tr>
+		<tr>
+			<td>[Get BIS Master data]</td>
+			<td>[Bus Line]</td>
+			<td>[Santander]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName={vocabularyName}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:santander:bus:line:info"> http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:santander:bus:line:info </a></td>
+		</tr>
+		<tr>
+			<td>[Get BIS Master data]</td>
+			<td>[Bus Stop]</td>
+			<td>[Busan]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName={vocabularyName}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:busan:bus:stop:info"> http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:busan:bus:stop:info </a></td>
+		</tr>
+		<tr>
+			<td>[Start BIS Master data Capturing]</td>
+			<td>[Bus Line]</td>
+			<td>[Busan]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName={vocabularyName}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:busan:bus:line:info"> http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:busan:bus:line:info </a></td>
+		</tr>
+	</table>
+	
+	
+	
+	<p><b>[Get EPCIS Event data for BIS] [Bus Estimation] </b> </p>
+
+	<table border="1">
+		<tr>
+			<th>Description</th>
+			<th>Type</th>
+			<th>City</th>
+			<th>Method</th>
+			<th>API</th>
+			<th>Example</th>
+		</tr>
+		<tr>
+			<td>[Get Bus Estimation given bus Stop ID and bus line ID ]</td>
+			<td>[Bus Estimation]--> (busStop + busLine)</td>
+			<td>[Santander]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busStop={busStopID}&amp;busLine={busLineID}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busStop=urn:epc:id:sgtin:88000269.200.7&amp;busLine=urn:epc:id:sgtin:88000269.201.2"> http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busStop=urn:epc:id:sgtin:88000269.200.7&amp;busLine=urn:epc:id:sgtin:88000269.201.2 </a></td>
+		</tr>
+		<tr>
+			<td>[Get Bus Estimation given bus Line ID]</td>
+			<td>[Bus Estimation]--> (busLine)</td>
+			<td>[Santander]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busLine={busLineID}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busLine=urn:epc:id:sgtin:88000269.201.2"> http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busLine=urn:epc:id:sgtin:88000269.201.2 </a></td>
+		</tr>
+		<tr>
+			<td>[Get Bus Estimation given bus Stop ID]</td>
+			<td>[Bus Estimation]--> (busStop)</td>
+			<td>[Santander]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busStop={busStopID}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busStop=urn:epc:id:sgtin:88000269.200.7"> http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=santander&amp;busStop=urn:epc:id:sgtin:88000269.200.7 </a></td>
+		</tr>
+		<tr>
+			<td>[Get Bus Estimation given bus Stop ID]</td>
+			<td>[Bus Estimation]--> (busStop + busLine)</td>
+			<td>[Busan]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busStop={busStopID}&amp;busLine={busLineID}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busStop=urn:epc:id:sgtin:88000269.100.193990101&amp;busLine=urn:epc:id:sgtin:88000269.101.5200179000"> http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busStop=urn:epc:id:sgtin:88000269.100.193990101&amp;busLine=busLine=urn:epc:id:sgtin:88000269.101.5200179000 </a></td>
+		</tr>
+		<tr>
+			<td>[Get Bus Estimation given bus Line ID]</td>
+			<td>[Bus Estimation]--> (busLine)</td>
+			<td>[Busan]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busLine={busLineID}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busLine=urn:epc:id:sgtin:88000269.101.5200179000"> http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busLine=urn:epc:id:sgtin:88000269.101.5200179000 </a></td>
+		</tr>
+		<tr>
+			<td>[Get Bus Estimation given bus Stop ID]</td>
+			<td>[Bus Estimation]--> (busStop)</td>
+			<td>[Busan]</td>
+			<td>GET</td>
+			<td>http://{IP}:{PORT}/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busStop={busStopID}</td>
+			<td><a href="http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busStop=urn:epc:id:sgtin:88000269.100.193990101"> http://143.248.55.159:8090/Poll/SimpleEventQuery?type=busEstimation&amp;city=busan&amp;busStop=urn:epc:id:sgtin:88000269.100.193990101 </a></td>
+		</tr>
+	</table>
+
+
+
+<p><b>Key Information</b> </p>
+
+	<table border="1" style="text-align:left">
+		<tr>
+			<th>  	
+					 
+					 
+					<b> GTIN [CompanyPrefix (KAIST)] --> [88000269] </b>					<br></br>
+					&nbsp;&nbsp; Sgitn: urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber	<br></br>
+					&nbsp;&nbsp; [example] urn:epc:id:sgtin:88000269.100.193990101					<br></br><br></br><br></br>
+					<b> GLN  [CompanyPrefix (KAIST)] -->[8800026900016] </b> 							<br></br>
+					&nbsp;&nbsp;sgln:urn:epc:id:sgln:CompanyPrefix.ItemReference.SerialNumber		<br></br>
+					&nbsp;&nbsp;[example] urn:epc:id:sgln:8800026900016.103.456						<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					[ItemReference] <br></br>
+					&nbsp;&nbsp;&nbsp; 100 [busan] [busStop]  <br></br>
+  					&nbsp;&nbsp;&nbsp; 101 [busan] [busLine] <br></br>
+  					&nbsp;&nbsp;&nbsp; 102 [busan] [BusEstimation] <br></br>
+  					&nbsp;&nbsp;&nbsp; 103 [busan] [Location] <br></br>
+  					<br></br>
+  					&nbsp;&nbsp;&nbsp; 200 [santender] [busStop] <br></br>
+  					&nbsp;&nbsp;&nbsp; 201 [santender] [busLine] <br></br>
+  					&nbsp;&nbsp;&nbsp; 202 [santender] [BusEstimation] <br></br>
+  					&nbsp;&nbsp;&nbsp; 203 [santender] [Location] <br></br>
+  					
+  			</th>
+		</tr>
+	</table>
+	
+	<br></br>
+	<br></br>
+	
+	
+	<p><b>Capture EPCIS Event Data [BIS] [WISE-IoT]</b> </p>
+
+	<table border="1" style="text-align:left">
+		<tr>
+			<th>  
+				<br></br><br></br><br></br>	
+				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Capture Event <br></br><br></br>
+
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start:<br></br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POST: http://143.248.55.159:8092/BIS/startEventCapture?city=santander<br></br><br></br>
+
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sotp: <br></br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POST: http://143.248.55.159:8092/stopEventCapture<br></br><br></br><br></br><br></br>
+
+
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query Event <br></br><br></br>
+
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GET:    http://143.248.55.159:8092/Poll/SimpleEventQuery	<br></br> <br></br><br></br>
+					
+  					
+  			</th>
+		</tr>
+	</table>
+	
+	
+	<h2>Simple web Application </h2>
+
+	<table style="text-align: left">
+		<tr>
+			<th>City</th>
+		
+			<th><select id="city">
+					<option  value="santander">Santander</option>
+					<option value="busan">Busan</option>
+					<option  value="daejeon">Daejeon</option>
+					<option  value="default">Select default Value</option>
+			</select></th>
+			
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			
+			<th>Service</th>
+			
+			<th><select id="service" onchange="ControlTextBoxes()">
+					<option  value="busStop">Bus Stop</option>
+					<option  value="busLine">Bus Line</option>
+					<option  value="busEstimation">Bus Estimation</option>
+					<option  value="default">Select default Value</option>
+			</select></th>
+			
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			
+			<th>Bus Stop ID</th>
+			
+			<th> <input type="text" id="busStopID" size="40"></input> </th>
+			
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			
+			<th>Bus Line ID</th>
+			
+			<th> <input type="text" id="busLineID" size="40"></input> </th>
+			
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			
+			<th>Limit</th>
+			
+			<th><input type="text" value="10" id="limit" size="10"></input></th>
+			
+		</tr>
+	</table>
+
+<script> 
+
+function moveNumbers() {
+   // var txt=document.getElementById("result").value;
+   // txt=txt + num;
+    var ip = location.host;
+    alert(ip);
+    document.getElementById("result").value=ip;
+    }
+    
+function httpGet()
+{
+	var ip = location.host;
+	
+	var e = document.getElementById("city");
+	var city = e.options[e.selectedIndex].value;
+	e = document.getElementById("service");
+	var service = e.options[e.selectedIndex].value;
+	var theUrl=document.getElementById("url").value;
+	
+	var limit=document.getElementById("limit").value
+	var concat=document.getElementById("and_id").value
+	var busStopID=document.getElementById("busStopID").value
+	var busLineID=document.getElementById("busLineID").value
+	
+	if(service=="busEstimation"){
+		if(document.getElementById("busLineID").value==""){
+			theUrl="http://"+ip+"/Poll/SimpleEventQuery?type=busEstimation"+concat+"city="+city+concat+"busStop="+busStopID;
+		}else{
+			theUrl="http://"+ip+"/Poll/SimpleEventQuery?type=busEstimation"+concat+"city="+city+concat+"busStop="+busStopID+concat+"busLine="+busLineID;
+		}
+		//document.getElementById("busStopID").value=document.getElementById("and_id").value;
+	}else if(service=="busStop"){
+		theUrl="http://"+ip+"/Poll/SimpleMasterDataQuery?includeAttributes=true"+concat+"includeChildren=true"+concat+"vocabularyName=urn:gs1:epcis:"+city+":bus:stop:info"+concat+"masterDataLimit="+limit;
+	}else if(service=="busLine"){
+		theUrl="http://"+ip+"/Poll/SimpleMasterDataQuery?includeAttributes=true"+concat+"includeChildren=true"+concat+"vocabularyName=urn:gs1:epcis:"+city+":bus:line:info"+concat+"masterDataLimit="+limit;
+	}
+	
+	if(service=="default"){
+		theUrl=document.getElementById("url").value;
+	}else{
+		document.getElementById("url").value=theUrl;
+	}
+
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    //return xmlHttp.responseText;
+    document.getElementById("resultText").value=xmlHttp.responseText;
+    var xml=xmlHttp.responseText;
+    
+    //parse the xml
+   
+
+    
+    
+   
+ 
+	
+		
+
+	}
+
+	function ControlTextBoxes() {
+
+		e = document.getElementById("service");
+		var service = e.options[e.selectedIndex].value;
+
+		if (service == "busEstimation") {
+			document.getElementById("busStopID").value = "urn:epc:id:sgtin:88000269.200.7";
+			document.getElementById("busLineID").value = "urn:epc:id:sgtin:88000269.101.2";
+
+			document.getElementById("busStopID").disabled = false;
+			document.getElementById("busLineID").disabled = false;
+		} else {
+			document.getElementById("busStopID").value = "";
+			document.getElementById("busLineID").value = "";
+
+			document.getElementById("busStopID").disabled = true;
+			document.getElementById("busLineID").disabled = true;
+		}
+
+	}
+</script>
+
+
+  <br></br>
+  
+  <input type="text" id="url" value="http://143.248.55.159:8090/Poll/SimpleMasterDataQuery?includeAttributes=true&amp;includeChildren=true&amp;vocabularyName=urn:gs1:epcis:santander:bus:stop:info&amp;masterDataLimit=2" size="150"></input>
+   
+  <input type="hidden" name="and" id="and_id" value="&amp;"></input>
+  <input type="hidden" name="greter" id="greter_id" value="&lt;"></input>
+  <br></br><br></br>
+
+
+
+
+
+	<table style="text-align: right" width="100%">
+		<tr>
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th align="right" valign="top"><input type="button" value="GET" name="no" width="100" height="100" onclick="httpGet()"></input></th>
+			<th>
+			<textarea name="Text1" id="resultText" cols="200" rows="20"></textarea></th>
+
+		</tr>
+	</table>
+	
+	
+
+	<h3>Open Street Map </h3>
+<br></br>
+<br></br>
+<input type="button" value="Show Markers" name="no" width="100" height="100" onclick="showMap()"></input>
+<input type="text" id="check" value="Query" size="150"></input>
+ <br></br>
+<!--<input type="button" value="Remove Markers" name="no" width="80" height="100" onclick="removeMarkers()"></input> -->
+<!-- <iframe width="100%" height="600"
+		src="http://www.openstreetmap.org/export/embed.html?bbox=-77.04819,38.98687,-77.01669,39.00181&amp;layer=mapnik"
+		style="border: 1px solid black"></iframe>
+	<br />
+	<small> <a href="http://www.openstreetmap.org/?lat=38.99434&amp;lon=-77.03244&amp;zoom=14&amp;layers=M">View Larger Map</a>
+	</small> 
+ 
+
+	
+  <script src="http://www.openlayers.org/api/OpenLayers.js"></script> --> 
+
+
+
+<table border="1">
+		
+		<tr>
+			<div id="basicMap"></div>
+		</tr>
+		
+	</table>
+  
+<div id="mymap"></div>
+	<footer>
+		<code style="font-size: 12pt">&copy; Auto-ID Labs, KAIST 2017</code>
+	</footer>
+</body>
+</html>

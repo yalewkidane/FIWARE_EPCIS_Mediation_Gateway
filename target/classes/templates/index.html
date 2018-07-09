@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<body>
+
+
+
+<div class="w3-container">
+
+ <div class="w3-panel w3-blue">
+    <h1>FIWARE to EPCIS Mediation Gateway</h1>
+  </div> 
+	
+	
+	<br></br>
+	<br></br>
+	<br></br>
+	
+	
+	<img th:src="@{FIware_EPCIS_Mediation_Gateway.png}" alt="Mountain View"  style="width:1000px;height:200px;"></img>
+	
+	<br></br>
+	<br></br>
+	<br></br>
+	
+	<h3>Note:</h3> Current Implementation is only for Meat traceability data model See Here
+
+	<h2>Key Information</h2>
+
+		<table border="1" style="text-align: left">
+			<tr>
+				<th>FIWARE URL:</th>
+				<th> <h5 th:text="${fiwareURL}"></h5> </th>
+			</tr>
+			<tr>
+				<th>EPCIS URL: </th>
+				<th> <h5 th:text="${epcisURl}"></h5></th>
+			</tr>
+			<tr>	
+				<th> Mediation Gateway URL: </th>
+				<th> <h5 th:text="${mediationGatewayURL}"></h5></th>
+			</tr>
+			<tr>
+				<th>Source code:</th> <th> github(link)</th>
+	
+			</tr>
+		</table>
+	
+	
+	
+		
+	
+	<h2>Tutorials</h2>
+	
+	<div class="w3-panel w3-sand">
+			<h3>Subscription</h3>
+	</div>
+	
+	_________________________
+
+<br></br>
+<br></br>
+
+<a href="/FiwareDataModel">link text</a>
+
+	<br></br>
+	<br></br>
+	<br></br>
+	
+		<table style="text-align: left" width="100%">
+		<tr>
+			<th><textarea name="Text1" id="resultText" cols="100" rows="20"></textarea></th>
+			<th align="center" valign="middle"><input type="button"
+				value="Translate" name="no" width="100" height="100"
+				onclick="httpGet()"></input></th>
+			<th><textarea name="Text1" id="resultText" cols="100" rows="20"></textarea></th>
+		</tr>
+		<tr>
+			<th> <label for="Fiware">FIWARE INPUT </label></th>
+			<th> </th>
+			<th> <label for="URL">EPCIS RESULT </label></th>
+
+				
+		</tr>
+	</table>
+	
+	
+	
+	<br></br>
+	<br></br>
+	<br></br>
+
+		<div class="w3-panel w3-sand">
+			<h3>Query EPCIS</h3>
+		</div>
+
+
+		<table style="text-align: left" width="100%">
+		<tr>
+		<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th> <label for="URL">URL: </label></th>
+		<th><input type="text" id="check" value="Query" size="150"></input></th>
+		
+		</tr>
+		
+		<tr>
+		
+		<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th> <label for="Result">Result: </label></th>
+		<th>
+			<textarea name="Text1" id="resultText" cols="100" rows="20"></textarea></th>
+		</tr>
+	</table>
+</div>
+</body>
+</html>
