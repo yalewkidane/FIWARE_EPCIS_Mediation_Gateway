@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #666;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 15%;
+    height: 1000px; /* only for demonstration, should be removed */
+    background: #ccc;
+    padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+article {
+    float: left;
+    padding: 20px;
+    width: 85%;
+    background-color: #f1f1f1;
+    height: 1000px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+</style>
+</head>
+<body>
+
+
+<header>
+  <h2>FIWARE to EPCIS Mediation Gateway</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="/home">Home Page</a></li>
+      <li><a href="/FiwareDataModel">FIWARE DATA LIST</a></li>
+      <li><a href="/test">Test Data Model</a></li>
+      <li><a href="/guide">Guide</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+  <h1>About </h1>
+   <pre>
+<code>
+
+{
+	"Software_Name":
+	"Description":"THis software mediates data between FIWARE and EPCIS"
+	"License":""
+	Contact:{
+    	"Name": Yalew Kidane
+    	"email"{ ["yalewkidane at kaist dot ac dot kr",
+    			"yalewkidane at gmail dot com"]
+    	"status":"Phd"
+    }
+}
+
+</code>
+</pre>
+ </article>
+</section>
+
+<footer>
+  <p>Yalew Kidane, KAIST, Ph.D. student : yalewkidane@kaist.ac.kr, yalewkidane@gmail.com</p>
+</footer>
+
+</body>
+</html>

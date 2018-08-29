@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #666;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 15%;
+    height: 2550px; /* only for demonstration, should be removed */
+    background: #ccc;
+    padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+article {
+    float: left;
+    padding: 20px;
+    width: 85%;
+    background-color: #f1f1f1;
+    height: 2550px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+</style>
+</head>
+<body>
+
+
+<header>
+  <h2>FIWARE to EPCIS Mediation Gateway</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="/home">Home Page</a></li>
+      <li><a href="/FiwareDataModel">FIWARE DATA LIST</a></li>
+      <li><a href="/test">Test Data Model</a></li>
+      <li><a href="/guide">Guide</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+  <h1>Farm Pen Data Model Json </h1>
+   <pre>
+<code>
+
+{
+  "$id": "https://example.com/person.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pen",
+  "type": "object",
+  "properties": {
+	"penId":{
+		"type": "Text",
+		"description": "It represents the id of the Pen Entity (the <penId> contained in the EntityId attribute)"
+    },
+	"type":{
+		"type": "Text",
+		"value": "Pen",
+		"description": "Entity Type"
+    },
+    "lastUpdate":{
+      "type": "DateTime",
+      "description": "It represents the timestamp of the last update",
+	  "metadata":{}
+    },
+    "buildingId:":{
+      "type": "Text",
+      "description": "It represents the id of the Building in which the Pen is located (the numeric PenId)",
+	  "metadata":{}
+    },
+    "temperature":{
+      "type": "Float",
+      "description": "It represents the last value of the temperature registered within the pen",
+	  "metadata":{
+	   "uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#DegreeCelsius"
+                }
+	  }
+    },
+    "humidity":{
+      "type": "Float",
+      "description": "It represents the last value of the humidity registered within the pen",
+	  "metadata":{
+	   "uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Humidity"
+                }
+	  }
+    },
+    "luminosity": {
+      "type": "Float",
+      "description": "It represents the last value of the luminosity registered within the pen",
+	  "metadata":{
+	   "uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LuminousIntensity"
+                }
+	  }
+    },
+	"waterFlow": {
+      "type": "Float",
+      "description": "In the pens in which it is not possible to distinguish which is the pig who is drinking, 
+						this attribute will represent the current amount of water that is flowing away from the 
+						tap (or the sum of the amounts of water that is flowing from all the taps present in the pen)",
+	  "metadata":{
+	   "uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LitrePer100Kilometres"
+                }
+	  }
+    },
+	"foodFlow": {
+      "type": "Float",
+      "description": "In the pens in which it is not possible to distinguish which is the pig who is eating, this attribute 
+						will represent the current amount of food that has been eaten from the feeding station (or the sum 
+						of the amounts of food that has been eaten from all the taps present in the pen",
+	  "metadata":{
+	   "uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#KilogramPerCubicMetre"
+                }
+	  }
+    }
+  }
+}
+
+
+-------------------Example-------------------------------------
+
+
+
+{
+	"penId":"urn:entity:pen:<penId>",
+	"type":"Pen",
+	"lastUpdate":{
+            "type": "ISO8601",
+            "value": "2018-08-22T05:10:58.00Z",
+            "metadata": {}
+    },
+	"buildingId":"urn:entity:building:<buildingId>",
+	"temperature":{
+            "type": "Float",
+            "value": 37.6,
+            "metadata": {
+				"uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#DegreeCelsius"
+				}
+			}
+    },
+	"humidity":{
+            "type": "Float",
+            "value": 45,
+            "metadata": {
+				"uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Humidity"
+				}
+			}
+    },
+	"luminosity":{
+            "type": "Float",
+            "value": 0.6,
+            "metadata": {
+				"uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LuminousIntensity"
+				}
+			}
+    },
+	"waterFlow":{
+            "type": "Float",
+            "value": 20,
+            "metadata": {
+				"uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LitrePer100Kilometres"
+				}
+			}
+    },
+	"foodFlow":{
+            "type": "Float",
+            "value": 10,
+            "metadata": {
+				"uom": {
+                    "type": "string",
+                    "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#KilogramPerCubicMetre"
+				}
+			}
+    }
+}
+
+</code>
+</pre>
+ </article>
+</section>
+
+<footer>
+  <p>Yalew Kidane, KAIST, Ph.D. student : yalewkidane@kaist.ac.kr, yalewkidane@gmail.com</p>
+</footer>
+
+</body>
+</html>

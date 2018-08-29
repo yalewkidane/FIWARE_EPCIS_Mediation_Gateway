@@ -86,8 +86,9 @@ footer {
 			<ul>
 				<li><a href="/home">Home Page</a></li>
 				<li><a href="/FiwareDataModel">FIWARE Data List</a></li>
-				<li><a href="/test">Meat Data Model</a></li>
-				<li><a href="/meat">Test Data Model</a></li>
+				<li><a href="/test">Test Data Model</a></li>
+				<li><a href="/guide">Guide</a></li>
+      			<li><a href="/about">About</a></li>
 			</ul>
 		</nav>
 
@@ -209,26 +210,29 @@ footer {
 			<table style="text-align: left" width="100%">
 				<tr>
 					<th>&nbsp;&nbsp;&nbsp;&nbsp; URL: &nbsp; <input type="text"
-						id="check" value="http://..." size="60">
+						id="SimpleAPIURL" value="http://143.248.57.28:1026/v2/entities/Room1" size="60">
 
-						&nbsp;&nbsp;Method: &nbsp; <select id="method">
+						&nbsp;&nbsp;Method: &nbsp; <select id="methods">
 							<option value="get">GET</option>
 							<option value="post">POST</option>
 							<option value="patch">PATCH</option>
 							<option value="delete">DELETE</option>
 					</select> &nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="Submit"
-						name="no" width="100" height="100" onclick="httpGet()"></input>
+						name="no" width="100" height="100" onclick="httpRequestUtility('SimpleAPIURL','SimpleApiBody','SimpleApiResult')"></input>
 					</th>
 					<th></th>
 				</tr>
 				<th>&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="Text1"
-						id="resultText" cols="100" rows="20">Body</textarea></th>
-				<th><textarea name="Text1" id="resultText" cols="70" rows="20">Result</textarea></th>
+						id="SimpleApiBody" cols="100" rows="20">Body</textarea></th>
+				<th><textarea name="SimpleApiResult" id="SimpleApiResult" cols="70" rows="20">Result</textarea></th>
 				<tr>
 
 				</tr>
 			</table>
-
+			
+			
+			
+		<!--  ######################  Simple Examples #########################################################   -->
 			<table style="text-align: left" width="100%">
 				<tr>
 					<th>FIWARE API examples</th>
@@ -245,7 +249,12 @@ footer {
 
 				<tr>
 					<th><textarea name="Text1" id="resultText" cols="150"
-							rows="10">Examples</textarea></th>
+							rows="10">
+
+http://143.248.57.28:8080/epcis/Service/Poll/SimpleEventQuery?MATCH_epc=urn:epc:id:sgtin:88000269.Car1&eventCountLimit=1
+
+
+</textarea></th>
 				</tr>
 
 			</table>
@@ -368,6 +377,7 @@ footer {
 
 		function callFunctions() {
 			setExampleTestArea();
+			setSimpleAPIEnv();
 		}
 
 		function setExampleTestArea() {
@@ -377,21 +387,127 @@ footer {
 			var Car_example='{"id": "Car1","type": "Car","speed": {"type": "Float","value": 115,"metadata": {}}}';
 			
 			var example={};
+			
+			get_example={};
+			get_description="get Room1 entites";
+			get_url="localhost:1026/v2/entities/Room1";
+			get_method="GET";
+			get_example.description=get_description;
+			get_example.url=get_url;
+			get_example.method=get_method;
+			example.get_example=get_example;
+			
+			add_example={};
+			add_description="Add Room entites";
+			add_url="localhost:1026/v2/entities";
+			add_method="POST";
+			add_example.description=add_description;
+			add_example.url=add_url;
+			add_example.method=add_method;
+			add_example.body=JSON.parse(Room_example);
+			example.add_example=add_example;
+			
+			
+			patch_example={};
+			patch_url="http://143.248.57.28:1026/v2/entities/Room1/attrs"
+			patch_method="PATCH";
+			patch_body='{"temperature": {"type":"Float","value": 27},"pressure": {"type": "Integer","value":  723} }';
+			patch_example.patch_url=patch_url;
+			patch_example.patch_method=patch_method;
+			patch_example.patch_body=JSON.parse(patch_body);
+			example.patch_example=patch_example;
+			
+			
+			
 			example.Room_example=JSON.parse(Room_example);
 			example.Car_example=JSON.parse(Car_example);
 			
 			
-			update_example={};
-			update_method="PATCH";
-			update_url="localhost:1026/v2/entities/Room1/attrs";
-			update_body='{"temperature": {"value": 26.5,"type": "Float"},"pressure": {"value": 763,"type": "Float"}}';
-			update_example.update_method=update_method;
-			update_example.update_url=update_url;
-			update_example.update_body=JSON.parse(update_body);
-			example.update_example=update_example;
 			var pretty = JSON.stringify(example, undefined, 4);
 			document.getElementById('fiwareExamples').innerHTML = pretty;
 			
+		}
+		
+		function setSimpleAPIEnv(){
+			//var url= "http://"+location.host+"/v2/entities/Room1";
+			//document.getElementById('SimpleAPIURL').value = url;
+		}
+		
+		function httpRequestUtility(textID, bodyTextAreaID, resultTextAreaID){
+			var methods=document.getElementById("methods");
+			var method = methods.options[methods.selectedIndex].value;
+			if(method=="get"){
+				httpGet(textID, bodyTextAreaID, resultTextAreaID);
+			}else if(method=="post"){
+				httpPost(textID, bodyTextAreaID, resultTextAreaID);
+			}else if(method=="delete"){
+				httpdelete(textID, bodyTextAreaID, resultTextAreaID);
+			}else if(method=="patch"){
+				httpPatch(textID, bodyTextAreaID, resultTextAreaID);
+			}
+			
+		}
+		
+		function httpGet(textID, bodyTextAreaID, resultTextAreaID){
+			var ip = location.host;
+			var URL = document.getElementById(textID).value;
+			theUrl = "http://" + ip + "/Get?url="+URL;
+			theUrl=theUrl.replace('&',"!");
+			//alert(theUrl);
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("GET", theUrl, false); // false for synchronous requestddd
+			xmlHttp.send(null);
+			var response = xmlHttp.responseText;
+			
+			try{
+				var obj = JSON.parse(response);
+				var pretty = JSON.stringify(obj, undefined, 4);
+				document.getElementById(resultTextAreaID).innerHTML = pretty;
+			}catch(err){
+				document.getElementById(resultTextAreaID).innerHTML = response;
+			}
+
+			
+			
+		}
+		
+		function httpPost(textID, bodyTextAreaID, resultTextAreaID){
+			var ip = location.host;
+			var URL = document.getElementById(textID).value;
+			theUrl = "http://" + ip + "/Post?url="+URL;
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("POST", theUrl, false); // false for synchronous requestddd
+			var body = document.getElementById(bodyTextAreaID).value;
+			xmlHttp.send(body);
+			var response = xmlHttp.responseText;
+			document.getElementById(resultTextAreaID).value = response;
+			
+		}
+		
+		function httpPatch(textID, bodyTextAreaID, resultTextAreaID){
+			var ip = location.host;
+			var URL = document.getElementById(textID).value;
+			theUrl = "http://" + ip + "/Patch?url="+URL;
+			alert(theUrl);
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("PATCH", theUrl, false); // false for synchronous requestddd
+			var body = document.getElementById(bodyTextAreaID).value;
+			xmlHttp.send(body);
+			var response = xmlHttp.responseText;
+			document.getElementById(resultTextAreaID).value = response;
+			
+		}
+		function httpdelete(textID, bodyTextAreaID, resultTextAreaID){
+			var ip = location.host;
+			var URL = document.getElementById(textID).value;
+			theUrl = "http://" + ip + "/Delete?url="+URL;
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("DELETE", theUrl, false); // false for synchronous requestddd
+			xmlHttp.send(null);
+			var response = xmlHttp.responseText;
+			var obj = JSON.parse(response);
+			var pretty = JSON.stringify(obj, undefined, 4);
+			document.getElementById(resultTextAreaID).innerHTML = pretty;
 			
 		}
 	</script>

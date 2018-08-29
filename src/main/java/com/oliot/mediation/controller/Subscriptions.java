@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.oliot.mediation.service.epcis.CaptureEPCIS;
 
 @Controller
 public class Subscriptions {
@@ -12,6 +15,22 @@ public class Subscriptions {
 	public void SubscribeTest(@RequestBody String body){
 		System.out.println(body);
 		
+	}
+	@RequestMapping(value="/Subscribe/Room", method = RequestMethod.POST)
+	@ResponseBody
+	public String SubscribeRoom(@RequestBody String body){
+		String result="staus";
+		System.out.println("Subscribition:   /Subscribe/Room");
+		System.out.println(body);
+		try {
+			body=body.substring(body.indexOf("\"data\":[")+8, body.length()-2);
+		}catch(Exception e){
+			
+		}
+		
+		CaptureEPCIS captureEPCIS=new CaptureEPCIS();
+		result=captureEPCIS.capture(body, "Test/Room");
+		return result;
 	}
 	@RequestMapping(value="/Subscribe/Meat", method = RequestMethod.POST)
 	public void SubscribeMeat(@RequestBody String body){

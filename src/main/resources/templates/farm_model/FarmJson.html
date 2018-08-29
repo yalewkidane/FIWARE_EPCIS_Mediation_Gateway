@@ -81,37 +81,61 @@ footer {
     <ul>
       <li><a href="/home">Home Page</a></li>
       <li><a href="/FiwareDataModel">FIWARE DATA LIST</a></li>
-      <li><a href="/test">Meat Data Model</a></li>
-      <li><a href="/meat">Test Data Model</a></li>
+      <li><a href="/test">Test Data Model</a></li>
+      <li><a href="/guide">Guide</a></li>
+      <li><a href="/about">About</a></li>
     </ul>
   </nav>
   
   <article>
-  <h1>Meat Data Model Json </h1>
+  <h1>Farm Data Model Json </h1>
    <pre>
 <code>
 
 {
-    "contextElements": [
-        {
-            "type": "Room",
-            "isPattern": "false",
-            "id": "Room1",
-            "attributes": [
-                {
-                    "name": "temperature",
-                    "type": "float",
-                    "value": "23"
-                },
-                {
-                    "name": "pressure",
-                    "type": "integer",
-                    "value": "720"
-                }
-            ]
-        }
-    ],
-    "updateAction": "APPEND"
+  "$id": "https://example.com/person.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Farm",
+  "type": "object",
+  "properties": {
+	"id":{
+		"type": "Text",
+		"description": "It represents the id of the Farm Entity (the <farmId> contained in the EntityId)"
+    },
+	"type":{
+		"type": "Text",
+		"value": "Farm",
+		"description": "Entity Type"
+    },
+    "address": {
+      "type": "Text",
+      "description": "It represents the address of the farm",
+	  "metadata":{}
+    },
+    "name": {
+      "type": "string",
+      "description": "It represents the name of the farm",
+	  "metadata":{}
+    },
+    "ownerCompany": {
+      "type": "integer",
+      "description": "Age in years which must be equal to or greater than zero.",
+	  "metadata":{}
+    }
+  }
+}
+
+
+-------------------Example-------------------------------------
+
+
+{
+	"id":"urn:entity:farm:<farmID>",
+	"type":"Farm",
+	"address":"La Cañada 04120 Almería Spain",
+	"name":"Greenhouse agriculture",
+	"ownerCompany":"Maria"
+	
 }
 
 </code>

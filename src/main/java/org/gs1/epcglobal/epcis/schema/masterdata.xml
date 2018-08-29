@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument creationDate="2001-12-31T12:00:00" schemaVersion="0.0" xmlns:epcglobal="urn:epcglobal:xsd:1" xmlns:epcis="urn:epcglobal:epcis:xsd:1" xmlns:p="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:epcglobal:epcis:xsd:1 EPCglobal-epcis-1_2.xsd ">
+  <EPCISHeader>
+    <p:StandardBusinessDocumentHeader>
+      <p:HeaderVersion>p:HeaderVersion</p:HeaderVersion>
+      <p:Sender>
+        <p:Identifier>p:Identifier</p:Identifier>
+      </p:Sender>
+      <p:Receiver>
+        <p:Identifier>p:Identifier</p:Identifier>
+      </p:Receiver>
+      <p:DocumentIdentification>
+        <p:Standard>p:Standard</p:Standard>
+        <p:TypeVersion>p:TypeVersion</p:TypeVersion>
+        <p:InstanceIdentifier>p:InstanceIdentifier</p:InstanceIdentifier>
+        <p:Type>p:Type</p:Type>
+        <p:MultipleType>true</p:MultipleType>
+        <p:CreationDateAndTime>2001-12-31T12:00:00</p:CreationDateAndTime>
+      </p:DocumentIdentification>
+    </p:StandardBusinessDocumentHeader>
+    <extension>
+      <EPCISMasterData>
+        <VocabularyList>
+          <Vocabulary type="http://tempuri.org">
+            <VocabularyElementList>
+              <VocabularyElement id="http://tempuri.org">
+                <attribute id="http://tempuri.org"/>
+                <children>
+                  <id>http://tempuri.org</id>
+                </children>
+                <extension>
+                  <ANY-ELEMENT/>
+                </extension>
+              </VocabularyElement>
+            </VocabularyElementList>
+            <extension>
+              <ANY-ELEMENT/>
+            </extension>
+          </Vocabulary>
+        </VocabularyList>
+        <extension>
+          <ANY-ELEMENT/>
+        </extension>
+      </EPCISMasterData>
+      <extension>
+        <ANY-ELEMENT/>
+      </extension>
+    </extension>
+  </EPCISHeader>
+  <EPCISBody>
+    <EventList>
+    </EventList>
+  </EPCISBody>
+</epcis:EPCISDocument>

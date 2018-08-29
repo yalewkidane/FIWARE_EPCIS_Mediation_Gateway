@@ -3,9 +3,13 @@ package com.oliot.mediation.controller;
 
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oliot.mediation.configuration.Configuration;
+import com.oliot.mediation.service.epcis.QueryResonse;
 import com.oliot.mediation.service.fiware.QueryUtilility;
 
 @Controller
@@ -41,12 +46,12 @@ public class Mediationgateway {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "application/text; charset=utf-8");
 		//Need implementation 
-		String result="testGetDediation";
+		QueryResonse response=new QueryResonse();
 		if(url!=null) {
-			result=QueryUtilility.normalquery(url);
+			response=QueryUtilility.normalquery(url);
 			
 		}
-		return new ResponseEntity<>(result, responseHeaders, HttpStatus.OK);
+		return new ResponseEntity<>(response.getBody(), responseHeaders, HttpStatus.OK);
     }
 	
 	@RequestMapping(value="/Subscribe", method = RequestMethod.POST)
@@ -76,15 +81,123 @@ public class Mediationgateway {
 		model.addAttribute("mediationGatewayURL", Configuration.mediationGatewayURL);
         return "Home";
     }
-	
-	 @RequestMapping("/meat")
-	    public String MeatJson() {
+	@RequestMapping(value="/guide", method=RequestMethod.GET)
+	public ResponseEntity<byte[]> getPDF() throws IOException {
+	  
+
+	    // retrieve contents of "C:/tmp/report.pdf" that were written in showHelp
+	    byte[] contents = Files.readAllBytes(Paths.get("src/main/resources/templates/Guide.pdf"));
+	    //String jsonString = IOUtils.toString(classLoader.getResourceAsStream("resources/Configuration.json"));
+
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.parseMediaType("application/pdf"));
+	    // if you want to download the file 
+	    //String filename = "output.pdf";
+	    //headers.setContentDispositionFormData(filename, filename);
+	    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+	    ResponseEntity<byte[]> response = new ResponseEntity<>(contents, headers, HttpStatus.OK);
+	    return response;
+	}
+
+	 @RequestMapping("/about")
+	    public String about() {
 			//System.out.println("Home is being processed");
-	        return "MeatJson";
+	        return "about";
 	    }
 	 @RequestMapping("/test")
 	    public String TestJson() {
 			//System.out.println("Home is being processed");
 	        return "TestJson";
+	    }
+	 @RequestMapping("/farm")
+	    public String FarmJson() {
+			//System.out.println("Home is being processed");
+	        return "farm_model/FarmJson";
+	    }
+	 @RequestMapping("/farm/building")
+	    public String Farm_BuildingJson() {
+			//System.out.println("Home is being processed");
+	        return "farm_model/Farm_BuildingJson";
+	    }
+	 @RequestMapping("/farm/pen")
+	    public String Farm_PenJson() {
+			//System.out.println("Home is being processed");
+	        return "farm_model/Farm_PenJson";
+	    }
+	 @RequestMapping("/farm/pig")
+	    public String Farm_PigJson() {
+			//System.out.println("Home is being processed");
+	        return "farm_model/Farm_PigJson";
+	    }
+	 @RequestMapping("/farm/slaougterhouse")
+	    public String Farm_SlaougterhouseJson() {
+			//System.out.println("Home is being processed");
+	        return "farm_model/Farm_SlaougterhouseJson";
+	    }
+	 @RequestMapping("/farm/slaughteredPig")
+	    public String Farm_SlaughteredPigJson() {
+			//System.out.println("Home is being processed");
+	        return "farm_model/Farm_SlaughteredPigJson";
+	    }
+	 @RequestMapping("/farm/entityList")
+	    public String FarmEntityListJson() {
+			//System.out.println("Home is being processed");
+	        return "farm_model/FarmEntityListJson";
+	    }
+	 @RequestMapping(value="/Get" , method = RequestMethod.GET)
+		@ResponseBody
+	    public ResponseEntity<?> get(@RequestParam(required = false) String url) throws IOException {
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type", "application/text; charset=utf-8");
+			//Need implementation 
+			System.out.println(url);
+			url=url.replace('!', '&');
+			System.out.println(url);
+			QueryResonse response=new QueryResonse();
+			if(url!=null) {
+				response=QueryUtilility.normalquery(url);
+				
+			}
+			return new ResponseEntity<>(response.getBody(), responseHeaders, HttpStatus.OK);
+	    }
+	 
+	 @RequestMapping(value="/Post", method = RequestMethod.POST)
+		@ResponseBody
+		public ResponseEntity<?> post(@RequestBody String body, @RequestParam(required = false) String url) throws IOException{
+			//System.out.println(body);
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type", "application/text; charset=utf-8");
+			String result="Staus\n";
+			result=QueryUtilility.post(url, body);
+			return new ResponseEntity<>(result, responseHeaders, HttpStatus.OK);
+			
+		}
+	 
+	 @RequestMapping(value="/Patch", method = RequestMethod.PATCH)
+		@ResponseBody
+		public ResponseEntity<?> patch(@RequestBody String body, @RequestParam(required = false) String url) throws IOException{
+			//System.out.println(body);
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type", "application/text; charset=utf-8");
+			String result="Staus\n";
+			System.out.println("method: Patch");
+			System.out.println("url: "+url);
+			System.out.println("body: "+ body);
+			result=QueryUtilility.patch(url, body);
+			return new ResponseEntity<>(result, responseHeaders, HttpStatus.OK);
+			
+		}
+	 @RequestMapping(value="/Delete" , method = RequestMethod.DELETE)
+		@ResponseBody
+	    public ResponseEntity<?> delete(@RequestParam(required = false) String url) {
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type", "application/text; charset=utf-8");
+			//Need implementation 
+			String result="Check the URL";
+			if(url!=null) {
+				result=QueryUtilility.delete(url);
+				
+			}
+			return new ResponseEntity<>(result, responseHeaders, HttpStatus.OK);
 	    }
 }

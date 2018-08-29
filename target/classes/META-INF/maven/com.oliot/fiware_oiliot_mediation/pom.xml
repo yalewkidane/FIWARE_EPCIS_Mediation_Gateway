@@ -56,7 +56,23 @@
 			<groupId>org.mongodb</groupId>
 			<artifactId>bson</artifactId>
 			</dependency>
-		
+			
+		<!-- Json Convertoer  -->	
+		<dependency>
+    	<groupId>com.google.code.gson</groupId>
+    	<artifactId>gson</artifactId>
+    	<version>2.6.2</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpclient</artifactId>
+		<version>4.5.3</version>
+	</dependency>
+	
+	
+	
 	</dependencies>
 
 	<build>

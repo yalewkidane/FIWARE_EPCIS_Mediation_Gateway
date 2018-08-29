@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bus="http://ns.example.com/epcisapp/bus"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.example.com/epcisapp/bus"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:complexType name="BusExtension">
+		<xsd:sequence>
+			<xsd:element name="Registration" type="bus:BusRegistration"
+				minOccurs="0" />
+			<xsd:element name="DriverID" type="xsd:string" minOccurs="0" />
+			<xsd:element name="VehicleNumber" type="xsd:string"
+				minOccurs="0" />
+			<xsd:element name="BusLine" type="bus:BusLine" minOccurs="0" />
+			<xsd:element name="Accident" type="bus:Accident"
+				minOccurs="0" />
+			<xsd:element name="Maintenance" type="bus:Maintenance"
+				minOccurs="0" />
+			<xsd:element name="Mileage" type="xsd:string" minOccurs="0" /> 
+			<xsd:element name="GPS" type="bus:GPS" minOccurs="0" />
+			<xsd:element name="Direction" type="xsd:int" minOccurs="0" />
+			<xsd:element name="Text" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusRegistration">
+		<xsd:sequence>
+			<xsd:element name="CompanyID" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusLine">
+		<xsd:sequence>
+			<xsd:element name="Number" type="xsd:string" />
+			<xsd:element name="ID" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Accident">
+		<xsd:sequence>
+			<xsd:element name="Type" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Maintenance">
+		<xsd:sequence>
+			<xsd:element name="Type" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GPS">
+		<xsd:sequence>
+			<xsd:element name="X" type="xsd:double" />
+			<xsd:element name="Y" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="BusExtension" type="bus:BusExtension" />
+	<xsd:complexType name="DriverExtension">
+		<xsd:sequence>
+			<xsd:element name="Employed" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Unemployed" type="xsd:string"
+				minOccurs="0" />
+			<xsd:element name="Bus" type="bus:Bus" minOccurs="0" />
+			<xsd:element name="Accident" type="bus:Accident"
+				minOccurs="0" />
+			<xsd:element name="Rating" type="bus:Rating" minOccurs="0" />
+			<xsd:element name="Check-in" type="bus:Check" minOccurs="0" />
+			<xsd:element name="Check-out" type="bus:Check" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Bus">
+		<xsd:sequence>
+			<xsd:element name="VehicleID" type="xsd:string" />
+			<xsd:element name="LineID" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Rating">
+		<xsd:sequence>
+			<xsd:element name="Score" type="xsd:integer" />
+			<xsd:element name="Evaluation" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Check">
+		<xsd:sequence>
+			<xsd:element name="VehicleID" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="DriverExtension" type="bus:DriverExtension" />
+
+	<xsd:complexType name="BusIntervalType">
+		<xsd:sequence>
+			<xsd:element name="Interval" type="xsd:string" />
+			<xsd:element name="IntervalNrom" type="xsd:string" />
+			<xsd:element name="IntervalPeak" type="xsd:string" />
+			<xsd:element name="IntervalSat" type="xsd:string" />
+			<xsd:element name="IntervalSun" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusStopInfoType">
+		<xsd:sequence>
+			<xsd:element name="Gln" type="xsd:string" />
+			<xsd:element name="StopID" type="xsd:string" />
+			<xsd:element name="Number" type="xsd:string" />
+			<xsd:element name="NameKR" type="xsd:string" />
+			<xsd:element name="NameEN" type="xsd:string" />
+			<xsd:element name="GpsX" type="xsd:string" />
+			<xsd:element name="GpsY" type="xsd:string" />
+			<xsd:element name="Road" type="xsd:string" />
+			<xsd:element name="Addr" type="xsd:string" />
+			<xsd:element name="Lines" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusStopListType">
+		<xsd:sequence>
+			<xsd:element name="stopList" type="bus:BusRouteStopInfoType"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusRouteStopInfoType">
+		<xsd:complexContent>
+			<xsd:extension base="bus:BusStopInfoType">
+				<xsd:sequence>
+					<xsd:element name="Index" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusTimeType">
+		<xsd:sequence>
+			<xsd:element name="Time" type="xsd:string" />
+			<xsd:element name="TimeSat" type="xsd:string" />
+			<xsd:element name="TimeSun" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
