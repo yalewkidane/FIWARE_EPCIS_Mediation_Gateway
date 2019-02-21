@@ -1,6 +1,7 @@
 package com.oliot.mediation.service.epcis;
 
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -25,10 +26,14 @@ import org.w3c.dom.Node;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.oliot.model.fiware.Subscribition;
 import com.oliot.model.fiware.Alert.Alert;
 import com.oliot.model.fiware.Building.Building;
 import com.oliot.model.fiware.Building.BuildingOperation;
+import com.oliot.model.fiware.Bus.BusEstimation;
+import com.oliot.model.fiware.Bus.BusLine;
+import com.oliot.model.fiware.Bus.BusStop;
 import com.oliot.model.fiware.CivicIssueTracking.Open311ServiceRequest;
 import com.oliot.model.fiware.CivicIssueTracking.Open311ServiceType;
 import com.oliot.model.fiware.Device.Device;
@@ -89,6 +94,70 @@ public class ConvertUtility {
 			car = gson.fromJson(body, Car.class);
 		}
 		return car;
+	}
+	
+	//--------------------------------Bus System 
+	public static BusEstimation getBusEstimation(String body) {
+		System.out.println(body);
+		BusEstimation busEstimation=new BusEstimation();
+		if(body!=null) {
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			busEstimation = gson.fromJson(body, BusEstimation.class);
+		}
+		return busEstimation;
+		
+	}
+	
+	public static List<BusEstimation> getBusEstimationList(String body) {
+		System.out.println(body);
+		List<BusEstimation> busEstimationList=new ArrayList<BusEstimation>();
+		if(body!=null) {
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			Type BusStopListType=new TypeToken<ArrayList<BusEstimation>>() {}.getType();
+			busEstimationList = gson.fromJson(body, BusStopListType);
+		}
+		return busEstimationList;
+		
+	}
+	
+	public static BusStop getBusStop(String body) {
+		BusStop busStop=new BusStop();
+		if(body!=null) {
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			busStop = gson.fromJson(body, BusStop.class);
+		}
+		return busStop;
+		
+	}
+	public static List<BusStop> getBusStopList(String body) {
+		List<BusStop> busStopList=new ArrayList<BusStop>();
+		if(body!=null) {
+			Type BusStopListType=new TypeToken<ArrayList<BusStop>>() {}.getType();
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			busStopList = gson.fromJson(body, BusStopListType);
+		}
+		return busStopList;
+		
+	}
+	
+	public static BusLine getBusLine(String body) {
+		BusLine busLine=new BusLine();
+		if(body!=null) {
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			busLine = gson.fromJson(body, BusLine.class);
+		}
+		return busLine;
+		
+	}
+	public static List<BusLine> getBusLineList(String body) {
+		List<BusLine> busLineList=new ArrayList<BusLine>();
+		if(body!=null) {
+			Type BusLineListType=new TypeToken<ArrayList<BusLine>>() {}.getType();
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			busLineList = gson.fromJson(body, BusLineListType);
+		}
+		return busLineList;
+		
 	}
 	
 	public static Alert getAlert(String body) {
@@ -713,6 +782,391 @@ public class ConvertUtility {
 		return objectEventType;
 	}
 	
+	public static ObjectEventType translate(BusEstimation busEstimation) {
+		ObjectEventType objectEventType=new ObjectEventType();
+		
+		
+		//GregorianCalendar gRecordTime = new GregorianCalendar();
+				//gRecordTime = DatatypeFactory.newInstance().newXMLGregorianCalendar(gRecordTime);
+				objectEventType.setEventTime(Calendar.getInstance());
+				objectEventType.setRecordTime(Calendar.getInstance());
+				int offsetInt=(Calendar.getInstance().getTimeZone().getRawOffset()/(60*60*1000));
+				//(offsetInt<10 && offsetInt>-10 ? "0":"")+ offsetInt;
+				String offset="00";
+				if(offsetInt<10 && offsetInt>=0) {
+					offset="+0"+offsetInt;
+				}else if(offsetInt>-10 && offsetInt<0) {
+					offset="-0"+(-offsetInt);
+				}
+				//System.out.println("offset : "+offset);
+				objectEventType.setEventTimeZoneOffset(offset+":00");
+				
+				//System.out.println(objectEventType.getEventTimeZoneOffset());
+
+				//objectEventType.setEventTimeZoneOffset("-06:00");
+
+				EPCISEventExtensionType epcisEventExtension = new EPCISEventExtensionType();
+				epcisEventExtension.setEventID(UUID.randomUUID().toString());
+				objectEventType.setBaseExtension(epcisEventExtension);
+
+				EPCListType objectEventEPCs = new EPCListType();
+				EPC epc1 = new EPC();
+				//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+				epc1.setValue(busEstimation.getId());	
+				objectEventEPCs.getEpcs().add(epc1);//.getEpc().add(epc1);
+				objectEventType.setEpcList(objectEventEPCs);
+				
+				//EPCISEventExtensionType eventExtention=new EPCISEventExtensionType();
+				//eventExtention.setEventID("urn:epc:id:sgtin:88000269." + room.getId());
+				//objectEventType.setBaseExtension(eventExtention);
+
+				
+				objectEventType.setAction(ActionType.fromValue("OBSERVE"));
+				
+				objectEventType.setBizStep("urn:epcglobal:cbv:bizstep:driving");
+				
+				objectEventType.setDisposition("urn:epcglobal:cbv:disp:on_the_line");
+                
+				
+				if(busEstimation.getGeolocation()!=null)
+					if(busEstimation.getGeolocation().getValue()!= null)
+						if(busEstimation.getGeolocation().getValue().getType().equals("Point"))
+							System.out.println(busEstimation.getGeolocation().getValue().getType());
+							if(busEstimation.getGeolocation().getValue().getCoordinates()!=null) {
+								List<Double> coordinates=busEstimation.getGeolocation().getValue().getCoordinates();
+								String sgln=Utility.coordinta_sgln_converter(coordinates.get(0),coordinates.get(1));
+								
+								ReadPointType readPoint = new ReadPointType();
+								//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+								
+								readPoint.setId(sgln);
+								objectEventType.setReadPoint(readPoint);
+
+								BusinessLocationType businessLocation = new BusinessLocationType();
+								//urn:epc:id:sgln:CompanyPrefix.ItemReference.SerialNumber
+								businessLocation.setId(sgln);
+								objectEventType.setBizLocation(businessLocation);
+							}
+				
+
+				BusinessTransactionListType businessTransactionList = new BusinessTransactionListType();
+				BusinessTransactionType businessTransaction1 = new BusinessTransactionType();
+				businessTransaction1.setType("urn:epcglobal:cbv:Bus:status");
+				businessTransaction1.setValue("http://transaction.acme.com/po/urn:epcglobal:cbv:bizstep:Sensing");
+				businessTransactionList.getBizTransactions().add(businessTransaction1);
+				objectEventType.setBizTransactionList(businessTransactionList);
+
+				List<Object> elementList = new ArrayList<Object>();
+
+				try {
+					Document doc;
+					DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+					DocumentBuilder builder = dbf.newDocumentBuilder();
+					doc = builder.newDocument();
+					
+					if(busEstimation.getId()!=null) {
+						Element id = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:id", "oliot:Fiware");
+						id.setTextContent(busEstimation.getId());
+						elementList.add(id);
+					}
+										
+
+					if(busEstimation.getType()!=null) {
+						Element type = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:type", "oliot:Fiware");
+						type.setTextContent(busEstimation.getType());
+						elementList.add(type);
+					}
+					
+					if(busEstimation.getCompanyName()!=null) {
+						Element companyName = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:companyName", "oliot:Fiware");
+						
+						if(busEstimation.getCompanyName().getType()!=null) {
+							Element shortIDType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:companyName:type", "oliot:Fiware");
+							shortIDType.setTextContent(busEstimation.getCompanyName().getType());
+							
+							companyName.appendChild(shortIDType);
+						}
+						if(busEstimation.getCompanyName().getValue()!=null) {
+							Element shortIDValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:companyName:value", "oliot:Fiware");
+							shortIDValue.setTextContent(busEstimation.getCompanyName().getValue().toString());
+							
+							companyName.appendChild(shortIDValue);
+						}
+						if(busEstimation.getCompanyName().getMetadat()!=null) {
+							Element shortIDMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:companyName:metadata", "oliot:Fiware");
+							shortIDMetadat.setTextContent(busEstimation.getCompanyName().getValue().toString());
+							
+							companyName.appendChild(shortIDMetadat);
+						}
+						
+						elementList.add(companyName);
+					}
+					
+					if(busEstimation.getDestinationBusLines()!=null) {
+						Element destinationBusLines = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:destinationBusLines", "oliot:Fiware");
+						
+						if(busEstimation.getDestinationBusLines().getType()!=null) {
+							Element destinationBusLinesType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:destinationBusLines:type", "oliot:Fiware");
+							destinationBusLinesType.setTextContent(busEstimation.getDestinationBusLines().getType());
+							
+							destinationBusLines.appendChild(destinationBusLinesType);
+						}
+						if(busEstimation.getDestinationBusLines().getValue()!=null) {
+							Element destinationBusLinesDValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:destinationBusLines:value", "oliot:Fiware");
+							String listDestination="[";
+							for(int i=0; i<busEstimation.getDestinationBusLines().getValue().size(); i++) 
+								listDestination+=busEstimation.getDestinationBusLines().getValue().get(i)+",";
+							
+							listDestination=listDestination.substring(0,listDestination.length()-1)+"]";
+							destinationBusLinesDValue.setTextContent(listDestination);
+							
+							destinationBusLines.appendChild(destinationBusLinesDValue);
+						}
+						if(busEstimation.getDestinationBusLines().getMetadat()!=null) {
+							Element destinationBusLinesMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:destinationBusLines:metadata", "oliot:Fiware");
+							destinationBusLinesMetadat.setTextContent(busEstimation.getDestinationBusLines().getValue().toString());
+							
+							destinationBusLines.appendChild(destinationBusLinesMetadat);
+						}
+						
+						elementList.add(destinationBusLines);
+					}
+					
+					if(busEstimation.getDateModified()!=null) {
+						Element dateModified = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:dateModified", "oliot:Fiware");
+						
+						if(busEstimation.getDateModified().getType()!=null) {
+							Element dateModifiedType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:dateModified:type", "oliot:Fiware");
+							dateModifiedType.setTextContent(busEstimation.getDateModified().getType());
+							
+							dateModified.appendChild(dateModifiedType);
+						}
+						if(busEstimation.getDateModified().getValue()!=null) {
+							Element dateModifiedValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:dateModified:value", "oliot:Fiware");
+							dateModifiedValue.setTextContent(busEstimation.getDateModified().getValue().toString());
+							
+							dateModified.appendChild(dateModifiedValue);
+						}
+						if(busEstimation.getDateModified().getMetadat()!=null) {
+							Element dateModifiedMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:dateModified:metadata", "oliot:Fiware");
+							dateModifiedMetadat.setTextContent(busEstimation.getDateModified().getValue().toString());
+							
+							dateModified.appendChild(dateModifiedMetadat);
+						}
+						
+						elementList.add(dateModified);
+					}
+					
+					if(busEstimation.getRefBusLine()!=null) {
+						Element refBusLine = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:refBusLine", "oliot:Fiware");
+						
+						if(busEstimation.getRefBusLine().getType()!=null) {
+							Element refBusLineType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:refBusLine:type", "oliot:Fiware");
+							refBusLineType.setTextContent(busEstimation.getRefBusLine().getType());
+							
+							refBusLine.appendChild(refBusLineType);
+						}
+						if(busEstimation.getRefBusLine().getValue()!=null) {
+							Element refBusLineValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:refBusLine:value", "oliot:Fiware");
+							refBusLineValue.setTextContent(busEstimation.getRefBusLine().getValue().toString());
+							
+							refBusLine.appendChild(refBusLineValue);
+						}
+						if(busEstimation.getShortID().getMetadat()!=null) {
+							Element refBusLineMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:refBusLine:metadata", "oliot:Fiware");
+							refBusLineMetadat.setTextContent(busEstimation.getRefBusLine().getValue().toString());
+							
+							refBusLine.appendChild(refBusLineMetadat);
+						}
+						
+						elementList.add(refBusLine);
+					}
+					
+					if(busEstimation.getRefBusStop()!=null) {
+						Element refBusStop = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:refBusStop", "oliot:Fiware");
+						
+						if(busEstimation.getRefBusStop().getType()!=null) {
+							Element refBusStopType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:refBusStop:type", "oliot:Fiware");
+							refBusStopType.setTextContent(busEstimation.getRefBusStop().getType());
+							
+							refBusStop.appendChild(refBusStopType);
+						}
+						if(busEstimation.getRefBusStop().getValue()!=null) {
+							Element refBusStopValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:refBusStop:value", "oliot:Fiware");
+							refBusStopValue.setTextContent(busEstimation.getRefBusStop().getValue().toString());
+							
+							refBusStop.appendChild(refBusStopValue);
+						}
+						if(busEstimation.getRefBusStop().getMetadat()!=null) {
+							Element refBusStopMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:refBusStop:metadata", "oliot:Fiware");
+							refBusStopMetadat.setTextContent(busEstimation.getRefBusStop().getValue().toString());
+							
+							refBusStop.appendChild(refBusStopMetadat);
+						}
+						
+						elementList.add(refBusStop);
+					}
+					
+					if(busEstimation.getRemainingDistances()!=null) {
+						Element remainingDistances = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:ShortID", "oliot:Fiware");
+						
+						if(busEstimation.getRemainingDistances().getType()!=null) {
+							Element remainingDistancesType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingDistances:type", "oliot:Fiware");
+							remainingDistancesType.setTextContent(busEstimation.getShortID().getType());
+							
+							remainingDistances.appendChild(remainingDistancesType);
+						}
+						if(busEstimation.getRemainingDistances().getValue()!=null) {
+							Element remainingDistancesDValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingDistances:value", "oliot:Fiware");
+							String listRemainingDist="[";
+							for(int i=0; i<busEstimation.getRemainingDistances().getValue().size(); i++) 
+								listRemainingDist+=busEstimation.getRemainingDistances().getValue().get(i)+",";
+							
+							listRemainingDist=listRemainingDist.substring(0,listRemainingDist.length()-1)+"]";
+							remainingDistancesDValue.setTextContent(listRemainingDist);
+							
+							remainingDistances.appendChild(remainingDistancesDValue);
+						}
+						if(busEstimation.getRemainingDistances().getMetadat()!=null) {
+							Element remainingDistancesMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingDistances:metadata", "oliot:Fiware");
+							remainingDistancesMetadat.setTextContent(busEstimation.getShortID().getValue().toString());
+							
+							remainingDistances.appendChild(remainingDistancesMetadat);
+						}
+						
+						elementList.add(remainingDistances);
+					}
+					
+					if(busEstimation.getRemainingStations()!=null) {
+						Element remainingStations = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingStations", "oliot:Fiware");
+						
+						if(busEstimation.getRemainingStations().getType()!=null) {
+							Element remainingStationsType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingStations:type", "oliot:Fiware");
+							remainingStationsType.setTextContent(busEstimation.getRemainingStations().getType());
+							
+							remainingStations.appendChild(remainingStationsType);
+						}
+						if(busEstimation.getRemainingStations().getValue()!=null) {
+							Element remainingStationsValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingStations:value", "oliot:Fiware");
+							remainingStationsValue.setTextContent(busEstimation.getRemainingStations().getValue().toString());
+							
+							remainingStations.appendChild(remainingStationsValue);
+						}
+						if(busEstimation.getRemainingStations().getMetadat()!=null) {
+							Element remainingStationsMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingStations:metadata", "oliot:Fiware");
+							remainingStationsMetadat.setTextContent(busEstimation.getRemainingStations().getValue().toString());
+							
+							remainingStations.appendChild(remainingStationsMetadat);
+						}
+						
+						elementList.add(remainingStations);
+					}
+					
+					if(busEstimation.getRemainingTimes()!=null) {
+						Element remainingTimes = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingTimes", "oliot:Fiware");
+						
+						if(busEstimation.getRemainingTimes().getType()!=null) {
+							Element remainingTimesType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingTimes:type", "oliot:Fiware");
+							remainingTimesType.setTextContent(busEstimation.getRemainingTimes().getType());
+							
+							remainingTimes.appendChild(remainingTimesType);
+						}
+						if(busEstimation.getRemainingTimes().getValue()!=null) {
+							Element remainingTimesValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingTimes:value", "oliot:Fiware");
+							remainingTimesValue.setTextContent(busEstimation.getRemainingTimes().getValue().toString());
+							
+							remainingTimes.appendChild(remainingTimesValue);
+						}
+						if(busEstimation.getRemainingTimes().getMetadat()!=null) {
+							Element remainingTimesMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:remainingTimes:metadata", "oliot:Fiware");
+							remainingTimesMetadat.setTextContent(busEstimation.getRemainingTimes().getValue().toString());
+							
+							remainingTimes.appendChild(remainingTimesMetadat);
+						}
+						
+						elementList.add(remainingTimes);
+					}
+					
+					if(busEstimation.getShortID()!=null) {
+						Element shortID = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:ShortID", "oliot:Fiware");
+						
+						if(busEstimation.getShortID().getType()!=null) {
+							Element shortIDType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:ShortID:type", "oliot:Fiware");
+							shortIDType.setTextContent(busEstimation.getShortID().getType());
+							
+							shortID.appendChild(shortIDType);
+						}
+						if(busEstimation.getShortID().getValue()!=null) {
+							Element shortIDValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:ShortID:value", "oliot:Fiware");
+							shortIDValue.setTextContent(busEstimation.getShortID().getValue().toString());
+							
+							shortID.appendChild(shortIDValue);
+						}
+						if(busEstimation.getShortID().getMetadat()!=null) {
+							Element shortIDMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:ShortID:metadata", "oliot:Fiware");
+							shortIDMetadat.setTextContent(busEstimation.getShortID().getValue().toString());
+							
+							shortID.appendChild(shortIDMetadat);
+						}
+						
+						elementList.add(shortID);
+					}
+					
+					if(busEstimation.getGeolocation()!=null) {
+						Element geolocation = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:geolocation:", "oliot:Fiware");
+						
+						if(busEstimation.getGeolocation().getType()!=null) {
+							Element geolocationType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:geolocation:type", "oliot:Fiware");
+							geolocationType.setTextContent(busEstimation.getGeolocation().getType());
+							
+							geolocation.appendChild(geolocationType);
+						}
+						if(busEstimation.getGeolocation().getValue()!=null) {
+							Element geolocationValue = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:geolocation:value", "oliot:Fiware");
+							if(busEstimation.getGeolocation().getValue().getType()!=null) {
+								Element geolocationValueType = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:geolocation:value:type", "oliot:Fiware");
+								geolocationValueType.setTextContent(busEstimation.getGeolocation().getValue().getType());
+								geolocationValue.appendChild(geolocationValueType);
+							}
+							
+							if(busEstimation.getGeolocation().getValue().getCoordinates()!=null) {
+								Element geolocationValueCoordinate = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:geolocation:value:coordinate", "oliot:Fiware");
+								String coordinates="[";
+								for(int i=0; i< busEstimation.getGeolocation().getValue().getCoordinates().size(); i++)coordinates+=busEstimation.getGeolocation().getValue().getCoordinates().get(i) +",";
+								coordinates=coordinates.substring(0,coordinates.length()-1);
+								coordinates+="]";
+								geolocationValueCoordinate.setTextContent(coordinates);
+								geolocationValue.appendChild(geolocationValueCoordinate);
+							}
+							
+							
+							
+							geolocation.appendChild(geolocationValue);
+						}
+						if(busEstimation.getGeolocation().getMetadat()!=null) {
+							Element geolocationMetadat = doc.createElementNS("urn:autidlabsk:epcisapp:bis:bus:estimation:geolocation:metadata", "oliot:Fiware");
+							geolocationMetadat.setTextContent(busEstimation.getGeolocation().getMetadat().toString());
+							
+							geolocation.appendChild(geolocationMetadat);
+						}
+						
+						elementList.add(geolocation);
+					}
+					
+					
+					
+					
+
+				} catch (ParserConfigurationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				objectEventType.setAnies(elementList);
+				
+				
+		return objectEventType;
+	}
 
 	public static ObjectEventType translate(Alert alert) {
 		ObjectEventType objectEventType=new ObjectEventType();

@@ -37,6 +37,81 @@ public class Subscriptions {
 		System.out.println(body);
 		
 	}
+	//this for test and need to be removed 
+	@RequestMapping(value="/Subscribe/Santander/Bus", method = RequestMethod.POST)
+	@ResponseBody
+	public void SubscribeSantanderBus(@RequestBody String body){
+		System.out.println(body);
+		
+	}
+	
+	@RequestMapping(value="/Subscribe/Bus", method = RequestMethod.POST)
+	public void SubscribeBus(@RequestBody String body){
+		System.out.println(body);
+		
+	}
+	@RequestMapping(value="/Subscribe/Bus/BusLine", method = RequestMethod.POST)  
+	@ResponseBody
+	public String SubscribeBusBusLine(@RequestBody String body){
+		System.out.println("/Subscribe/Bus/BusLine");
+		System.out.println(body);
+		String result="result";
+		
+		
+		try {
+			body=body.substring(body.indexOf("\"data\":")+7, body.length()-1);
+			System.out.println(body);
+			CaptureEPCIS captureEPCIS=new CaptureEPCIS();
+			result=captureEPCIS.capture(body, "Bus/BusLine");
+			return result;
+		}catch(Exception e){
+			
+		}
+		
+		return result;
+	}
+	@RequestMapping(value="/Subscribe/Bus/BusStop", method = RequestMethod.POST)
+	@ResponseBody
+	public String SubscribeBusBusStop(@RequestBody String body){
+		System.out.println("/Subscribe/Bus/BusStop");
+		System.out.println(body);
+		
+		String result="Response";
+		try {
+			body=body.substring(body.indexOf("\"data\":")+7, body.length()-1);
+			System.out.println(body);
+			CaptureEPCIS captureEPCIS=new CaptureEPCIS();
+			result=captureEPCIS.capture(body, "Bus/BusStop");
+			return result;
+		}catch(Exception e){
+			
+		}
+		
+		return result;
+		
+	}
+	@RequestMapping(value="/Subscribe/Bus/BusEstimation", method = RequestMethod.POST)
+	@ResponseBody
+	public String SubscribeBusBusEstimation(@RequestBody String body){
+		System.out.println("/Subscribe/Bus/BusEstimation");
+		System.out.println(body);
+		
+		String result="Response";
+		try {
+			body=body.substring(body.indexOf("\"data\":")+7, body.length()-1);
+			System.out.println(body);
+			
+			CaptureEPCIS captureEPCIS=new CaptureEPCIS();
+			result=captureEPCIS.capture(body, "Bus/BusEstimation");
+			return result;
+			
+		}catch(Exception e){
+			
+		}
+		
+		return result;
+		
+	}
 	@RequestMapping(value="/Subscribe/Alert", method = RequestMethod.POST)
 	public void SubscribeAlert(@RequestBody String body){
 		System.out.println(body);

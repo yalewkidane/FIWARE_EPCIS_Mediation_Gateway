@@ -38,9 +38,13 @@ public class EPCISMarshaller {
 		try {
 			String path =EPCISMarshaller.class.getClassLoader().getResource("").getPath();
 			path = path+ "/org/gs1/epcglobal/epcis/schema/EPCglobal-epcis-1_2.xsd";
+			///root/Downloads/Project/FIWARE/Fiware_Oliot_Mediation/git/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/epcis/schema/EPCglobal-epcis-1_2.xsd";
+			//path = path.substring(0, path.indexOf("/target/classes"));
+			//path = path+ "/src/main/java/com/oliot/epcis/schema/EPCglobal-epcis-1_2.xsd";
+			//System.out.println(path);
 			schema = sf.newSchema(new File(path));
 		} catch (SAXException e2) {
-			e2.printStackTrace();
+			//e2.printStackTrace();
 		}
 		
 		try {

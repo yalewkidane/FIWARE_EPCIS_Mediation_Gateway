@@ -18,6 +18,7 @@ public class Configuration {
 	public static String mediationGatewayPort="8081";
 	public static String mediationGatewayURL="localhost:8081";
 	public static Logger logger;
+	public static String gs1SourceURL="http://182.252.135.133:8010";//"https://bus-poc.herokuapp.com";
 	
 	@Autowired
 	Environment environment;
@@ -47,6 +48,8 @@ public class Configuration {
 		fiwareURL = scanner.nextLine();
 		System.out.println("Enter EPCIS server URL (e.g localhost:8080): ");
 		epcisURL = scanner.nextLine();
+		System.out.println("Enter GS1 Source server URL (e.g http://localhost:8080): ");
+		gs1SourceURL = scanner.nextLine();
 		System.out.println("Mediation Gateway Port  (e.g 8083): ");
 		mediationGatewayPort = scanner.nextLine();
 		
