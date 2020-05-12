@@ -5,11 +5,11 @@
 
 	<groupId>com.oliot</groupId>
 	<artifactId>fiware_oiliot_mediation</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>fiware_oiliot_mediation</name>
-	<description>Demo project for Spring Boot</description>
+	<description>FIWARE EPCIS mediation gateway it translates information from FIWARE to EPCIS</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
