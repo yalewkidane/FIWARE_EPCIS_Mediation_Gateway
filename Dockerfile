@@ -1,4 +1,4 @@
 FROM openjdk:8
-ADD target/fiware_oiliot_mediation_1_0.jar fiware_oiliot_mediation_1_0.jar
+ADD target/fiware_oiliot_mediation-1.0.0.jar fiware_oiliot_mediation-1.0.0.jar
 EXPOSE 8081
-ENTRYPOINT ["java", "-jar", "fiware_oiliot_mediation_1_0.jar"] 
+ENTRYPOINT ["java", "-jar", "fiware_oiliot_mediation-1.0.0.jar"] 
