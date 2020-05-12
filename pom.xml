@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.oliot</groupId>
-	<artifactId>fiware_oiliot_mediation</artifactId>
+	<artifactId>fiware_epcis_mediation</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
@@ -104,7 +104,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>fiware_oiliot_mediation_1_1</finalName>
+		<finalName>fiware_oiliot_mediation-1.0.0</finalName>
 	</build>
 
 
