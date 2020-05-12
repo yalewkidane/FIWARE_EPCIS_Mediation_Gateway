@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<epcis:EPCISDocument schemaVersion="1.2" creationDate="2019-09-18T03:11:23.022-04:00" xmlns:epcis="urn:epcglobal:epcis:xsd:1" xmlns:PF="http://ns.example.com/epcisapp/pigFarm" xmlns:ns3="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+    <EPCISBody>
+        <EventList>
+            <ObjectEvent>
+                <eventTime>2019-09-18T03:11:23.028-04:00</eventTime>
+                <recordTime>2019-09-18T03:11:23.028-04:00</recordTime>
+                <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+                <baseExtension>
+                    <eventID>19af94f0-144b-491a-8c12-6d6d8f6f5653</eventID>
+                </baseExtension>
+                <epcList>
+                    <epc>urn:epc:id:sgln:8800026900016.245.319cba0c-773d-4964-b750-136a8d5fb3c1</epc>
+                </epcList>
+                <action>OBSERVE</action>
+                <bizStep>urn:epcglobal:cbv:bizstep:monitoring</bizStep>
+                <readPoint>
+                    <id>urn:epc:id:sgln:8800026900016.245.319cba0c-773d-4964-b750-136a8d5fb3c1</id>
+                </readPoint>
+                <bizLocation>
+                    <id>urn:epc:id:sgln:8800026900016.245.319cba0c-773d-4964-b750-136a8d5fb3c1</id>
+                </bizLocation>
+                <bizTransactionList>
+                    <bizTransaction type="urn:gs1:epcisapp:PigFarming:status">urn:gs1:epcisapp:PigFarming:Monitoring</bizTransaction>
+                </bizTransactionList>
+                <PF:ID xmlns:PF="urn:gs1:epcisapp:pigFarm">Building</PF:ID>
+                <PF:Type xmlns:PF="urn:gs1:epcisapp:pigFarm">Building</PF:Type>
+                <PF:CO2 xmlns:PF="urn:gs1:epcisapp:pigFarm"/>
+                <PF:BuildingId xmlns:PF="urn:gs1:epcisapp:pigFarm">319cba0c-773d-4964-b750-136a8d5fb3c1</PF:BuildingId>
+                <PF:CompanyId xmlns:PF="urn:gs1:epcisapp:pigFarm">8b6e0aa4-08fc-4f6f-960d-5a65a748b0e7</PF:CompanyId>
+                <PF:FarmId xmlns:PF="urn:gs1:epcisapp:pigFarm">9a68ea4e-348e-424e-9346-6e9fefaf18db</PF:FarmId>
+                <PF:Humidity xmlns:PF="urn:gs1:epcisapp:pigFarm"/>
+                <PF:Luminosity xmlns:PF="urn:gs1:epcisapp:pigFarm">319cba0c-773d-4964-b750-136a8d5fb3c1</PF:Luminosity>
+                <PF:Name xmlns:PF="urn:gs1:epcisapp:pigFarm">319cba0c-773d-4964-b750-136a8d5fb3c1</PF:Name>
+                <PF:Temperature xmlns:PF="urn:gs1:epcisapp:pigFarm">23.5</PF:Temperature>
+            </ObjectEvent>
+        </EventList>
+    </EPCISBody>
+</epcis:EPCISDocument>

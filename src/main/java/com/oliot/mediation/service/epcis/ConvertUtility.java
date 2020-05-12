@@ -22,12 +22,11 @@ import org.gs1.epcglobal.epcis.ObjectEventType;
 import org.gs1.epcglobal.epcis.ReadPointType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.oliot.model.fiware.Subscribition;
+import com.oliot.mediation.configuration.Configuration;
 import com.oliot.model.fiware.Alert.Alert;
 import com.oliot.model.fiware.Building.Building;
 import com.oliot.model.fiware.Building.BuildingOperation;
@@ -52,6 +51,10 @@ import com.oliot.model.fiware.ParksAndGardens.FlowerBed;
 import com.oliot.model.fiware.ParksAndGardens.Garden;
 import com.oliot.model.fiware.ParksAndGardens.GreenspaceRecord;
 import com.oliot.model.fiware.ParksAndGardens.Park;
+import com.oliot.model.fiware.PigFarming.BuildingAdditonalInfo;
+import com.oliot.model.fiware.PigFarming.Pig;
+import com.oliot.model.fiware.PigFarming.PigAdditionalInfo;
+import com.oliot.model.fiware.PigFarming.PigList;
 import com.oliot.model.fiware.PointOfInterest.Beach;
 import com.oliot.model.fiware.PointOfInterest.Museum;
 import com.oliot.model.fiware.PointOfInterest.PointOfInterest;
@@ -157,6 +160,40 @@ public class ConvertUtility {
 			busLineList = gson.fromJson(body, BusLineListType);
 		}
 		return busLineList;
+		
+	}
+	
+	public static List<Pig> getFarmPigList(String body) {
+		List<Pig> farmPigList=new ArrayList<Pig>();
+		if(body!=null) {
+			Type FarmPigType=new TypeToken<ArrayList<Pig>>() {}.getType();
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			farmPigList = gson.fromJson(body, FarmPigType);
+		}
+		return farmPigList;
+		
+	}
+	
+	public static PigList getFarmPigList_2(String body) {
+		PigList farmPigList=new PigList();
+		if(body!=null) {
+			Type FarmPigType=new TypeToken<PigList>() {}.getType();
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			farmPigList = gson.fromJson(body, FarmPigType);
+		}
+		return farmPigList;
+		
+	}
+	
+	public static List<com.oliot.model.fiware.PigFarming.Building> getFarmBuildingList(String body) {
+		List<com.oliot.model.fiware.PigFarming.Building> farmBuildingList=
+				new ArrayList<com.oliot.model.fiware.PigFarming.Building>();
+		if(body!=null) {
+			Type FarmBuildingType=new TypeToken<ArrayList<com.oliot.model.fiware.PigFarming.Building>>() {}.getType();
+			Gson gson = new GsonBuilder().serializeNulls().create();
+			farmBuildingList = gson.fromJson(body, FarmBuildingType);
+		}
+		return farmBuildingList;
 		
 	}
 	
@@ -623,28 +660,1135 @@ public class ConvertUtility {
 				elementList.add(temprature);
 			}
 			if(room.getPressure()!=null) {
-				Element temprature = doc.createElementNS("http://ns.oliot.com/Pressure", "oliot:Fiware");
+				Element pressure = doc.createElementNS("http://ns.oliot.com/Pressure", "oliot:Fiware");
 				
 				if(room.getPressure().getType()!=null) {
 					Element PressureType = doc.createElementNS("http://ns.oliot.com/Pressure/type", "oliot:Fiware");
-					PressureType.setTextContent(room.getTemperature().getType());
+					PressureType.setTextContent(room.getPressure().getType());
 					
-					temprature.appendChild(PressureType);
+					pressure.appendChild(PressureType);
 				}
 				if(room.getPressure().getValue()!=null) {
 					Element PressureValue = doc.createElementNS("http://ns.oliot.com/pressure/value", "oliot:Fiware");
-					PressureValue.setTextContent(room.getTemperature().getValue().toString());
+					PressureValue.setTextContent(room.getPressure().getValue().toString());
 					
-					temprature.appendChild(PressureValue);
+					pressure.appendChild(PressureValue);
 				}
 				if(room.getPressure().getMetadat()!=null) {
 					Element PressureMetadat = doc.createElementNS("http://ns.oliot.com/pressure/metadata", "oliot:Fiware");
-					PressureMetadat.setTextContent(room.getTemperature().getMetadat().toString());
+					PressureMetadat.setTextContent(room.getPressure().getMetadat().toString());
 					
-					temprature.appendChild(PressureMetadat);
+					pressure.appendChild(PressureMetadat);
 				}
 				
-				elementList.add(temprature);
+				elementList.add(pressure);
+			}
+			
+			
+			
+			
+
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		objectEventType.setAnies(elementList);
+
+		return objectEventType;
+	}
+	
+	
+	public static ObjectEventType translate(com.oliot.model.fiware.PigFarming.Building building) {
+		ObjectEventType objectEventType=new ObjectEventType();
+		
+		
+		
+		
+		//GregorianCalendar gRecordTime = new GregorianCalendar();
+		//gRecordTime = DatatypeFactory.newInstance().newXMLGregorianCalendar(gRecordTime);
+		objectEventType.setEventTime(Calendar.getInstance());
+		objectEventType.setRecordTime(Calendar.getInstance());
+		int offsetInt=(Calendar.getInstance().getTimeZone().getRawOffset()/(60*60*1000));
+		//(offsetInt<10 && offsetInt>-10 ? "0":"")+ offsetInt;
+		String offset="00";
+		if(offsetInt<10 && offsetInt>=0) {
+			offset="+0"+offsetInt;
+		}else if(offsetInt>-10 && offsetInt<0) {
+			offset="-0"+(-offsetInt);
+		}
+		//System.out.println("offset : "+offset);
+		objectEventType.setEventTimeZoneOffset(offset+":00");
+		
+		//System.out.println(objectEventType.getEventTimeZoneOffset());
+
+		//objectEventType.setEventTimeZoneOffset("-06:00");
+
+		EPCISEventExtensionType epcisEventExtension = new EPCISEventExtensionType();
+		epcisEventExtension.setEventID(UUID.randomUUID().toString());
+		objectEventType.setBaseExtension(epcisEventExtension);
+
+		EPCListType objectEventEPCs = new EPCListType();
+		EPC epc1 = new EPC();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		epc1.setValue("urn:epc:id:sgln:8800026900016.245." + building.getBuildingId().getValue());	
+		objectEventEPCs.getEpcs().add(epc1);//.getEpc().add(epc1);
+		objectEventType.setEpcList(objectEventEPCs);
+		
+		//EPCISEventExtensionType eventExtention=new EPCISEventExtensionType();
+		//eventExtention.setEventID("urn:epc:id:sgtin:88000269." + room.getId());
+		//objectEventType.setBaseExtension(eventExtention);
+
+		
+		objectEventType.setAction(ActionType.fromValue("OBSERVE"));
+		
+		objectEventType.setBizStep("urn:epcglobal:cbv:bizstep:monitoring");
+		
+		//objectEventType.setDisposition("urn:epcglobal:cbv:disp:on_the line");
+
+		ReadPointType readPoint = new ReadPointType();
+		BusinessLocationType businessLocation = new BusinessLocationType();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		readPoint.setId("urn:epc:id:sgln:8800026900016.245." + building.getBuildingId().getValue());
+		objectEventType.setReadPoint(readPoint);
+		
+		businessLocation.setId("urn:epc:id:sgln:8800026900016.245." + building.getBuildingId().getValue());
+		objectEventType.setBizLocation(businessLocation);
+		
+		
+
+		BusinessTransactionListType businessTransactionList = new BusinessTransactionListType();
+		BusinessTransactionType businessTransaction1 = new BusinessTransactionType();
+		businessTransaction1.setType("urn:gs1:epcisapp:PigFarming:status");
+		businessTransaction1.setValue("urn:gs1:epcisapp:PigFarming:Monitoring");
+		businessTransactionList.getBizTransactions().add(businessTransaction1);
+		objectEventType.setBizTransactionList(businessTransactionList);
+
+		List<Object> elementList = new ArrayList<Object>();
+
+		try {
+			Document doc;
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			doc = builder.newDocument();
+			String namespace = "urn:gs1:epcisapp:pigFarm";
+			
+			//id
+			if(building.getId()!=null) {
+				Element id = doc.createElementNS(namespace,"PF:ID");
+				id.setTextContent(building.getId());
+				elementList.add(id);
+			}
+			//type
+			if(building.getType()!=null) {
+				Element type = doc.createElementNS(namespace,"PF:Type");
+				type.setTextContent(building.getType());
+				elementList.add(type);
+			}
+			//additionalInfo
+			if(building.getAdditionalInfo().getValue()!=null) {
+				BuildingAdditonalInfo addtionalInfo= building.getAdditionalInfo().getValue();
+				Element additonalInfo = doc.createElementNS(namespace,"PF:AdditionalInfo");
+				
+				if(addtionalInfo.getSensorName()!=null) {
+					Element sensorName = doc.createElementNS(namespace,"PF:SensorName");
+					//Element duration = doc.createElementNS("http://gs1.org/voc/PigFarming", "PF:duration");
+					sensorName.setTextContent(addtionalInfo.getSensorName());
+					
+					additonalInfo.appendChild(sensorName);
+				}
+				if(addtionalInfo.getCurrentReading()!=null) {
+					Element currentReading = doc.createElementNS(namespace,"PF:CurrentReading");
+					//Element duration = doc.createElementNS("http://gs1.org/voc/PigFarming", "PF:duration");
+					currentReading.setTextContent(addtionalInfo.getCurrentReading());
+					
+					additonalInfo.appendChild(currentReading);
+				}
+				//all others additional informations will be included if needed 
+				
+			}
+			//CO2
+			if(building.getCO2().getValue()!=null) {
+				Element CO2 = doc.createElementNS(namespace,"PF:CO2");
+				CO2.setTextContent(building.getCO2().getValue());
+				elementList.add(CO2);
+			}
+			//buildingId
+			if(building.getBuildingId().getValue()!=null) {
+				Element buildingId = doc.createElementNS(namespace,"PF:BuildingId");
+				buildingId.setTextContent(building.getBuildingId().getValue());
+				elementList.add(buildingId);
+			}
+			//companyId
+			if(building.getCompanyId().getValue()!=null) {
+				Element companyId = doc.createElementNS(namespace,"PF:CompanyId");
+				companyId.setTextContent(building.getCompanyId().getValue());
+				elementList.add(companyId);
+			}
+			//farmId
+			if(building.getFarmId()!=null) {
+				Element farmId = doc.createElementNS(namespace,"PF:FarmId");
+				farmId.setTextContent(building.getFarmId().getValue());
+				elementList.add(farmId);
+			}
+			//humidity
+			if(building.getHumidity().getValue()!=null) {
+				Element humidity = doc.createElementNS(namespace,"PF:Humidity");
+				humidity.setTextContent(building.getHumidity().getValue());
+				elementList.add(humidity);
+			}
+			//luminosity
+			if(building.getLuminosity().getValue()!=null) {
+				Element luminosity = doc.createElementNS(namespace,"PF:Luminosity");
+				luminosity.setTextContent(building.getBuildingId().getValue());
+				elementList.add(luminosity);
+			}
+			//name
+			if(building.getName().getValue()!=null) {
+				Element name = doc.createElementNS(namespace,"PF:Name");
+				name.setTextContent(building.getBuildingId().getValue());
+				elementList.add(name);
+			}
+			//temperature
+			if(building.getTemperature().getValue()!=null) {
+				Element temperature = doc.createElementNS(namespace,"PF:Temperature");
+				temperature.setTextContent(building.getTemperature().getValue());
+				elementList.add(temperature);
+			}
+			
+			
+			
+			
+
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		objectEventType.setAnies(elementList);
+
+		return objectEventType;
+	}
+	
+	public static ObjectEventType translate_growth(Pig pig, Double growth) {
+		ObjectEventType objectEventType=new ObjectEventType();
+		
+		
+		//GregorianCalendar gRecordTime = new GregorianCalendar();
+		//gRecordTime = DatatypeFactory.newInstance().newXMLGregorianCalendar(gRecordTime);
+		objectEventType.setEventTime(Calendar.getInstance());
+		objectEventType.setRecordTime(Calendar.getInstance());
+		int offsetInt=(Calendar.getInstance().getTimeZone().getRawOffset()/(60*60*1000));
+		//(offsetInt<10 && offsetInt>-10 ? "0":"")+ offsetInt;
+		String offset="00";
+		if(offsetInt<10 && offsetInt>=0) {
+			offset="+0"+offsetInt;
+		}else if(offsetInt>-10 && offsetInt<0) {
+			offset="-0"+(-offsetInt);
+		}
+		//System.out.println("offset : "+offset);
+		objectEventType.setEventTimeZoneOffset(offset+":00");
+		
+		//System.out.println(objectEventType.getEventTimeZoneOffset());
+
+		//objectEventType.setEventTimeZoneOffset("-06:00");
+
+		EPCISEventExtensionType epcisEventExtension = new EPCISEventExtensionType();
+		epcisEventExtension.setEventID(UUID.randomUUID().toString());
+		objectEventType.setBaseExtension(epcisEventExtension);
+
+		EPCListType objectEventEPCs = new EPCListType();
+		EPC epc1 = new EPC();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		epc1.setValue(Configuration.sgtin+Configuration.ilvo_CompanyPrefix+"."+
+				Configuration.Pig_ItemReference+"." + pig.getPigId().getValue());	
+		objectEventEPCs.getEpcs().add(epc1);//.getEpc().add(epc1);
+		objectEventType.setEpcList(objectEventEPCs);
+		
+		//EPCISEventExtensionType eventExtention=new EPCISEventExtensionType();
+		//eventExtention.setEventID("urn:epc:id:sgtin:88000269." + room.getId());
+		//objectEventType.setBaseExtension(eventExtention);
+
+		
+		objectEventType.setAction(ActionType.fromValue("OBSERVE"));
+		
+		objectEventType.setBizStep(Configuration.farm_pig+":growth");
+		
+		objectEventType.setDisposition(Configuration.sgln+Configuration.ilvo_CompanyPrefix+
+				"."+Configuration.Pig_ItemReference+"."+pig.getPenId().getValue());
+
+		ReadPointType readPoint = new ReadPointType();
+		//BusinessLocationType businessLocation = new BusinessLocationType();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		
+		if(pig.getAdditionalInfo().getValue().getLocation()!=null) {
+			readPoint.setId(Configuration.sgln+Configuration.ilvo_CompanyPrefix+"." +
+					Configuration.Pig_ItemReference+"."+ pig.getPenId());
+			objectEventType.setReadPoint(readPoint);
+		}
+		
+
+		BusinessTransactionListType businessTransactionList = new BusinessTransactionListType();
+		BusinessTransactionType businessTransaction1 = new BusinessTransactionType();
+		businessTransaction1.setType(Configuration.farm_pig+":status");
+		businessTransaction1.setValue(Configuration.farm_pig+":growth");
+		businessTransactionList.getBizTransactions().add(businessTransaction1);
+		objectEventType.setBizTransactionList(businessTransactionList);
+
+		List<Object> elementList = new ArrayList<Object>();
+
+		try {
+			Document doc;
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			doc = builder.newDocument();
+			String namespace = Configuration.farm_pig;
+			
+			//id
+			if(pig.getId()!=null) {
+				Element id = doc.createElementNS(namespace,"PF:ID");
+				id.setTextContent(pig.getPigId().getValue());
+				elementList.add(id);
+			}
+			
+			//Type
+			if(pig.getType()!=null) {
+				Element type = doc.createElementNS(namespace,"PF:Type");
+				type.setTextContent(pig.getType());
+				elementList.add(type);
+			}
+			
+			
+			//buildingId
+			if(pig.getBuildingId()!=null) {
+				Element buildingId = doc.createElementNS(namespace,"PF:buildingId");
+				buildingId.setTextContent(pig.getBuildingId().getValue());
+				elementList.add(buildingId);
+			}
+			
+			//companyId
+			if(pig.getCompanyId()!=null) {
+				Element companyId = doc.createElementNS(namespace,"PF:companyId");
+				companyId.setTextContent(pig.getCompanyId().getValue());
+				elementList.add(companyId);
+			}
+			
+			//farmId
+			if(pig.getFarmId()!=null) {
+				Element farmId = doc.createElementNS(namespace,"PF:farmId");
+				farmId.setTextContent(pig.getFarmId().getValue());
+				elementList.add(farmId);
+			}
+			
+			//penId
+			if(pig.getPenId().getValue()!=null) {
+				Element penId = doc.createElementNS(namespace,"PF:penId");
+				penId.setTextContent(pig.getPenId().getValue());
+				elementList.add(penId);
+			}
+			//pigId
+			if(pig.getPigId().getValue()!=null) {
+				Element pigId = doc.createElementNS(namespace,"PF:pigId");
+				pigId.setTextContent(pig.getPigId().getValue());
+				elementList.add(pigId);
+			}
+			//compartmentId
+			if(pig.getCompartmentId()!=null) {
+				Element compartmentId = doc.createElementNS(namespace,"PF:compartmentId");
+				compartmentId.setTextContent(pig.getCompartmentId().getValue());
+				elementList.add(compartmentId);
+			}
+			
+			//sex
+			if(pig.getSex()!=null) {
+				Element sex = doc.createElementNS(namespace,"PF:sex");
+				sex.setTextContent(pig.getSex().getValue());
+				elementList.add(sex);
+			}
+			
+			//growth_element
+			if(growth !=null) {
+				Element growth_element = doc.createElementNS(namespace,"PF:growth");
+				growth_element.setTextContent(growth.toString());
+				elementList.add(growth_element);
+			}
+			
+			//totalConsumedWater
+			/*if(Configuration.jedi.hget(pig.getPigId().getValue(), "water_intake")!=null) {
+				Element totalConsumedWater = doc.createElementNS(namespace, "PF:totalConsumedWater");
+				totalConsumedWater.setTextContent(Configuration.jedi.hget(pig.getPigId().getValue(), "water_intake"));
+				elementList.add(totalConsumedWater);
+			}*/
+			
+			if (!Configuration.table.contains(pig.getPigId().getValue(),"water_intake")) {
+				Element totalConsumedWater = doc.createElementNS(namespace, "PF:totalConsumedWater");
+				totalConsumedWater.setTextContent((Configuration.table.get(pig.getPigId().getValue(), "water_intake")).toString());
+				elementList.add(totalConsumedWater);
+			}
+			
+			//totalConsumedFood
+			/*if(Configuration.jedi.hget(pig.getPigId().getValue(), "feed_intake")!=null) {
+				Element totalConsumedFood = doc.createElementNS(namespace, "PF:totalConsumedFood");
+				totalConsumedFood.setTextContent(Configuration.jedi.hget(pig.getPigId().getValue(), "feed_intake"));
+				elementList.add(totalConsumedFood);
+			}*/
+			
+			if (!Configuration.table.contains(pig.getPigId().getValue(),"feed_intake")) {
+				Element totalConsumedFood = doc.createElementNS(namespace, "PF:totalConsumedFood");
+				totalConsumedFood.setTextContent((Configuration.table.get(pig.getPigId().getValue(), "feed_intake")).toString());
+				elementList.add(totalConsumedFood);
+			}
+			
+			
+			
+			//weight
+			if(pig.getWeight()!=null) {
+				Element weight = doc.createElementNS(namespace,"PF:weight");
+				weight.setTextContent(pig.getWeight().getValue().toString());
+				elementList.add(weight);
+			}
+			
+			
+			
+			
+
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		objectEventType.setAnies(elementList);
+
+		return objectEventType;
+	}
+	
+	public static ObjectEventType translate_water_intakes(Pig pig) {
+		ObjectEventType objectEventType=new ObjectEventType();
+		
+		
+		//GregorianCalendar gRecordTime = new GregorianCalendar();
+		//gRecordTime = DatatypeFactory.newInstance().newXMLGregorianCalendar(gRecordTime);
+		objectEventType.setEventTime(Calendar.getInstance());
+		objectEventType.setRecordTime(Calendar.getInstance());
+		int offsetInt=(Calendar.getInstance().getTimeZone().getRawOffset()/(60*60*1000));
+		//(offsetInt<10 && offsetInt>-10 ? "0":"")+ offsetInt;
+		String offset="00";
+		if(offsetInt<10 && offsetInt>=0) {
+			offset="+0"+offsetInt;
+		}else if(offsetInt>-10 && offsetInt<0) {
+			offset="-0"+(-offsetInt);
+		}
+		//System.out.println("offset : "+offset);
+		objectEventType.setEventTimeZoneOffset(offset+":00");
+		
+		//System.out.println(objectEventType.getEventTimeZoneOffset());
+
+		//objectEventType.setEventTimeZoneOffset("-06:00");
+
+		EPCISEventExtensionType epcisEventExtension = new EPCISEventExtensionType();
+		epcisEventExtension.setEventID(UUID.randomUUID().toString());
+		objectEventType.setBaseExtension(epcisEventExtension);
+
+		EPCListType objectEventEPCs = new EPCListType();
+		EPC epc1 = new EPC();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		epc1.setValue(Configuration.sgtin+Configuration.ilvo_CompanyPrefix+"."+
+				Configuration.Pig_ItemReference+"." + pig.getPigId().getValue());	
+		objectEventEPCs.getEpcs().add(epc1);//.getEpc().add(epc1);
+		objectEventType.setEpcList(objectEventEPCs);
+		
+		//EPCISEventExtensionType eventExtention=new EPCISEventExtensionType();
+		//eventExtention.setEventID("urn:epc:id:sgtin:88000269." + room.getId());
+		//objectEventType.setBaseExtension(eventExtention);
+
+		
+		objectEventType.setAction(ActionType.fromValue("OBSERVE"));
+		
+		objectEventType.setBizStep(Configuration.farm_pig+":water_intake");
+		
+		objectEventType.setDisposition(Configuration.sgln+Configuration.ilvo_CompanyPrefix+
+				"."+Configuration.Pig_ItemReference+"."+pig.getPenId().getValue());
+
+		ReadPointType readPoint = new ReadPointType();
+		//BusinessLocationType businessLocation = new BusinessLocationType();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		
+		if(pig.getAdditionalInfo().getValue().getLocation()!=null) {
+			readPoint.setId(Configuration.sgln+Configuration.ilvo_CompanyPrefix+"." +
+					Configuration.Pig_ItemReference+ "."+ pig.getPenId());
+			objectEventType.setReadPoint(readPoint);
+		}
+		
+
+		BusinessTransactionListType businessTransactionList = new BusinessTransactionListType();
+		BusinessTransactionType businessTransaction1 = new BusinessTransactionType();
+		businessTransaction1.setType(Configuration.farm_pig+":status");
+		businessTransaction1.setValue(Configuration.farm_pig+":water_intake");
+		businessTransactionList.getBizTransactions().add(businessTransaction1);
+		objectEventType.setBizTransactionList(businessTransactionList);
+
+		List<Object> elementList = new ArrayList<Object>();
+
+		try {
+			Document doc;
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			doc = builder.newDocument();
+			String namespace = Configuration.farm_pig;
+			
+			//id
+			if(pig.getId()!=null) {
+				Element id = doc.createElementNS(namespace,"PF:ID");
+				id.setTextContent(pig.getPigId().getValue());
+				elementList.add(id);
+			}
+			
+			//Type
+			if(pig.getType()!=null) {
+				Element type = doc.createElementNS(namespace,"PF:Type");
+				type.setTextContent(pig.getType());
+				elementList.add(type);
+			}
+			
+			//arrivalTimestamp
+			if(pig.getArrivalTimestamp()!=null) {
+				Element arrivalTimestamp = doc.createElementNS(namespace,"PF:arrivalTimestamp");
+				arrivalTimestamp.setTextContent(pig.getArrivalTimestamp().getValue());
+				elementList.add(arrivalTimestamp);
+			}
+			
+			//buildingId
+			if(pig.getBuildingId()!=null) {
+				Element buildingId = doc.createElementNS(namespace,"PF:buildingId");
+				buildingId.setTextContent(pig.getBuildingId().getValue());
+				elementList.add(buildingId);
+			}
+			
+			//companyId
+			if(pig.getCompanyId()!=null) {
+				Element companyId = doc.createElementNS(namespace,"PF:companyId");
+				companyId.setTextContent(pig.getCompanyId().getValue());
+				elementList.add(companyId);
+			}
+			
+			//farmId
+			if(pig.getFarmId()!=null) {
+				Element farmId = doc.createElementNS(namespace,"PF:farmId");
+				farmId.setTextContent(pig.getFarmId().getValue());
+				elementList.add(farmId);
+			}
+			
+			//lastUpdate
+			if(pig.getLastUpdate().getValue()!=null) {
+				Element lastUpdate = doc.createElementNS(namespace,"PF:lastUpdate");
+				lastUpdate.setTextContent(pig.getLastUpdate().getValue());
+				elementList.add(lastUpdate);
+			}
+			//penId
+			if(pig.getPenId().getValue()!=null) {
+				Element penId = doc.createElementNS(namespace,"PF:penId");
+				penId.setTextContent(pig.getPenId().getValue());
+				elementList.add(penId);
+			}
+			//pigId
+			if(pig.getPigId().getValue()!=null) {
+				Element pigId = doc.createElementNS(namespace,"PF:pigId");
+				pigId.setTextContent(pig.getPigId().getValue());
+				elementList.add(pigId);
+			}
+			//compartmentId
+			if(pig.getCompartmentId()!=null) {
+				Element compartmentId = doc.createElementNS(namespace,"PF:compartmentId");
+				compartmentId.setTextContent(pig.getCompartmentId().getValue());
+				elementList.add(compartmentId);
+			}
+			//endTimestampAcquisition
+			if(pig.getEndTimestampAcquisition()!=null) {
+				Element endTimestampAcquisition = doc.createElementNS(namespace,"PF:endTimestampAcquisition");
+				endTimestampAcquisition.setTextContent(pig.getEndTimestampAcquisition().getValue().toString());
+				elementList.add(endTimestampAcquisition);
+			}
+			//endTimestampMonitoring
+			if(pig.getEndTimestampMonitoring()!=null) {
+				Element endTimestampMonitoring = doc.createElementNS(namespace,"PF:endTimestampMonitoring");
+				endTimestampMonitoring.setTextContent(pig.getEndTimestampMonitoring().getValue().toString());
+				elementList.add(endTimestampMonitoring);
+			}
+			//sex
+			if(pig.getSex()!=null) {
+				Element sex = doc.createElementNS(namespace,"PF:sex");
+				sex.setTextContent(pig.getSex().getValue());
+				elementList.add(sex);
+			}
+			//startTimestampAcquisition
+			if(pig.getStartTimestampAcquisition()!=null) {
+				Element startTimestampAcquisition = doc.createElementNS(namespace,"PF:startTimestampAcquisition");
+				startTimestampAcquisition.setTextContent(pig.getStartTimestampAcquisition().getValue().toString());
+				elementList.add(startTimestampAcquisition);
+			}
+			//startTimestampMonitoring
+			if(pig.getStartTimestampMonitoring()!=null) {
+				Element startTimestampMonitoring = doc.createElementNS(namespace,"PF:startTimestampMonitoring");
+				startTimestampMonitoring.setTextContent(pig.getStartTimestampMonitoring().getValue().toString());
+				elementList.add(startTimestampMonitoring);
+			}
+			
+			//totalConsumedWater
+			if(pig.getTotalConsumedWater()!=null) {
+				Element consumedWater = doc.createElementNS(namespace, "PF:consumedWater");
+				consumedWater.setTextContent(pig.getTotalConsumedWater().getValue().toString());
+				elementList.add(consumedWater);
+				
+				/*if(Configuration.jedi.hget(pig.getPigId().getValue(), "water_intake")!=null) {
+					Element totalConsumedWater = doc.createElementNS(namespace, "PF:totalConsumedWater");
+					totalConsumedWater.setTextContent(Configuration.jedi.hget(pig.getPigId().getValue(), "water_intake"));
+					elementList.add(totalConsumedWater);
+				}*/
+				if (!Configuration.table.contains(pig.getPigId().getValue(),"water_intake")) {
+					Element totalConsumedWater = doc.createElementNS(namespace, "PF:totalConsumedWater");
+					totalConsumedWater.setTextContent((Configuration.table.get(pig.getPigId().getValue(), "water_intake")).toString());
+					elementList.add(totalConsumedWater);
+				}
+			}
+			//totalTimeConsumedWater
+			if(pig.getTotalTimeConsumedWater().getValue()!=null) {
+				Element timeConsumedWater = doc.createElementNS(namespace, "PF:timeConsumedWater");
+				timeConsumedWater.setTextContent(pig.getTotalTimeConsumedWater().getValue().toString());
+				elementList.add(timeConsumedWater);
+				
+				/*if(Configuration.jedi.hget(pig.getPigId().getValue(), "water_intake_time")!=null) {
+					Element totalTimeConsumedWater = doc.createElementNS(namespace, "PF:totalTimeConsumedWater");
+					totalTimeConsumedWater.setTextContent(Configuration.jedi.hget(pig.getPigId().getValue(), "water_intake_time"));
+					elementList.add(totalTimeConsumedWater);
+				}*/
+				
+				if (!Configuration.table.contains(pig.getPigId().getValue(),"water_intake_time")) {
+					Element totalTimeConsumedWater = doc.createElementNS(namespace, "PF:totalTimeConsumedWater");
+					totalTimeConsumedWater.setTextContent((Configuration.table.get(pig.getPigId().getValue(), "water_intake_time")).toString());
+					elementList.add(totalTimeConsumedWater);
+				}
+				
+			}
+			
+			//weight
+			if(pig.getWeight()!=null) {
+				Element weight = doc.createElementNS(namespace,"PF:weight");
+				weight.setTextContent(pig.getWeight().getValue().toString());
+				elementList.add(weight);
+			}
+			
+			
+			
+			
+
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		objectEventType.setAnies(elementList);
+
+		return objectEventType;
+	}
+	
+	
+	public static ObjectEventType translate_feed_intakes(Pig pig) {
+		ObjectEventType objectEventType=new ObjectEventType();
+		
+		
+		//GregorianCalendar gRecordTime = new GregorianCalendar();
+		//gRecordTime = DatatypeFactory.newInstance().newXMLGregorianCalendar(gRecordTime);
+		objectEventType.setEventTime(Calendar.getInstance());
+		objectEventType.setRecordTime(Calendar.getInstance());
+		int offsetInt=(Calendar.getInstance().getTimeZone().getRawOffset()/(60*60*1000));
+		//(offsetInt<10 && offsetInt>-10 ? "0":"")+ offsetInt;
+		String offset="00";
+		if(offsetInt<10 && offsetInt>=0) {
+			offset="+0"+offsetInt;
+		}else if(offsetInt>-10 && offsetInt<0) {
+			offset="-0"+(-offsetInt);
+		}
+		//System.out.println("offset : "+offset);
+		objectEventType.setEventTimeZoneOffset(offset+":00");
+		
+		//System.out.println(objectEventType.getEventTimeZoneOffset());
+
+		//objectEventType.setEventTimeZoneOffset("-06:00");
+
+		EPCISEventExtensionType epcisEventExtension = new EPCISEventExtensionType();
+		epcisEventExtension.setEventID(UUID.randomUUID().toString());
+		objectEventType.setBaseExtension(epcisEventExtension);
+
+		EPCListType objectEventEPCs = new EPCListType();
+		EPC epc1 = new EPC();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		epc1.setValue(Configuration.sgtin+Configuration.ilvo_CompanyPrefix+"."+
+				Configuration.Pig_ItemReference+"." + pig.getPigId().getValue());	
+		objectEventEPCs.getEpcs().add(epc1);//.getEpc().add(epc1);
+		objectEventType.setEpcList(objectEventEPCs);
+		
+		//EPCISEventExtensionType eventExtention=new EPCISEventExtensionType();
+		//eventExtention.setEventID("urn:epc:id:sgtin:88000269." + room.getId());
+		//objectEventType.setBaseExtension(eventExtention);
+
+		
+		objectEventType.setAction(ActionType.fromValue("OBSERVE"));
+		
+		objectEventType.setBizStep(Configuration.farm_pig+":feed_intake");
+		
+		objectEventType.setDisposition(Configuration.sgln+Configuration.ilvo_CompanyPrefix+
+				"."+Configuration.Pig_ItemReference+"."+pig.getPenId().getValue());
+
+		ReadPointType readPoint = new ReadPointType();
+		//BusinessLocationType businessLocation = new BusinessLocationType();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		
+		if(pig.getAdditionalInfo().getValue().getLocation()!=null) {
+			readPoint.setId(Configuration.sgln+Configuration.ilvo_CompanyPrefix+"." +
+					Configuration.Pig_ItemReference+"."+ pig.getPenId());
+			objectEventType.setReadPoint(readPoint);
+		}
+		
+
+		BusinessTransactionListType businessTransactionList = new BusinessTransactionListType();
+		BusinessTransactionType businessTransaction1 = new BusinessTransactionType();
+		businessTransaction1.setType(Configuration.farm_pig+":status");
+		businessTransaction1.setValue(Configuration.farm_pig+":feed_intake");
+		businessTransactionList.getBizTransactions().add(businessTransaction1);
+		objectEventType.setBizTransactionList(businessTransactionList);
+
+		List<Object> elementList = new ArrayList<Object>();
+
+		try {
+			Document doc;
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			doc = builder.newDocument();
+			String namespace = Configuration.farm_pig;
+			
+			//id
+			if(pig.getId()!=null) {
+				Element id = doc.createElementNS(namespace,"PF:ID");
+				id.setTextContent(pig.getPigId().getValue());
+				elementList.add(id);
+			}
+			
+			//Type
+			if(pig.getType()!=null) {
+				Element type = doc.createElementNS(namespace,"PF:Type");
+				type.setTextContent(pig.getType());
+				elementList.add(type);
+			}
+			
+			//arrivalTimestamp
+			if(pig.getArrivalTimestamp()!=null) {
+				Element arrivalTimestamp = doc.createElementNS(namespace,"PF:arrivalTimestamp");
+				arrivalTimestamp.setTextContent(pig.getArrivalTimestamp().getValue());
+				elementList.add(arrivalTimestamp);
+			}
+			
+			//buildingId
+			if(pig.getBuildingId()!=null) {
+				Element buildingId = doc.createElementNS(namespace,"PF:buildingId");
+				buildingId.setTextContent(pig.getBuildingId().getValue());
+				elementList.add(buildingId);
+			}
+			
+			//companyId
+			if(pig.getCompanyId()!=null) {
+				Element companyId = doc.createElementNS(namespace,"PF:companyId");
+				companyId.setTextContent(pig.getCompanyId().getValue());
+				elementList.add(companyId);
+			}
+			
+			//farmId
+			if(pig.getFarmId()!=null) {
+				Element farmId = doc.createElementNS(namespace,"PF:farmId");
+				farmId.setTextContent(pig.getFarmId().getValue());
+				elementList.add(farmId);
+			}
+			
+			//lastUpdate
+			if(pig.getLastUpdate().getValue()!=null) {
+				Element lastUpdate = doc.createElementNS(namespace,"PF:lastUpdate");
+				lastUpdate.setTextContent(pig.getLastUpdate().getValue());
+				elementList.add(lastUpdate);
+			}
+			//penId
+			if(pig.getPenId().getValue()!=null) {
+				Element penId = doc.createElementNS(namespace,"PF:penId");
+				penId.setTextContent(pig.getPenId().getValue());
+				elementList.add(penId);
+			}
+			//pigId
+			if(pig.getPigId().getValue()!=null) {
+				Element pigId = doc.createElementNS(namespace,"PF:pigId");
+				pigId.setTextContent(pig.getPigId().getValue());
+				elementList.add(pigId);
+			}
+			//compartmentId
+			if(pig.getCompartmentId()!=null) {
+				Element compartmentId = doc.createElementNS(namespace,"PF:compartmentId");
+				compartmentId.setTextContent(pig.getCompartmentId().getValue());
+				elementList.add(compartmentId);
+			}
+			
+			//endTimestampAcquisition
+			if(pig.getEndTimestampAcquisition()!=null) {
+				Element endTimestampAcquisition = doc.createElementNS(namespace,"PF:endTimestampAcquisition");
+				endTimestampAcquisition.setTextContent(pig.getEndTimestampAcquisition().getValue().toString());
+				elementList.add(endTimestampAcquisition);
+			}
+			
+			//endTimestampMonitoring
+			if(pig.getEndTimestampMonitoring()!=null) {
+				Element endTimestampMonitoring = doc.createElementNS(namespace,"PF:endTimestampMonitoring");
+				endTimestampMonitoring.setTextContent(pig.getEndTimestampMonitoring().getValue().toString());
+				elementList.add(endTimestampMonitoring);
+			}
+			//sex
+			if(pig.getSex()!=null) {
+				Element sex = doc.createElementNS(namespace,"PF:sex");
+				sex.setTextContent(pig.getSex().getValue());
+				elementList.add(sex);
+			}
+			
+			//startTimestampAcquisition
+			if(pig.getStartTimestampAcquisition()!=null) {
+				Element startTimestampAcquisition = doc.createElementNS(namespace,"PF:startTimestampAcquisition");
+				startTimestampAcquisition.setTextContent(pig.getStartTimestampAcquisition().getValue().toString());
+				elementList.add(startTimestampAcquisition);
+			}
+			
+			//startTimestampMonitoring
+			if(pig.getStartTimestampMonitoring()!=null) {
+				Element startTimestampMonitoring = doc.createElementNS(namespace,"PF:startTimestampMonitoring");
+				startTimestampMonitoring.setTextContent(pig.getStartTimestampMonitoring().getValue().toString());
+				elementList.add(startTimestampMonitoring);
+			}
+			
+			//totalConsumedFood
+			if(pig.getTotalConsumedFood().getValue()!=null) {
+				Element ConsumedFood = doc.createElementNS(namespace, "PF:consumedFood");
+				ConsumedFood.setTextContent(pig.getTotalConsumedFood().getValue().toString());
+				elementList.add(ConsumedFood);
+				/*
+				if(Configuration.jedi.hget(pig.getPigId().getValue(), "feed_intake")!=null) {
+					Element totalConsumedFood = doc.createElementNS(namespace, "PF:totalConsumedFood");
+					totalConsumedFood.setTextContent(Configuration.jedi.hget(pig.getPigId().getValue(), "feed_intake"));
+					elementList.add(totalConsumedFood);
+				}
+				*/
+				if (!Configuration.table.contains(pig.getPigId().getValue(),"feed_intake")) {
+					Element totalConsumedFood = doc.createElementNS(namespace, "PF:totalConsumedFood");
+					totalConsumedFood.setTextContent((Configuration.table.get(pig.getPigId().getValue(), "feed_intake")).toString());
+					elementList.add(totalConsumedFood);
+				}
+			}
+			
+			//totalTimeConsumedFood
+			if(pig.getTotalTimeConsumedFood().getValue()!=null) {
+				Element timeConsumedFood = doc.createElementNS(namespace, "PF:timeConsumedFood");
+				timeConsumedFood.setTextContent(pig.getTotalTimeConsumedFood().getValue().toString());
+				elementList.add(timeConsumedFood);
+				/*
+				if(Configuration.jedi.hget(pig.getPigId().getValue(), "feed_intake_time")!=null) {
+					Element totalTimeConsumedFood = doc.createElementNS(namespace, "PF:totalTimeConsumedFood");
+					totalTimeConsumedFood.setTextContent(Configuration.jedi.hget(pig.getPigId().getValue(), "feed_intake_time"));
+					elementList.add(totalTimeConsumedFood);
+				}
+				*/
+				
+				if (!Configuration.table.contains(pig.getPigId().getValue(),"feed_intake_time")) {
+					Element totalTimeConsumedFood = doc.createElementNS(namespace, "PF:totalTimeConsumedFood");
+					totalTimeConsumedFood.setTextContent((Configuration.table.get(pig.getPigId().getValue(), "feed_intake_time")).toString());
+					elementList.add(totalTimeConsumedFood);
+				}
+				
+			}
+			
+			//weight
+			if(pig.getWeight()!=null) {
+				Element weight = doc.createElementNS(namespace,"PF:weight");
+				weight.setTextContent(pig.getWeight().getValue().toString());
+				elementList.add(weight);
+			}
+			
+			
+			
+			
+
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		objectEventType.setAnies(elementList);
+
+		return objectEventType;
+	}
+	
+	
+	public static ObjectEventType translate(Pig pig) {
+		ObjectEventType objectEventType=new ObjectEventType();
+		
+		
+		//GregorianCalendar gRecordTime = new GregorianCalendar();
+		//gRecordTime = DatatypeFactory.newInstance().newXMLGregorianCalendar(gRecordTime);
+		objectEventType.setEventTime(Calendar.getInstance());
+		objectEventType.setRecordTime(Calendar.getInstance());
+		int offsetInt=(Calendar.getInstance().getTimeZone().getRawOffset()/(60*60*1000));
+		//(offsetInt<10 && offsetInt>-10 ? "0":"")+ offsetInt;
+		String offset="00";
+		if(offsetInt<10 && offsetInt>=0) {
+			offset="+0"+offsetInt;
+		}else if(offsetInt>-10 && offsetInt<0) {
+			offset="-0"+(-offsetInt);
+		}
+		//System.out.println("offset : "+offset);
+		objectEventType.setEventTimeZoneOffset(offset+":00");
+		
+		//System.out.println(objectEventType.getEventTimeZoneOffset());
+
+		//objectEventType.setEventTimeZoneOffset("-06:00");
+
+		EPCISEventExtensionType epcisEventExtension = new EPCISEventExtensionType();
+		epcisEventExtension.setEventID(UUID.randomUUID().toString());
+		objectEventType.setBaseExtension(epcisEventExtension);
+
+		EPCListType objectEventEPCs = new EPCListType();
+		EPC epc1 = new EPC();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		epc1.setValue("urn:epc:id:sgtin:88000269." + pig.getId());	
+		objectEventEPCs.getEpcs().add(epc1);//.getEpc().add(epc1);
+		objectEventType.setEpcList(objectEventEPCs);
+		
+		//EPCISEventExtensionType eventExtention=new EPCISEventExtensionType();
+		//eventExtention.setEventID("urn:epc:id:sgtin:88000269." + room.getId());
+		//objectEventType.setBaseExtension(eventExtention);
+
+		
+		objectEventType.setAction(ActionType.fromValue("OBSERVE"));
+		
+		objectEventType.setBizStep("urn:epcglobal:cbv:bizstep:monitoring");
+		
+		objectEventType.setDisposition("urn:epcglobal:cbv:disp:on_the line");
+
+		ReadPointType readPoint = new ReadPointType();
+		BusinessLocationType businessLocation = new BusinessLocationType();
+		//urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber 
+		
+		if(pig.getAdditionalInfo().getValue().getLocation()!=null) {
+			readPoint.setId("urn:epc:id:sgln:8800026900016." + pig.getAdditionalInfo().getValue().getLocation());
+			objectEventType.setReadPoint(readPoint);
+			businessLocation.setId("urn:epc:id:sgln:8800026900016.103." + pig.getAdditionalInfo().getValue().getLocation());
+			objectEventType.setBizLocation(businessLocation);
+		}else if(pig.getAdditionalInfo().getValue().getLocation_() != null) {
+			readPoint.setId("urn:epc:id:sgln:8800026900016." + pig.getAdditionalInfo().getValue().getLocation_());
+			objectEventType.setReadPoint(readPoint);
+			businessLocation.setId("urn:epc:id:sgln:8800026900016.103." + pig.getAdditionalInfo().getValue().getLocation_());
+			objectEventType.setBizLocation(businessLocation);
+		}
+		
+
+		BusinessTransactionListType businessTransactionList = new BusinessTransactionListType();
+		BusinessTransactionType businessTransaction1 = new BusinessTransactionType();
+		businessTransaction1.setType("urn:epcglobal:cbv:PigFarming:status");
+		businessTransaction1.setValue("http://transaction.acme.com/po/urn:epcglobal:cbv:bizstep:Monitoring");
+		businessTransactionList.getBizTransactions().add(businessTransaction1);
+		objectEventType.setBizTransactionList(businessTransactionList);
+
+		List<Object> elementList = new ArrayList<Object>();
+
+		try {
+			Document doc;
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			doc = builder.newDocument();
+			String namespace = "http://ns.example.com/epcisapp/pigFarm";
+			
+			if(pig.getId()!=null) {
+				Element id = doc.createElementNS(namespace,"PF:ID");
+				id.setTextContent(pig.getId());
+				elementList.add(id);
+			}
+			
+			
+
+			if(pig.getType()!=null) {
+				Element type = doc.createElementNS(namespace,"PF:Type");
+				type.setTextContent(pig.getType());
+				elementList.add(type);
+			}
+			
+			if(pig.getAdditionalInfo().getValue()!=null) {
+				
+				PigAdditionalInfo additionaValue = pig.getAdditionalInfo().getValue();
+				
+				Element additonalInfo = doc.createElementNS(namespace,"PF:AdditionalInfo");
+				
+				if(additionaValue.getDuration()!=null) {
+					Element duration = doc.createElementNS(namespace,"PF:duration");
+					//Element duration = doc.createElementNS("http://gs1.org/voc/PigFarming", "PF:duration");
+					duration.setTextContent(additionaValue.getDuration());
+					
+					additonalInfo.appendChild(duration);
+				}
+				if(additionaValue.getSourceFileNameCsvReader()!=null) {
+					Element sourceFileNameCsvReaderValue = doc.createElementNS(namespace,"PF:sourceFileNameCsvReader");
+					sourceFileNameCsvReaderValue.setTextContent(additionaValue.getSourceFileNameCsvReader());
+					
+					additonalInfo.appendChild(sourceFileNameCsvReaderValue);
+				}
+				if(additionaValue.getFeed_intake()!=null) {
+					Element feed_intakeValue = doc.createElementNS(namespace, "PF:feed_intake");
+					feed_intakeValue.setTextContent(additionaValue.getFeed_intake());
+					
+					additonalInfo.appendChild(feed_intakeValue);
+				}
+				if(additionaValue.getVisit_time()!=null) {
+					Element visit_timeValue = doc.createElementNS(namespace, "PF:visit_time");
+					visit_timeValue.setTextContent(additionaValue.getVisit_time());
+					
+					additonalInfo.appendChild(visit_timeValue);
+				}
+				if(additionaValue.getLifenumber()!=null) {
+					Element lifenumberValue = doc.createElementNS(namespace,"PF:lifenumber");
+					lifenumberValue.setTextContent(additionaValue.getLifenumber());
+					
+					additonalInfo.appendChild(lifenumberValue);
+				}
+				if(additionaValue.getResponder()!=null) {
+					Element responderValue = doc.createElementNS(namespace,"PF:responder");
+					responderValue.setTextContent(additionaValue.getResponder());
+					
+					additonalInfo.appendChild(responderValue);
+				}
+				if(additionaValue.getWeight()!=null) {
+					Element weightValue = doc.createElementNS(namespace,"PF:weight");
+					weightValue.setTextContent(additionaValue.getWeight());
+					
+					additonalInfo.appendChild(weightValue);
+				}
+				if(additionaValue.getLocation()!=null) {
+					Element locationValue = doc.createElementNS(namespace,"PF:location");
+					locationValue.setTextContent(additionaValue.getLocation());
+					
+					additonalInfo.appendChild(locationValue);
+				}
+				if(additionaValue.getState()!=null) {
+					Element stateValue = doc.createElementNS(namespace,"PF:state");
+					stateValue.setTextContent(additionaValue.getState());
+					
+					additonalInfo.appendChild(stateValue);
+				}
+				if(additionaValue.getAnimal_number()!=null) {
+					Element animal_numberValue = doc.createElementNS(namespace,"PF:animal_number");
+					animal_numberValue.setTextContent(additionaValue.getAnimal_number());
+					
+					additonalInfo.appendChild(animal_numberValue);
+				}
+				if(additionaValue.getCycles()!=null) {
+					Element CyclesValue = doc.createElementNS(namespace,"PF:Cycles");
+					CyclesValue.setTextContent(additionaValue.getCycles());
+					
+					additonalInfo.appendChild(CyclesValue);
+				}
+				if(additionaValue.getLast()!=null) {
+					Element sLastValue = doc.createElementNS(namespace, "PF:Last");
+					sLastValue.setTextContent(additionaValue.getLast());
+					
+					additonalInfo.appendChild(sLastValue);
+				}
+				if(additionaValue.getPort()!=null) {
+					Element PortValue = doc.createElementNS(namespace,"PF:Port");
+					PortValue.setTextContent(additionaValue.getPort());
+					
+					additonalInfo.appendChild(PortValue);
+				}
+				if(additionaValue.getSerialnumber()!=null) {
+					Element SerialnumberValue = doc.createElementNS(namespace,"PF:Serialnumber");
+					SerialnumberValue.setTextContent(additionaValue.getSerialnumber());
+					
+					additonalInfo.appendChild(SerialnumberValue);
+				}
+				if(additionaValue.getFirst()!=null) {
+					Element FirstValue = doc.createElementNS(namespace, "PF:First");
+					FirstValue.setTextContent(additionaValue.getFirst());
+					
+					additonalInfo.appendChild(FirstValue);
+				}
+				if(additionaValue.getName()!=null) {
+					Element NameValue = doc.createElementNS(namespace,"PF:Name");
+					NameValue.setTextContent(additionaValue.getName());
+					
+					additonalInfo.appendChild(NameValue);
+				}
+				if(additionaValue.getLocation_()!=null) {
+					Element LocationValue = doc.createElementNS(namespace,"PF:Location");
+					LocationValue.setTextContent(additionaValue.getLocation_());
+					
+					additonalInfo.appendChild(LocationValue);
+				}
+				
+				elementList.add(additonalInfo);
+			}
+			
+			if(pig.getBuildingId().getValue()!=null) {
+				Element buildingId = doc.createElementNS(namespace,"PF:buildingId");
+				buildingId.setTextContent(pig.getBuildingId().getValue());
+				elementList.add(buildingId);
+			}
+			
+			if(pig.getFarmId().getValue()!=null) {
+				Element farmId = doc.createElementNS(namespace,"PF:farmId");
+				farmId.setTextContent(pig.getFarmId().getValue());
+				elementList.add(farmId);
+			}
+			if(pig.getLastUpdate().getValue()!=null) {
+				Element lastUpdate = doc.createElementNS(namespace,"PF:lastUpdate");
+				lastUpdate.setTextContent(pig.getLastUpdate().getValue());
+				elementList.add(lastUpdate);
+			}
+			if(pig.getPenId().getValue()!=null) {
+				Element penId = doc.createElementNS(namespace,"PF:penId");
+				penId.setTextContent(pig.getPenId().getValue());
+				elementList.add(penId);
+			}
+			if(pig.getPigId().getValue()!=null) {
+				Element pigId = doc.createElementNS(namespace,"PF:pigId");
+				pigId.setTextContent(pig.getPigId().getValue());
+				elementList.add(pigId);
+			}
+			if(pig.getSerialNumber().getValue()!=null) {
+				Element serialNumber = doc.createElementNS(namespace,"PF:serialNumber");
+				serialNumber.setTextContent(pig.getSerialNumber().getValue());
+				elementList.add(serialNumber);
+			}
+			if(pig.getTotalConsumedFood().getValue()!=null) {
+				Element totalConsumedFood = doc.createElementNS(namespace, "PF:totalConsumedFood");
+				totalConsumedFood.setTextContent(pig.getTotalConsumedFood().getValue().toString());
+				elementList.add(totalConsumedFood);
+			}
+			if(pig.getTotalConsumedWater().getValue()!=null) {
+				Element totalConsumedWater = doc.createElementNS(namespace, "PF:totalConsumedWater");
+				totalConsumedWater.setTextContent(pig.getTotalConsumedWater().getValue());
+				elementList.add(totalConsumedWater);
+			}
+			if(pig.getTotalTimeConsumedFood().getValue()!=null) {
+				Element totalTimeConsumedFood = doc.createElementNS(namespace, "PF:totalTimeConsumedFood");
+				totalTimeConsumedFood.setTextContent(pig.getTotalTimeConsumedFood().getValue().toString());
+				elementList.add(totalTimeConsumedFood);
+			}
+			if(pig.getTotalTimeConsumedWater().getValue()!=null) {
+				Element totalTimeConsumedWater = doc.createElementNS(namespace, "PF:totalTimeConsumedWater");
+				totalTimeConsumedWater.setTextContent(pig.getTotalTimeConsumedWater().getValue());
+				elementList.add(totalTimeConsumedWater);
+			}
+			if(pig.getWeight().getValue()!=null) {
+				Element weight = doc.createElementNS(namespace,"PF:weight");
+				weight.setTextContent(pig.getWeight().getValue().toString());
+				elementList.add(weight);
 			}
 			
 			
@@ -1174,10 +2318,10 @@ public class ConvertUtility {
 	}
 	
 
-	public static ObjectEventType translate(Building building) {
+	/*public static ObjectEventType translate(Building building) {
 		ObjectEventType objectEventType=new ObjectEventType();
 		return objectEventType;
-	}
+	}*/
 	
 
 	public static ObjectEventType translate(BuildingOperation buildingOperation) {

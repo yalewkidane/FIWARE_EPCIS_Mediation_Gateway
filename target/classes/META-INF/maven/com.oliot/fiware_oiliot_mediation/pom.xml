@@ -59,10 +59,32 @@
 			
 		<!-- Json Convertoer  -->	
 		<dependency>
-    	<groupId>com.google.code.gson</groupId>
-    	<artifactId>gson</artifactId>
-    	<version>2.6.2</version>
-	</dependency>
+    		<groupId>com.google.code.gson</groupId>
+    		<artifactId>gson</artifactId>
+    		<version>2.6.2</version>
+		</dependency>
+	
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+    		<groupId>redis.clients</groupId>
+    		<artifactId>jedis</artifactId>
+    		<version>3.1.0-m1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.github.jedis-lock/jedis-lock -->
+		<dependency>
+		    <groupId>com.github.jedis-lock</groupId>
+		    <artifactId>jedis-lock</artifactId>
+		    <version>1.0.0</version>
+		</dependency>
+	
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>28.1-jre</version>
+		</dependency>
+		
 
 	<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 	<dependency>

@@ -1,0 +1,1496 @@
+[
+    {
+        "id": "Pig-23dfc408-ae98-5t6e-88d3-86a772ca7c99",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "68",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "75",
+                "visit_time": "2018-01-20 15:27:46",
+                "lifenumber": "",
+                "responder": "984000100515488",
+                "weight": "105000",
+                "location": "3",
+                "state": "0",
+                "animal_number": "3488"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T14:27:46.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "6053fdc7-33c7-4af9-907a-951b7669cb0c",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "55dfc408-ae98-4e7e-88d3-86a772ca7c99",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 75,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 68,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 105000,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-0f28d9bb-0d3e-4564-9c95-983acc020714",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "sourceFileNameCsvReader": "abc-_20180106.csv",
+                "Cycles": "1",
+                "Last": "06/01/2018 00:03:32",
+                "Port": "3",
+                "Serialnumber": "E00401005BA431F2",
+                "First": "06/01/2018 00:03:32",
+                "Name": "",
+                "Location": "Feeder 3"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-05T23:03:32.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "2e9c1153-b842-4d16-af26-755b44f5b07f",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "0f28d9bb-0d3e-4564-9c95-983acc020714",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 0,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-a74a7452-fd75-41f8-9930-18c318d2415a",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "sourceFileNameCsvReader": "abc-_20180106.csv",
+                "Cycles": "1",
+                "Last": "06/01/2018 00:03:33",
+                "Port": "1",
+                "Serialnumber": "E00401005BA43C6C",
+                "First": "06/01/2018 00:03:33",
+                "Name": "",
+                "Location": "Feeder 1"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-05T23:03:33.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "f79bce79-0c2b-4ba5-aee1-33cd8038b20b",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "a74a7452-fd75-41f8-9930-18c318d2415a",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 0,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-942aaa8f-de95-41a1-9b46-4f65b2c9c2cf",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "36",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "10",
+                "visit_time": "2018-01-20 15:55:29",
+                "lifenumber": "",
+                "responder": "984000100515590",
+                "weight": "83500",
+                "location": "4",
+                "state": "0",
+                "animal_number": "4590"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T14:55:29.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "9b0e4f14-b93c-4b0b-ad80-23724dc57f51",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "942aaa8f-de95-41a1-9b46-4f65b2c9c2cf",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 10,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 36,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 83500,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-fd903b6f-a3ce-42b5-82f5-c45deeec7b58",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "352",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "352",
+                "visit_time": "2018-01-20 15:18:41",
+                "lifenumber": "",
+                "responder": "984000100110430",
+                "weight": "95000",
+                "location": "5",
+                "state": "0",
+                "animal_number": "5430"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T14:18:41.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "b1d7f4b0-2d8f-4c6d-b7f4-ed03e4ed25ee",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "fd903b6f-a3ce-42b5-82f5-c45deeec7b58",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 352,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 352,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 95000,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-8570c566-9016-4d97-9941-4c953ec182db",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "1428",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "1495",
+                "visit_time": "2018-01-20 06:08:18",
+                "lifenumber": "",
+                "responder": "984000100515620",
+                "weight": "106500",
+                "location": "5",
+                "state": "0",
+                "animal_number": "5620"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T05:08:18.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "b1d7f4b0-2d8f-4c6d-b7f4-ed03e4ed25ee",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "8570c566-9016-4d97-9941-4c953ec182db",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 1495,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 1428,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 106500,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-b626fc88-46b4-43fc-9875-401d3bc20bdb",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "sourceFileNameCsvReader": "abc-_20180106.csv",
+                "Cycles": "1",
+                "Last": "06/01/2018 00:03:33",
+                "Port": "1",
+                "Serialnumber": "E00401005BA428A4",
+                "First": "06/01/2018 00:03:33",
+                "Name": "",
+                "Location": "Feeder 1"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-05T23:03:33.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "f79bce79-0c2b-4ba5-aee1-33cd8038b20b",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "b626fc88-46b4-43fc-9875-401d3bc20bdb",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 0,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-d1f5853c-eaa9-4cde-bec2-fe65b9613dd5",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "257",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "211",
+                "visit_time": "2018-01-20 09:05:06",
+                "lifenumber": "",
+                "responder": "984000100515622",
+                "weight": "94000",
+                "location": "4",
+                "state": "0",
+                "animal_number": "4622"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T08:05:06.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "9b0e4f14-b93c-4b0b-ad80-23724dc57f51",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "d1f5853c-eaa9-4cde-bec2-fe65b9613dd5",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 211,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 257,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 94000,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-ebee122f-e306-4c42-a39c-b4e7379e87a3",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "320",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "195",
+                "visit_time": "2018-01-20 16:23:25",
+                "lifenumber": "",
+                "responder": "984000100110458",
+                "weight": "100500",
+                "location": "5",
+                "state": "0",
+                "animal_number": "5458"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T15:23:25.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "b1d7f4b0-2d8f-4c6d-b7f4-ed03e4ed25ee",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "ebee122f-e306-4c42-a39c-b4e7379e87a3",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 195,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 320,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 100500,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-50d4c813-744f-497d-baf5-b04767522284",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "74",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "4",
+                "visit_time": "2018-01-20 16:17:46",
+                "lifenumber": "",
+                "responder": "984000100515608",
+                "weight": "77000",
+                "location": "4",
+                "state": "0",
+                "animal_number": "4608"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T15:17:46.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "9b0e4f14-b93c-4b0b-ad80-23724dc57f51",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "50d4c813-744f-497d-baf5-b04767522284",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 4,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 74,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 77000,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-8ab5a99e-ae3d-4cfa-8700-464215d46a07",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "284",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "432",
+                "visit_time": "2018-01-20 15:31:42",
+                "lifenumber": "",
+                "responder": "984000100515606",
+                "weight": "99500",
+                "location": "5",
+                "state": "0",
+                "animal_number": "5606"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T14:31:42.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "b1d7f4b0-2d8f-4c6d-b7f4-ed03e4ed25ee",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "8ab5a99e-ae3d-4cfa-8700-464215d46a07",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 432,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 284,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 99500,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-5ee26d60-0b9e-447e-afad-67922a9cc54a",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "12",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "1",
+                "visit_time": "2018-01-20 16:14:15",
+                "lifenumber": "",
+                "responder": "984000100515596",
+                "weight": "57000",
+                "location": "4",
+                "state": "0",
+                "animal_number": "4596"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T15:14:15.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "9b0e4f14-b93c-4b0b-ad80-23724dc57f51",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "5ee26d60-0b9e-447e-afad-67922a9cc54a",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 1,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 12,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 57000,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-4a98fcb3-7bb1-4308-b83c-45f813fd177b",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "115",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "127",
+                "visit_time": "2018-01-20 15:09:22",
+                "lifenumber": "",
+                "responder": "984000100515458",
+                "weight": "107000",
+                "location": "3",
+                "state": "0",
+                "animal_number": "3458"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T14:09:22.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "6053fdc7-33c7-4af9-907a-951b7669cb0c",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "4a98fcb3-7bb1-4308-b83c-45f813fd177b",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 127,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 115,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 107000,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-46ca8938-c489-40fc-b3a4-b3ce3c0298d8",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "79",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "82",
+                "visit_time": "2018-01-20 12:44:19",
+                "lifenumber": "",
+                "responder": "984000100515598",
+                "weight": "87500",
+                "location": "4",
+                "state": "0",
+                "animal_number": "4598"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T11:44:19.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "9b0e4f14-b93c-4b0b-ad80-23724dc57f51",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "46ca8938-c489-40fc-b3a4-b3ce3c0298d8",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 82,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 79,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 87500,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-f89c2199-0678-4fee-b2ac-4a96fe74e16d",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "996",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "1087",
+                "visit_time": "2018-01-20 13:30:31",
+                "lifenumber": "",
+                "responder": "984000100515478",
+                "weight": "110000",
+                "location": "3",
+                "state": "0",
+                "animal_number": "3478"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T12:30:31.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "6053fdc7-33c7-4af9-907a-951b7669cb0c",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "f89c2199-0678-4fee-b2ac-4a96fe74e16d",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 1087,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 996,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 110000,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-8e71535a-d112-417a-abbb-e0de54f04eb1",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "467",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "666",
+                "visit_time": "2018-01-20 14:25:59",
+                "lifenumber": "",
+                "responder": "984000100515476",
+                "weight": "102000",
+                "location": "3",
+                "state": "0",
+                "animal_number": "3476"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T13:25:59.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "6053fdc7-33c7-4af9-907a-951b7669cb0c",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "8e71535a-d112-417a-abbb-e0de54f04eb1",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 666,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 467,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 102000,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-11624724-6fd5-44c7-b454-cfccbffe979d",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "12",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "1",
+                "visit_time": "2018-01-20 16:16:37",
+                "lifenumber": "",
+                "responder": "984000100515614",
+                "weight": "58500",
+                "location": "4",
+                "state": "0",
+                "animal_number": "4614"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T15:16:37.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "9b0e4f14-b93c-4b0b-ad80-23724dc57f51",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "11624724-6fd5-44c7-b454-cfccbffe979d",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 1,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 12,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 58500,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-133bb11c-aa6e-4355-b35d-d0849e75ece7",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "156",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "236",
+                "visit_time": "2018-01-20 14:51:19",
+                "lifenumber": "",
+                "responder": "984000100515600",
+                "weight": "87500",
+                "location": "3",
+                "state": "0",
+                "animal_number": "3600"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T13:51:19.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "6053fdc7-33c7-4af9-907a-951b7669cb0c",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "133bb11c-aa6e-4355-b35d-d0849e75ece7",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 236,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 156,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 87500,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-6379d0b1-f5d3-4f0c-8d31-8b56a4fa3a96",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "459",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "363",
+                "visit_time": "2018-01-20 14:59:04",
+                "lifenumber": "",
+                "responder": "984000100515456",
+                "weight": "83500",
+                "location": "2",
+                "state": "0",
+                "animal_number": "2456"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T13:59:04.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "45b01a1c-6fa2-4cec-98e5-b667f90b424c",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "6379d0b1-f5d3-4f0c-8d31-8b56a4fa3a96",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 363,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 459,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 83500,
+            "metadata": {}
+        }
+    },
+    {
+        "id": "Pig-baca5ec9-1d80-42e9-b95f-da41050a16fe",
+        "type": "Pig",
+        "additionalInfo": {
+            "type": "T",
+            "value": {
+                "duration": "572",
+                "sourceFileNameCsvReader": "abc-9999_2018-01-20.csv",
+                "feed_intake": "774",
+                "visit_time": "2018-01-20 14:58:27",
+                "lifenumber": "",
+                "responder": "984000100515636",
+                "weight": "102500",
+                "location": "5",
+                "state": "0",
+                "animal_number": "5636"
+            },
+            "metadata": {}
+        },
+        "buildingId": {
+            "type": "Text",
+            "value": "765cba0c-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "farmId": {
+            "type": "Text",
+            "value": "9a76ea4e-876e-987e-9566-6e9fefaf18db-876d-4945-b750-136a8d5fb3c1",
+            "metadata": {}
+        },
+        "lastUpdate": {
+            "type": "DateTime",
+            "value": "2018-01-20T13:58:27.00Z",
+            "metadata": {}
+        },
+        "penId": {
+            "type": "Text",
+            "value": "b1d7f4b0-2d8f-4c6d-b7f4-ed03e4ed25ee",
+            "metadata": {}
+        },
+        "pigId": {
+            "type": "Text",
+            "value": "baca5ec9-1d80-42e9-b95f-da41050a16fe",
+            "metadata": {}
+        },
+        "serialNumber": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalConsumedFood": {
+            "type": "Number",
+            "value": 774,
+            "metadata": {}
+        },
+        "totalConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "totalTimeConsumedFood": {
+            "type": "Number",
+            "value": 572,
+            "metadata": {}
+        },
+        "totalTimeConsumedWater": {
+            "type": "Text",
+            "value": "",
+            "metadata": {}
+        },
+        "weight": {
+            "type": "Number",
+            "value": 102500,
+            "metadata": {}
+        }
+    }
+]

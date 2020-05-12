@@ -187,6 +187,7 @@ public class Mediationgateway {
 			return new ResponseEntity<>(result, responseHeaders, HttpStatus.OK);
 			
 		}
+	// /*  // This is to test ngrinder 
 	 @RequestMapping(value="/Delete" , method = RequestMethod.DELETE)
 		@ResponseBody
 	    public ResponseEntity<?> delete(@RequestParam(required = false) String url) {
@@ -200,4 +201,28 @@ public class Mediationgateway {
 			}
 			return new ResponseEntity<>(result, responseHeaders, HttpStatus.OK);
 	    }
+	 int xx=0;
+	 @RequestMapping(value="/ngrinder/get" , method = RequestMethod.GET)
+		@ResponseBody
+	    public ResponseEntity<?> nGrinderGet() throws IOException {
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type", "application/text; charset=utf-8");
+			//System.out.println("X:" +xx);
+			//xx++;
+			
+			
+			return new ResponseEntity<>("Ok", responseHeaders, HttpStatus.OK);
+	    }
+	 @RequestMapping(value="/ngrinder/post" , method = RequestMethod.POST)
+		@ResponseBody
+	    public ResponseEntity<?> nGrinderPost(@RequestBody String body) throws IOException {
+			HttpHeaders responseHeaders = new HttpHeaders();
+			responseHeaders.add("Content-Type", "application/text; charset=utf-8");
+			System.out.println("body:" +body);
+			
+			
+			
+			return new ResponseEntity<>("Ok", responseHeaders, HttpStatus.OK);
+	    }
+	   // */
 }

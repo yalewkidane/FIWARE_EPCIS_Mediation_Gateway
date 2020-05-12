@@ -1,19 +1,34 @@
 package com.oliot.mediation.controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oliot.mediation.configuration.Configuration;
 import com.oliot.mediation.service.epcis.CaptureEPCIS;
+import com.oliot.mediation.service.epcis.CaptureUtility;
 
 @Controller
 public class Subscriptions {
 	
 	@RequestMapping(value="/Subscribe/Test", method = RequestMethod.POST)
+	@ResponseBody
 	public void SubscribeTest(@RequestBody String body){
 		System.out.println(body);
+		
+		
 		
 	}
 	@RequestMapping(value="/Subscribe/Room", method = RequestMethod.POST)
@@ -37,6 +52,112 @@ public class Subscriptions {
 		System.out.println(body);
 		
 	}
+	
+	
+	@RequestMapping(value="/Subscribe/Farm/Pig", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> SubscribeFarmPig(@RequestBody String body){
+		//System.out.println("/Subscribe/Farm/Pig");
+		//System.out.println(body);
+		String result="result";
+		//Configuration.Farm_Pig++;
+		//System.out.println("Farm_Building : "+Configuration.Farm_Building);
+		//System.out.println("Farm_Pig :"+Configuration.Farm_Pig);
+		HttpHeaders responseHeaders = new HttpHeaders();
+		/*
+		try {
+			File file=new File("/root/Desktop/pig/total_val.txt");
+			FileWriter fw=new FileWriter(file, true);
+			BufferedWriter br =new BufferedWriter(fw);
+			PrintWriter pr= new PrintWriter(br);
+			pr.println(body +"\n \n");
+			pr.close();
+			br.close();
+			fw.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+	
+			
+			
+		try {
+			//body=body.substring(body.indexOf("\"data\":")+7, body.length()-1);
+			//System.out.println(body);
+			CaptureEPCIS captureEPCIS=new CaptureEPCIS();
+			result=captureEPCIS.capture(body, "Farm/Pig");
+			//System.out.println(result);
+			return new ResponseEntity<>(result, responseHeaders, HttpStatus.OK);
+		}catch(Exception e){
+			System.out.println(e);
+			result = e.toString();
+			//System.out.println(result);
+			return new ResponseEntity<>(result, responseHeaders, HttpStatus.NOT_ACCEPTABLE);
+		} 
+	
+		
+		
+		
+			
+	}
+	
+	@RequestMapping(value="/Subscribe/Farm/Farm", method = RequestMethod.POST)
+	@ResponseBody
+	public void SubscribeFarmFarm(@RequestBody String body){
+		System.out.println(body);
+			
+	}
+	@RequestMapping(value="/Subscribe/Farm/Building", method = RequestMethod.POST)
+	@ResponseBody
+	public String SubscribeFarmBuilding(@RequestBody String body){
+		System.out.println(body);
+		System.out.println("/Subscribe/Farm/Building");
+		String result="";
+		//Configuration.Farm_Building++;
+		//System.out.println("Farm_Building : "+Configuration.Farm_Building);
+		//System.out.println("Farm_Pig :"+Configuration.Farm_Pig);
+		
+		try {
+			body=body.substring(body.indexOf("\"data\":")+7, body.length()-1);
+			System.out.println(body);
+			CaptureEPCIS captureEPCIS=new CaptureEPCIS();
+			result=captureEPCIS.capture(body, "Farm/Building");
+			return result;
+		}catch(Exception e){
+			System.out.println(e);
+			result = e.toString();
+		}	
+		
+		return result;
+			
+	}
+	@RequestMapping(value="/Subscribe/Farm/Compartment", method = RequestMethod.POST)
+	@ResponseBody
+	public void SubscribeFarmCompartment(@RequestBody String body){
+		System.out.println(body);
+			
+	}
+	@RequestMapping(value="/Subscribe/Farm/Pen", method = RequestMethod.POST)
+	@ResponseBody
+	public void SubscribeFarmPen(@RequestBody String body){
+		System.out.println(body);
+			
+	}
+	@RequestMapping(value="/Subscribe/Farm/SlaughterHouse", method = RequestMethod.POST)
+	@ResponseBody
+	public void SubscribeFarmSlaughterHouse(@RequestBody String body){
+		System.out.println(body);
+			
+	}
+	@RequestMapping(value="/Subscribe/Farm/SlaughteredPig", method = RequestMethod.POST)
+	@ResponseBody
+	public void SubscribeFarmSlaughterdPig(@RequestBody String body){
+		System.out.println(body);
+			
+	}
+	
 	//this for test and need to be removed 
 	@RequestMapping(value="/Subscribe/Santander/Bus", method = RequestMethod.POST)
 	@ResponseBody
@@ -120,11 +241,15 @@ public class Subscriptions {
 	@RequestMapping(value="/Subscribe/Building", method = RequestMethod.POST)
 	public void SubscribeBuilding(@RequestBody String body){
 		System.out.println(body);
+		System.out.println("/Subscribe/Building");
+		
+		
 		
 	}
 	@RequestMapping(value="/Subscribe/Building/Building", method = RequestMethod.POST)
 	public void SubscribeBuildingBuilding(@RequestBody String body){
 		System.out.println(body);
+		System.out.println("/Subscribe/Building/Building");
 		
 	}
 	@RequestMapping(value="/Subscribe/Building/BuildingOperation", method = RequestMethod.POST)

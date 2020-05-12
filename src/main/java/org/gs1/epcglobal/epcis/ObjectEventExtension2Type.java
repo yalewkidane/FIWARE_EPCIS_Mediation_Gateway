@@ -85,7 +85,11 @@ public class ObjectEventExtension2Type
         return this.anies;
     }
 
-    /**
+    public void setAnies(List<Element> anies) {
+		this.anies = anies;
+	}
+
+	/**
      * Gets a map that contains attributes that aren't bound to any typed property on this class.
      * 
      * <p>

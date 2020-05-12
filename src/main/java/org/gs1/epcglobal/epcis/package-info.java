@@ -7,8 +7,9 @@
 
 @javax.xml.bind.annotation.XmlSchema(xmlns = {
 		@javax.xml.bind.annotation.XmlNs(namespaceURI = "urn:epcglobal:epcis:xsd:1", prefix = "epcis"),
-		@javax.xml.bind.annotation.XmlNs(namespaceURI = "http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader", prefix = "p"),
-		@javax.xml.bind.annotation.XmlNs(namespaceURI = "http://ns.example.com/epcisapp/bus", prefix = "bus"),
-		@javax.xml.bind.annotation.XmlNs(namespaceURI = "http://ns.example.com/epcisapp/driver", prefix = "driver")
+		//@javax.xml.bind.annotation.XmlNs(namespaceURI = "http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader", prefix = "p"),
+		//@javax.xml.bind.annotation.XmlNs(namespaceURI = "http://ns.example.com/epcisapp/bus", prefix = "bus"),
+		//@javax.xml.bind.annotation.XmlNs(namespaceURI = "http://ns.example.com/epcisapp/driver", prefix = "driver"),
+		@javax.xml.bind.annotation.XmlNs(namespaceURI = "http://ns.example.com/epcisapp/pigFarm", prefix = "PF")
 })
 package org.gs1.epcglobal.epcis;
