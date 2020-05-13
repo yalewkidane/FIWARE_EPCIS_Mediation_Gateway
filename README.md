@@ -16,7 +16,8 @@
 
 ## License
 
-The mediation gateway is licenced under [Apache 2.0](/LICENCE).
+The mediation gateway is licenced under [Apache 2.0](./LICENSE).
+
 © 2020 
 
 
