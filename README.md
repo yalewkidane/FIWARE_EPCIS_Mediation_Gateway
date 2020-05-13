@@ -1,7 +1,7 @@
-# FIWARE EPCIS Mediation Gateway
+# Oliot-MG (FIWARE EPCIS Mediation Gateway)
 
 
-FIWARE EPCIS Mediation Gateway is mediation gateway wich translates information from NGSI based IoT platform to EPCIS based IoT platform. This enables capturing state chage in FIWARE context broker in the form of EPCIS Event. 
+ Oliot-MG is a mediation gateway wich translates information from NGSI based IoT platform to EPCIS based IoT platform. This enables capturing state chage in FIWARE context broker in the form of EPCIS Event. 
 
 ![](./src/main/resources/static/FIware_EPCIS_Mediation_Gateway.png)
 
@@ -24,7 +24,7 @@ A jar file is included. To run the mediation gateway the following command can b
 java -jar path/to/the_jar_file/fiware_oiliot_mediation-1.0.0.jar
 ```
 
-A 'Dockerfile' is availble. The following code can be used build and run the mediation gateway
+A 'Dockerfile' is also availble. The following code can be used build and run the mediation gateway
 
 ```console
 docker build -t fiware_oiliot_mediation .
@@ -39,7 +39,7 @@ Detail information about how to use the mediation gatway is provide in [FIWARE-E
 
 The mediation gateway is licenced under [Apache 2.0](./LICENSE).
 
-© 2020 
+© 2020 oliot
 
 
 
