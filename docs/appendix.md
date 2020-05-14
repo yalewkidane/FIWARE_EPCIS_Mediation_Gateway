@@ -2,14 +2,13 @@
 
 ## GS1 Key proposal for farming
 
-| Objects to be identified | FIWARE Key | GS1 Key | Comment |
-| --- | --- | --- | --- |
-| Farm|  `urn:entity:farm:<farmId>` | `urn:epc:id:sgln:{companyPrefix}:{locationReference}:{extensionComponent}` | SGLN is used here (GIAI can be used)<br>Example: Farm->100<br>`urn:epc:id:sgln:88000269:100:<farmId>` |
-| Building | `urn:entity:building:<buildingId>` | `urn:epc:id:sgln:{companyPrefix}:{locationReference}:{extensionComponent}` | SGLN is used here (GIAI can be used)<br>Example: building ->101<br>`urn:epc:id:sgln:88000269:101:<buildingId >` |
-| Pen | `urn:entity:pen:<penId>` | `urn:epc:id:sgln:{companyPrefix}:{locationReference}:{extensionComponent}` | SGLN is used here (GIAI can be used)<br>Example: building ->102<br>`urn:epc:id:sgln:88000269:101:<penId >` |
-|Pig | `urn:entity:pig:<pigId>`|` urn:epc:id:sgtin:{companyPrefix}:{ItemReference}:{SerialNumber}`| GTIN is used here<br>Example: building ->103<br> `urn:epc:id:sgtin:88000269:101:<pigId >`|
-|slaughterhouse | `urn:entity:slaughterhouse:<slaughterhouseId>` |`urn:epc:id:sgln:{companyPrefix}:{locationReference}:{extensionComponent}`| SGLN is used here (GIAI can be used)<br>Example: building ->104<br>`urn:epc:id:sgln:88000269:104:<slaughterhouseId >` |
-
+| Objects to be identified | FIWARE Key                                     | GS1 Key                                                                    | Comment                                                                                                               |
+| ------------------------ | ---------------------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Farm                     | `urn:entity:farm:<farmId>`                     | `urn:epc:id:sgln:{companyPrefix}:{locationReference}:{extensionComponent}` | SGLN is used here (GIAI can be used)<br>Example: Farm->100<br>`urn:epc:id:sgln:88000269:100:<farmId>`                 |
+| Building                 | `urn:entity:building:<buildingId>`             | `urn:epc:id:sgln:{companyPrefix}:{locationReference}:{extensionComponent}` | SGLN is used here (GIAI can be used)<br>Example: building ->101<br>`urn:epc:id:sgln:88000269:101:<buildingId >`       |
+| Pen                      | `urn:entity:pen:<penId>`                       | `urn:epc:id:sgln:{companyPrefix}:{locationReference}:{extensionComponent}` | SGLN is used here (GIAI can be used)<br>Example: building ->102<br>`urn:epc:id:sgln:88000269:101:<penId >`            |
+| Pig                      | `urn:entity:pig:<pigId>`                       | `urn:epc:id:sgtin:{companyPrefix}:{ItemReference}:{SerialNumber}`          | GTIN is used here<br>Example: building ->103<br> `urn:epc:id:sgtin:88000269:101:<pigId >`                             |
+| slaughterhouse           | `urn:entity:slaughterhouse:<slaughterhouseId>` | `urn:epc:id:sgln:{companyPrefix}:{locationReference}:{extensionComponent}` | SGLN is used here (GIAI can be used)<br>Example: building ->104<br>`urn:epc:id:sgln:88000269:104:<slaughterhouseId >` |
 
 ### FIWARE Pig Farming Examples
 
@@ -146,96 +145,96 @@
 
 ```json
 {
- "id": "Building-319cba0c-773d-4964-b750-136a8d5fb3c1",
- "type": "Building",
- "CO2": {
- "type": "Text",
- "value": "",
- "metadata": {}
- },
- "additionalInfo": {
- "type": "T",
- "value": {
- "SensorState": "null",
- "GatewayID": "904987",
- "CheckDigit": "KOIP",
- "accountID": "16892",
- "PlotValues": "5",
- "monnitApplicationID": "21",
- "powerSourceID": "2",
- "Voltage": "2.89",
- "Battery": "72",
- "lastCommunicationDate": "10/16/2019 2:00:02 PM",
- "applicationID": "21",
- "ApplicationID": "null",
- "batteryLevel": "72",
- "SignalStrength": "94",
- "SensorID": "324246",
- "PlotValue": "5",
- "canUpdate": "True",
- "MessageDate": "10/16/2019 8:00:02 PM",
- "sensorName": "Lux - 324246 - Hok 4 AP",
- "signalStrength": "96",
- "Data": "5",
- "plotLabels": "Lux",
- "sensorID": "324246",
- "currentReading": "10 lux",
- "AlertSent": "null",
- "nextCommunicationDate": "10/16/2019 2:10:02 PM",
- "MetNotificationRequirements": "False",
- "DataValues": "5",
- "CSNetID": "27898",
- "State": "0",
- "alertsActive": "True",
- "DisplayData": "5 lux",
- "lastDataMessageMessageGUID": "7a3b9ec6-db5b-4d84-a254-e7a77bf3f036",
- "status": "0",
- "DataMessageGUID": "75939fd1-51bc-47ce-b69d-9e2faf8fffae",
- "DataTypes": "LuxData"
- },
- "metadata": {}
- },
- "buildingId": {
- "type": "Text",
- "value": "319cba0c-773d-4964-b750-136a8d5fb3c1",
- "metadata": {}
- },
- "companyId": {
- "type": "Text",
- "value": "8b6e0aa4-08fc-4f6f-960d-5a65a748b0e7",
- "metadata": {}
- },
- "farmId": {
- "type": "Text",
- "value": "9a68ea4e-348e-424e-9346-6e9fefaf18db",
- "metadata": {}
- },
- "humidity": {
- "type": "Number",
- "value": 81.39,
- "metadata": {}
- },
- "lastUpdate": {
- "type": "DateTime",
- "value": "2019-10-16T20:00:02.00Z",
- "metadata": {}
- },
- "luminosity": {
- "type": "Number",
- "value": 5,
- "metadata": {}
- },
- "name": {
- "type": "Text",
- "value": "ILVO building 1",
- "metadata": {}
- },
- "temperature": {
- "type": "Number",
- "value": 22.97,
- "metadata": {}
- }
- }
+    "id": "Building-319cba0c-773d-4964-b750-136a8d5fb3c1",
+    "type": "Building",
+    "CO2": {
+        "type": "Text",
+        "value": "",
+        "metadata": {}
+    },
+    "additionalInfo": {
+        "type": "T",
+        "value": {
+            "SensorState": "null",
+            "GatewayID": "904987",
+            "CheckDigit": "KOIP",
+            "accountID": "16892",
+            "PlotValues": "5",
+            "monnitApplicationID": "21",
+            "powerSourceID": "2",
+            "Voltage": "2.89",
+            "Battery": "72",
+            "lastCommunicationDate": "10/16/2019 2:00:02 PM",
+            "applicationID": "21",
+            "ApplicationID": "null",
+            "batteryLevel": "72",
+            "SignalStrength": "94",
+            "SensorID": "324246",
+            "PlotValue": "5",
+            "canUpdate": "True",
+            "MessageDate": "10/16/2019 8:00:02 PM",
+            "sensorName": "Lux - 324246 - Hok 4 AP",
+            "signalStrength": "96",
+            "Data": "5",
+            "plotLabels": "Lux",
+            "sensorID": "324246",
+            "currentReading": "10 lux",
+            "AlertSent": "null",
+            "nextCommunicationDate": "10/16/2019 2:10:02 PM",
+            "MetNotificationRequirements": "False",
+            "DataValues": "5",
+            "CSNetID": "27898",
+            "State": "0",
+            "alertsActive": "True",
+            "DisplayData": "5 lux",
+            "lastDataMessageMessageGUID": "7a3b9ec6-db5b-4d84-a254-e7a77bf3f036",
+            "status": "0",
+            "DataMessageGUID": "75939fd1-51bc-47ce-b69d-9e2faf8fffae",
+            "DataTypes": "LuxData"
+        },
+        "metadata": {}
+    },
+    "buildingId": {
+        "type": "Text",
+        "value": "319cba0c-773d-4964-b750-136a8d5fb3c1",
+        "metadata": {}
+    },
+    "companyId": {
+        "type": "Text",
+        "value": "8b6e0aa4-08fc-4f6f-960d-5a65a748b0e7",
+        "metadata": {}
+    },
+    "farmId": {
+        "type": "Text",
+        "value": "9a68ea4e-348e-424e-9346-6e9fefaf18db",
+        "metadata": {}
+    },
+    "humidity": {
+        "type": "Number",
+        "value": 81.39,
+        "metadata": {}
+    },
+    "lastUpdate": {
+        "type": "DateTime",
+        "value": "2019-10-16T20:00:02.00Z",
+        "metadata": {}
+    },
+    "luminosity": {
+        "type": "Number",
+        "value": 5,
+        "metadata": {}
+    },
+    "name": {
+        "type": "Text",
+        "value": "ILVO building 1",
+        "metadata": {}
+    },
+    "temperature": {
+        "type": "Number",
+        "value": 22.97,
+        "metadata": {}
+    }
+}
 ```
 
 ### FIWARE data models schema for farm
@@ -244,45 +243,46 @@
 
 ```json
 {
- "$id": "https://resl.com/farm.schema.json",
- "$schema": "http://json-schema.org/draft-07/schema#",
- "title": "Farm",
- "type": "object",
- "properties": {
-"farmId":{
-"type": "Text",
-"description": "It represents the id of the Farm Entity (the <farmId> contained in the EntityId)"
- },
-"type":{
-"type": "Text",
-"value": "Farm",
-"description": "Entity Type"
- },
- "address": {
- "type": "Text",
- "description": "It represents the address of the farm",
- "metadata":{}
- },
- "name": {
- "type": "Text",
- "description": "It represents the name of the farm",
- "metadata":{}
- },
- "ownerCompany": {
- "type": "Text",
- "description": "It represents the name of the company that owns the farm",
- "metadata":{}
- }
- }
+    "$id": "https://resl.com/farm.schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Farm",
+    "type": "object",
+    "properties": {
+        "farmId": {
+            "type": "Text",
+            "description": "It represents the id of the Farm Entity (the <farmId> contained in the EntityId)"
+        },
+        "type": {
+            "type": "Text",
+            "value": "Farm",
+            "description": "Entity Type"
+        },
+        "address": {
+            "type": "Text",
+            "description": "It represents the address of the farm",
+            "metadata": {}
+        },
+        "name": {
+            "type": "Text",
+            "description": "It represents the name of the farm",
+            "metadata": {}
+        },
+        "ownerCompany": {
+            "type": "Text",
+            "description": "It represents the name of the company that owns the farm",
+            "metadata": {}
+        }
+    }
 }
 ```
+
 ```json
 {
-"farmId":"urn:entity:farm:<farmID>",
-"type":"Farm",
-"address":"La Cañada 04120 Almería Spain",
-"name":"Greenhouse agriculture",
-"ownerCompany":"Maria"
+    "farmId": "urn:entity:farm:<farmID>",
+    "type": "Farm",
+    "address": "La Cañada 04120 Almería Spain",
+    "name": "Greenhouse agriculture",
+    "ownerCompany": "Maria"
 }
 ```
 
@@ -356,55 +356,55 @@ EntityId attribute)"
 
 ```json
 {
-"buildingId":"urn:entity:building:<buildingId>",
-"type":"Building",
-"name":{
- "type": "Text",
- "value": "La Cañada 04120 Almería Spain",
- "metadata": {}
- },
-"lastUpdate":{
- "type": "ISO8601",
- "value": "2018-08-22T05:10:58.00Z",
- "metadata": {}
- },
-"farmId":"urn:entity:farm:<farmID>",
-"temperature":{
- "type": "Float",
- "value": 37.6,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#DegreeCelsius"
-}
-}
- },
-"humidity":{
- "type": "Float",
- "value": 45,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Humidity"
-}
-}
- },
-"luminosity":{
- "type": "Float",
- "value": 0.6,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LuminousIntensity"
-}
-}
- }
+    "buildingId": "urn:entity:building:<buildingId>",
+    "type": "Building",
+    "name": {
+        "type": "Text",
+        "value": "La Cañada 04120 Almería Spain",
+        "metadata": {}
+    },
+    "lastUpdate": {
+        "type": "ISO8601",
+        "value": "2018-08-22T05:10:58.00Z",
+        "metadata": {}
+    },
+    "farmId": "urn:entity:farm:<farmID>",
+    "temperature": {
+        "type": "Float",
+        "value": 37.6,
+        "metadata": {
+            "uom": {
+                "type": "string",
+                "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#DegreeCelsius"
+            }
+        }
+    },
+    "humidity": {
+        "type": "Float",
+        "value": 45,
+        "metadata": {
+            "uom": {
+                "type": "string",
+                "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Humidity"
+            }
+        }
+    },
+    "luminosity": {
+        "type": "Float",
+        "value": 0.6,
+        "metadata": {
+            "uom": {
+                "type": "string",
+                "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LuminousIntensity"
+            }
+        }
+    }
 }
 ```
 
 ### Pen Entity
 
-```json
+````json
 {
  "$id": "https://resl.com/farm.schema.json",
  "$schema": "http://json-schema.org/draft-07/schema#",
@@ -738,7 +738,7 @@ contained in the EntityId attribute)"
  "metadata": {}
  }
 }
-```
+````
 
 #### Entity List
 
@@ -798,5 +798,5 @@ contained in the EntityId attribute)"
  }
 }
 ```
-EPCIS data model schema for farm
-On progress ….
+
+EPCIS data model schema for farm On progress ….
