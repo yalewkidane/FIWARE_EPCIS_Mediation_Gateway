@@ -199,19 +199,16 @@ You can use the mediation gateway to generate sample
 Status 200 OK. Comment It returns empty event list
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<EPCISQueryDocumentType
-xmlns:ns2="http://www.unece.org/cefact/namespaces
-/StandardBusinessDocumentHeader"
-xmlns:ns4="urn:epcglobal:epcis:xsd:1" xmlns:ns3="urn:epcglobal:epcisquery:xsd:1">
- <EPCISBody>
- <ns3:QueryResults>
- <queryName>SimpleEventQuery</queryName>
- <resultsBody>
- <EventList/>
- </resultsBody>
- </ns3:QueryResults>
- </EPCISBody>
+<?xml version="1.0" encoding="UTF-8"?>
+<EPCISQueryDocumentType xmlns:ns2="http://www.unece.org/cefact/namespaces /StandardBusinessDocumentHeader" xmlns:ns3="urn:epcglobal:epcisquery:xsd:1" xmlns:ns4="urn:epcglobal:epcis:xsd:1">
+  <EPCISBody>
+    <ns3:QueryResults>
+      <queryName>SimpleEventQuery</queryName>
+      <resultsBody>
+        <EventList />
+      </resultsBody>
+    </ns3:QueryResults>
+  </EPCISBody>
 </EPCISQueryDocumentType>
 ```
 
@@ -267,58 +264,51 @@ Status 201 Created. Subscription to Entity Room8 is created
 Status 200 OK. One event is returned.
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<EPCISQueryDocumentType
-xmlns:ns2="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHead
-er" xmlns:ns4="urn:epcglobal:epcis:xsd:1" xmlns:ns3="urn:epcglobal:epcis-query:xsd:1">
- <EPCISBody>
- <ns3:QueryResults>
- <queryName>SimpleEventQuery</queryName>
- <resultsBody>
- <EventList>
- <ObjectEvent>
- <eventTime>2018-08-28T17:22:09.363Z</eventTime>
- <recordTime>2018-08-28T17:22:09.417Z</recordTime>
- <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
- <baseExtension>
- <eventID>4829cb2a-97a9-43fd-bf31-fb0374a7c792</eventID>
- </baseExtension>
- <epcList>
- <epc>urn:epc:id:sgtin:88000269.Room8</epc>
- </epcList>
- <action>OBSERVE</action>
- <bizStep>urn:epcglobal:cbv:bizstep:driving</bizStep>
- <disposition>urn:epcglobal:cbv:disp:on_the line</disposition>
- <readPoint>
- <id>urn:epc:id:sgln:8800026900016.Room8</id>
- </readPoint>
- <bizLocation>
- <id>urn:epc:id:sgln:8800026900016.103.Room8</id>
- </bizLocation>
- <bizTransactionList>
- <bizTransaction
-type="urn:epcglobal:cbv:Bus:status">http://transaction.acme.com/po/urn:epcglobal:cbv:
+<?xml version="1.0" encoding="UTF-8"?>
+<EPCISQueryDocumentType xmlns:ns2="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHead er" xmlns:ns3="urn:epcglobal:epcis-query:xsd:1" xmlns:ns4="urn:epcglobal:epcis:xsd:1">
+  <EPCISBody>
+    <ns3:QueryResults>
+      <queryName>SimpleEventQuery</queryName>
+      <resultsBody>
+        <EventList>
+          <ObjectEvent>
+            <eventTime>2018-08-28T17:22:09.363Z</eventTime>
+            <recordTime>2018-08-28T17:22:09.417Z</recordTime>
+            <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+            <baseExtension>
+              <eventID>4829cb2a-97a9-43fd-bf31-fb0374a7c792</eventID>
+            </baseExtension>
+            <epcList>
+              <epc>urn:epc:id:sgtin:88000269.Room8</epc>
+            </epcList>
+            <action>OBSERVE</action>
+            <bizStep>urn:epcglobal:cbv:bizstep:driving</bizStep>
+            <disposition>urn:epcglobal:cbv:disp:on_the line</disposition>
+            <readPoint>
+              <id>urn:epc:id:sgln:8800026900016.Room8</id>
+            </readPoint>
+            <bizLocation>
+              <id>urn:epc:id:sgln:8800026900016.103.Room8</id>
+            </bizLocation>
+            <bizTransactionList>
+              <bizTransaction type="urn:epcglobal:cbv:Bus:status">http://transaction.acme.com/po/urn:epcglobal:cbv:
 bizstep:Sensing</bizTransaction>
- </bizTransactionList>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/id">Room8</oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/type">Room</oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature">
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/temprature/type">Float</oliot:Fiware>
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/temprature/value">28.0</oliot:Fiware>
- </oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure">
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/Pressure/type">Float</oliot:Fiware>
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/pressure/value">28.0</oliot:Fiware>
- </oliot:Fiware>
- </ObjectEvent>
- </EventList>
- </resultsBody>
- </ns3:QueryResults>
- </EPCISBody>
+            </bizTransactionList>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/id">Room8</oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/type">Room</oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature">
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature/type">Float</oliot:Fiware>
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature/value">28.0</oliot:Fiware>
+            </oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure">
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure/type">Float</oliot:Fiware>
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/pressure/value">28.0</oliot:Fiware>
+            </oliot:Fiware>
+          </ObjectEvent>
+        </EventList>
+      </resultsBody>
+    </ns3:QueryResults>
+  </EPCISBody>
 </EPCISQueryDocumentType>
 ```
 
@@ -359,97 +349,85 @@ Status 204 No Content. Temperature value of Entity Room8 is updated to 40
 
 Status 200 OK. One event is returned
 
-```json
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<EPCISQueryDocumentType
-xmlns:ns2="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHead
-er" xmlns:ns4="urn:epcglobal:epcis:xsd:1" xmlns:ns3="urn:epcglobal:epcis-query:xsd:1">
- <EPCISBody>
- <ns3:QueryResults>
- <queryName>SimpleEventQuery</queryName>
- <resultsBody>
- <EventList>
- <ObjectEvent>
- <eventTime>2018-08-28T17:22:09.363Z</eventTime>
- <recordTime>2018-08-28T17:22:09.417Z</recordTime>
- <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
- <baseExtension>
- <eventID>4829cb2a-97a9-43fd-bf31-fb0374a7c792</eventID>
- </baseExtension>
- <epcList>
- <epc>urn:epc:id:sgtin:88000269.Room8</epc>
- </epcList>
- <action>OBSERVE</action>
- <bizStep>urn:epcglobal:cbv:bizstep:driving</bizStep>
- <disposition>urn:epcglobal:cbv:disp:on_the line</disposition>
- <readPoint>
- <id>urn:epc:id:sgln:8800026900016.Room8</id>
- </readPoint>
- <bizLocation>
- <id>urn:epc:id:sgln:8800026900016.103.Room8</id>
- </bizLocation>
- <bizTransactionList>
- <bizTransaction
-type="urn:epcglobal:cbv:Bus:status">http://transaction.acme.com/po/urn:epcglobal:cbv:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<EPCISQueryDocumentType xmlns:ns2="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHead er" xmlns:ns3="urn:epcglobal:epcis-query:xsd:1" xmlns:ns4="urn:epcglobal:epcis:xsd:1">
+  <EPCISBody>
+    <ns3:QueryResults>
+      <queryName>SimpleEventQuery</queryName>
+      <resultsBody>
+        <EventList>
+          <ObjectEvent>
+            <eventTime>2018-08-28T17:22:09.363Z</eventTime>
+            <recordTime>2018-08-28T17:22:09.417Z</recordTime>
+            <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+            <baseExtension>
+              <eventID>4829cb2a-97a9-43fd-bf31-fb0374a7c792</eventID>
+            </baseExtension>
+            <epcList>
+              <epc>urn:epc:id:sgtin:88000269.Room8</epc>
+            </epcList>
+            <action>OBSERVE</action>
+            <bizStep>urn:epcglobal:cbv:bizstep:driving</bizStep>
+            <disposition>urn:epcglobal:cbv:disp:on_the line</disposition>
+            <readPoint>
+              <id>urn:epc:id:sgln:8800026900016.Room8</id>
+            </readPoint>
+            <bizLocation>
+              <id>urn:epc:id:sgln:8800026900016.103.Room8</id>
+            </bizLocation>
+            <bizTransactionList>
+              <bizTransaction type="urn:epcglobal:cbv:Bus:status">http://transaction.acme.com/po/urn:epcglobal:cbv:
 bizstep:Sensing</bizTransaction>
- </bizTransactionList>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/id">Room8</oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/type">Room</oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature">
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/temprature/type">Float</oliot:Fiware>
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/temprature/value">28.0</oliot:Fiware>
- </oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure">
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/Pressure/type">Float</oliot:Fiware>
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/pressure/value">28.0</oliot:Fiware>
- </oliot:Fiware>
- </ObjectEvent>
- <ObjectEvent>
- <eventTime>2018-08-28T17:32:24.632Z</eventTime>
- <recordTime>2018-08-28T17:32:24.689Z</recordTime>
- <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
- <baseExtension>
- <eventID>13baa91d-44ac-4a9e-a7ac-b10d6a10a464</eventID>
- </baseExtension>
- <epcList>
- <epc>urn:epc:id:sgtin:88000269.Room8</epc>
- </epcList>
- <action>OBSERVE</action>
- <bizStep>urn:epcglobal:cbv:bizstep:driving</bizStep>
- <disposition>urn:epcglobal:cbv:disp:on_the line</disposition>
- <readPoint>
- <id>urn:epc:id:sgln:8800026900016.Room8</id>
- </readPoint>
- <bizLocation>
- <id>urn:epc:id:sgln:8800026900016.103.Room8</id>
- </bizLocation>
- <bizTransactionList>
- <bizTransaction
-type="urn:epcglobal:cbv:Bus:status">http://transaction.acme.com/po/urn:epcglobal:cbv:
+            </bizTransactionList>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/id">Room8</oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/type">Room</oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature">
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature/type">Float</oliot:Fiware>
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature/value">28.0</oliot:Fiware>
+            </oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure">
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure/type">Float</oliot:Fiware>
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/pressure/value">28.0</oliot:Fiware>
+            </oliot:Fiware>
+          </ObjectEvent>
+          <ObjectEvent>
+            <eventTime>2018-08-28T17:32:24.632Z</eventTime>
+            <recordTime>2018-08-28T17:32:24.689Z</recordTime>
+            <eventTimeZoneOffset>-05:00</eventTimeZoneOffset>
+            <baseExtension>
+              <eventID>13baa91d-44ac-4a9e-a7ac-b10d6a10a464</eventID>
+            </baseExtension>
+            <epcList>
+              <epc>urn:epc:id:sgtin:88000269.Room8</epc>
+            </epcList>
+            <action>OBSERVE</action>
+            <bizStep>urn:epcglobal:cbv:bizstep:driving</bizStep>
+            <disposition>urn:epcglobal:cbv:disp:on_the line</disposition>
+            <readPoint>
+              <id>urn:epc:id:sgln:8800026900016.Room8</id>
+            </readPoint>
+            <bizLocation>
+              <id>urn:epc:id:sgln:8800026900016.103.Room8</id>
+            </bizLocation>
+            <bizTransactionList>
+              <bizTransaction type="urn:epcglobal:cbv:Bus:status">http://transaction.acme.com/po/urn:epcglobal:cbv:
 bizstep:Sensing</bizTransaction>
- </bizTransactionList>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/id">Room8</oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/type">Room</oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature">
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/temprature/type">Float</oliot:Fiware>
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/temprature/value">40.0</oliot:Fiware>
- </oliot:Fiware>
- <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure">
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/Pressure/type">Float</oliot:Fiware>
- <oliot:Fiware
-xmlns:oliot="http://ns.oliot.com/pressure/value">40.0</oliot:Fiware>
- </oliot:Fiware>
- </ObjectEvent>
- </EventList>
- </resultsBody>
- </ns3:QueryResults>
- </EPCISBody>
+            </bizTransactionList>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/id">Room8</oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/type">Room</oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature">
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature/type">Float</oliot:Fiware>
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/temprature/value">40.0</oliot:Fiware>
+            </oliot:Fiware>
+            <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure">
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/Pressure/type">Float</oliot:Fiware>
+              <oliot:Fiware xmlns:oliot="http://ns.oliot.com/pressure/value">40.0</oliot:Fiware>
+            </oliot:Fiware>
+          </ObjectEvent>
+        </EventList>
+      </resultsBody>
+    </ns3:QueryResults>
+  </EPCISBody>
 </EPCISQueryDocumentType>
 ```
