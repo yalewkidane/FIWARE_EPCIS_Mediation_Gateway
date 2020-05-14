@@ -37,7 +37,7 @@ public class Mediationgateway {
 		model.addAttribute("epcisURl", Configuration.epcisURL);
 		model.addAttribute("mediationGatewayURL", Configuration.mediationGatewayURL);
 
-        return "index";
+        return "Home";
     }
 	
 	@RequestMapping(value="/GetByUrl" , method = RequestMethod.GET)

@@ -54,7 +54,7 @@ public class Configuration {
 		setLogger();
 		
 		// set  Login page 
-		//setServerURL();
+		setServerURL();
 		
 	}
 	
@@ -74,8 +74,8 @@ public class Configuration {
 		fiwareURL = scanner.nextLine();
 		System.out.println("Enter EPCIS server URL (e.g localhost:8080): ");
 		epcisURL = scanner.nextLine();
-		System.out.println("Enter GS1 Source server URL (e.g http://localhost:8080): ");
-		gs1SourceURL = scanner.nextLine();
+		//System.out.println("Enter GS1 Source server URL (e.g http://localhost:8080): ");
+		//gs1SourceURL = scanner.nextLine();
 		System.out.println("Mediation Gateway Port  (e.g 8083): ");
 		mediationGatewayPort = scanner.nextLine();
 		
