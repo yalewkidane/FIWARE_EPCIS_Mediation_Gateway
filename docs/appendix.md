@@ -15,130 +15,109 @@
 #### Pig example
 
 ```json
- {
- "id": "Pig-b5b4da51-373d-444c-ab74-fe27109f3d83",
- "type": "Pig",
- "additionalInfo": {
- "type": "T",
- "value": {
- "ILVOPenId": "7",
- "feed_intake": "329",
- "visit_time": "2018-05-08 19:53:14",
- "ILVOPeriod": "2",
- "weight": "31500",
- "responder": "984000100625782",
- "ILVONRstation": "5782",
- "ILVOLFtag": "984000100625782",
- "duration": "717",
- "ILVOPigId": "10",
- "DEBUG-filename": "tempRealIlvoNedapVelosvelos_ilvo.vpu-online.com_ppt_location0-9999_2018-05-
-08.csv",
- "ILVOHFtagLeft": "E00401005BA42B5A",
- "lifenumber": "10",
- "location": "7",
- "state": "0",
- "DEBUG-currentLine": "552",
- "ILVOHFtagRight": "E00401005BA42C4F",
- "ILVOSanitel": "70148"
- },
- "metadata": {}
- },
- "arrivalTimestamp": {
- "type": "Text",
- "value": "",
- "metadata": {}
- },
- "buildingId": {
- "type": "Text",
- "value": "",
- "metadata": {}
- },
- "companyId": {
- "type": "Text",
- "value": "8b6e0aa4-08fc-4f6f-960d-5a65a748b0e7",
- "metadata": {}
- },
- "compartmentId": {
- "type": "Text",
- "value": "",
- "metadata": {}
- },
- "endTimestampAcquisition": {
- "type": "Number",
- "value": 1534895999,
- "metadata": {}
- },
- "endTimestampMonitoring": {
- "type": "Number",
- "value": 1534895999,
- "metadata": {}
- },
- "farmId": {
- "type": "Text",
- "value": "9a68ea4e-348e-424e-9346-6e9fefaf18db",
- "metadata": {}
- },
- "lastUpdate": {
- "type": "DateTime",
- "value": "2018-05-08T19:53:14.00Z",
- "metadata": {}
- },
- "penId": {
- "type": "Text",
- "value": "b1d7f4b0-2d8f-4c6d-b7f4-ed03e4ed25ee",
- "metadata": {}
- },
- "pigId": {
- "type": "Text",
- "value": "b5b4da51-373d-444c-ab74-fe27109f3d83",
- "metadata": {}
- },
- "serialNumber": {
- "type": "Text",
- "value": "",
- "metadata": {}
- },
- "sex": {
- "type": "Text",
- "value": "B",
- "metadata": {}
- },
- "startTimestampAcquisition": {
- "type": "Number",
- "value": 1519430400,
- "metadata": {}
- },
- "startTimestampMonitoring": {
- "type": "Number",
- "value": 1519430400,
- "metadata": {}
- },
- "totalConsumedFood": {
- "type": "Number",
- "value": 329,
- "metadata": {}
- },
- "totalConsumedWater": {
- "type": "Text",
- "value": "",
- "metadata": {}
- },
- "totalTimeConsumedFood": {
- "type": "Number",
- "value": 717,
- "metadata": {}
- },
- "totalTimeConsumedWater": {
- "type": "Text",
- "value": "",
- "metadata": {}
- },
- "weight": {
- "type": "Number",
- "value": 31500,
- "metadata": {}
- }
- }
+{
+  "id": "Pig-b5b4da51-373d-444c-ab74-fe27109f3d83",
+  "type": "Pig",
+  "additionalInfo": {
+    "type": "T",
+    "value": {
+      "ILVOPenId": "7",
+      "feed_intake": "329",
+      "visit_time": "2018-05-08 19:53:14",
+      "ILVOPeriod": "2",
+      "weight": "31500",
+      "responder": "984000100625782",
+      "ILVONRstation": "5782",
+      "ILVOLFtag": "984000100625782",
+      "duration": "717",
+      "ILVOPigId": "10",
+      "DEBUG-filename": "tempRealIlvoNedapVelosvelos_ilvo.vpu-online.com_ppt_location0-9999_2018-05-08.csv",
+      "ILVOHFtagLeft": "E00401005BA42B5A",
+      "lifenumber": "10",
+      "location": "7",
+      "state": "0",
+      "DEBUG-currentLine": "552",
+      "ILVOHFtagRight": "E00401005BA42C4F",
+      "ILVOSanitel": "70148"
+    }
+  },
+  "arrivalTimestamp": {
+    "type": "Text",
+    "value": ""
+  },
+  "buildingId": {
+    "type": "Text",
+    "value": ""
+  },
+  "companyId": {
+    "type": "Text",
+    "value": "8b6e0aa4-08fc-4f6f-960d-5a65a748b0e7"
+  },
+  "compartmentId": {
+    "type": "Text",
+    "value": ""
+  },
+  "endTimestampAcquisition": {
+    "type": "Number",
+    "value": 1534895999
+  },
+  "endTimestampMonitoring": {
+    "type": "Number",
+    "value": 1534895999
+  },
+  "farmId": {
+    "type": "Text",
+    "value": "9a68ea4e-348e-424e-9346-6e9fefaf18db"
+  },
+  "lastUpdate": {
+    "type": "DateTime",
+    "value": "2018-05-08T19:53:14.00Z"
+  },
+  "penId": {
+    "type": "Text",
+    "value": "b1d7f4b0-2d8f-4c6d-b7f4-ed03e4ed25ee"
+  },
+  "pigId": {
+    "type": "Text",
+    "value": "b5b4da51-373d-444c-ab74-fe27109f3d83"
+  },
+  "serialNumber": {
+    "type": "Text",
+    "value": ""
+  },
+  "sex": {
+    "type": "Text",
+    "value": "B"
+  },
+  "startTimestampAcquisition": {
+    "type": "Number",
+    "value": 1519430400
+  },
+  "startTimestampMonitoring": {
+    "type": "Number",
+    "value": 1519430400
+  },
+  "totalConsumedFood": {
+    "type": "Number",
+    "value": 329
+  },
+  "totalConsumedWater": {
+    "type": "Text",
+    "value": ""
+  },
+  "totalTimeConsumedFood": {
+    "type": "Number",
+    "value": 717
+  },
+  "totalTimeConsumedWater": {
+    "type": "Text",
+    "value": ""
+  },
+  "weight": {
+    "type": "Number",
+    "value": 31500
+  }
+}
 ```
 
 #### Building Example
@@ -290,67 +269,66 @@
 
 ```json
 {
- "$id": "https://resl.com/farm.schema.json",
- "$schema": "http://json-schema.org/draft-07/schema#",
- "title": "Building",
- "type": "object",
- "properties": {
-"buildingId":{
-"type": "Text",
-"description": "It represents the id of the Building Entity (the <buildingId> contained in the
-EntityId attribute)"
- },
-"type":{
-"type": "Text",
-"value": "Building",
-"description": "Entity Type"
- },
- "name": {
- "type": "Text",
- "description": "It represents the name of the building",
- "metadata":{}
- },
- "lastUpdate": {
- "type": "DateTime",
- "description": "It represents the timestamp of the last update",
- "metadata":{}
- },
- "farmId": {
- "type": "Text",
- "description": "It represents the id of the Farm in which the Building is located (the farmId)",
- "metadata":{}
- },
- "temperature": {
- "type": "Float",
- "description": "It represents the last value of the temperature registered within the Building",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#DegreeCelsius"
- }
- }
- },
- "humidity": {
- "type": "Float",
- "description": "It represents the last value of the humidity registered within the Building",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Humidity"
- }
- }
- },
- "luminosity": {
- "type": "Float",
- "description": "It represents the last value of the luminosity registered within the Building",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LuminousIntensity"
- }
- }
- }
- }
+  "$id": "https://resl.com/farm.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Building",
+  "type": "object",
+  "properties": {
+    "buildingId": {
+      "type": "Text",
+      "description": "It represents the id of the Building Entity (the <buildingId> contained in the EntityId attribute)"
+    },
+    "type": {
+      "type": "Text",
+      "value": "Building",
+      "description": "Entity Type"
+    },
+    "name": {
+      "type": "Text",
+      "description": "It represents the name of the building",
+      "metadata": {}
+    },
+    "lastUpdate": {
+      "type": "DateTime",
+      "description": "It represents the timestamp of the last update",
+      "metadata": {}
+    },
+    "farmId": {
+      "type": "Text",
+      "description": "It represents the id of the Farm in which the Building is located (the farmId)",
+      "metadata": {}
+    },
+    "temperature": {
+      "type": "Float",
+      "description": "It represents the last value of the temperature registered within the Building",
+      "metadata": {
+        "uom": {
+          "type": "string",
+          "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#DegreeCelsius"
+        }
+      }
+    },
+    "humidity": {
+      "type": "Float",
+      "description": "It represents the last value of the humidity registered within the Building",
+      "metadata": {
+        "uom": {
+          "type": "string",
+          "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Humidity"
+        }
+      }
+    },
+    "luminosity": {
+      "type": "Float",
+      "description": "It represents the last value of the luminosity registered within the Building",
+      "metadata": {
+        "uom": {
+          "type": "string",
+          "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LuminousIntensity"
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -404,398 +382,286 @@ EntityId attribute)"
 
 ### Pen Entity
 
-````json
+```json
 {
- "$id": "https://resl.com/farm.schema.json",
- "$schema": "http://json-schema.org/draft-07/schema#",
- "title": "Pig",
- "type": "object",
- "properties": {
-"pigId":{
-"type": "Text",
-"description": "It represents the id of the Pig Entity (the <pigId> contained in the EntityId
-attribute)"
- },
-"type":{
-"type": "Text",
-"value": "Pig",
-"description": "Entity Type"
- },
- "serialNumber": {
- "type": "Text",
- "description": "If a serial number is assigned to the pig by the farm, this field contains such a value",
- "metadata":{}
- },
- "lastUpdate": {
- "type": "DateTime",
- "description": "It represents the timestamp of the last update",
- "metadata":{}
- },
- "penId": {
- "type": "Text",
- "description": "It represents the id of the Farm in which the pen is located (the penId)",
- "metadata":{}
- },
- "weight": {
- "type": "Float",
- "description": "It represents the current weight of the pig (the last measured value)",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
- }
- }
- },
- "totalConsumedWater": {
- "type": "Float",
- "description": "it represents the amount of water that was consumed between the moment in
-which the pig started to drink and the current moment (e.g., if the
-pig started
-to drink 2 minutes ago and is continuing to drink, this value
-contains the
-total amount of water that the pig drunk since 2 minutes ago)",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Litre"
- }
- }
- },
- "totalConsumedFood": {
- "type": "Float",
- "description": "it represents the amount of food that was consumed between the moment
-in which the pig started to eat and the current moment
-(e.g., if the
-pig started to eat 2 minutes ago and is continuing to eat,
-this value
-contains the total amount of food that the pig ate since 2
-minutes ago)",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
- }
- }
- }
- }
+  "$id": "https://resl.com/farm.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pig",
+  "type": "object",
+  "properties": {
+    "pigId": {
+      "type": "Text",
+      "description": "It represents the id of the Pig Entity (the <pigId> contained in the EntityId attribute)"
+    },
+    "type": {
+      "type": "Text",
+      "value": "Pig",
+      "description": "Entity Type"
+    },
+    "serialNumber": {
+      "type": "Text",
+      "description": "If a serial number is assigned to the pig by the farm, this field contains such a value",
+      "metadata": {}
+    },
+    "lastUpdate": {
+      "type": "DateTime",
+      "description": "It represents the timestamp of the last update",
+      "metadata": {}
+    },
+    "penId": {
+      "type": "Text",
+      "description": "It represents the id of the Farm in which the pen is located (the penId)",
+      "metadata": {}
+    },
+    "weight": {
+      "type": "Float",
+      "description": "It represents the current weight of the pig (the last measured value)",
+      "metadata": {
+        "uom": {
+          "type": "string",
+          "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
+        }
+      }
+    },
+    "totalConsumedWater": {
+      "type": "Float",
+      "description": "it represents the amount of water that was consumed between the moment in which the pig started to drink and the current moment (e.g., if the pig started to drink 2 minutes ago and is continuing to drink, this value contains the total amount of water that the pig drunk since 2 minutes ago)",
+      "metadata": {
+        "uom": {
+          "type": "string",
+          "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Litre"
+        }
+      }
+    },
+    "totalConsumedFood": {
+      "type": "Float",
+      "description": "it represents the amount of food that was consumed between the moment in which the pig started to eat and the current moment (e.g., if the pig started to eat 2 minutes ago and is continuing to eat, this value contains the total amount of food that the pig ate since 2 minutes ago)",
+      "metadata": {
+        "uom": {
+          "type": "string",
+          "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
+        }
+      }
+    }
+  }
 }
-{
-"pigId":"urn:entity:pig:<pigId>",
-"type":"Pig",
-"serialNumber":{
- "type": "Text",
- "value": "8764321000003",
- "metadata": {}
- },
-"lastUpdate":{
- "type": "ISO8601",
- "value": "2018-08-22T05:10:58.00Z",
- "metadata": {}
- },
-"penId":"urn:entity:pen:<penId>",
-"weight":{
- "type": "Float",
- "value": 37.6,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
-}
-}
- },
-"totalConsumedWater":{
- "type": "Float",
- "value": 20,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Litre"
-}
-}
- },
-"totalConsumedFood":{
- "type": "Float",
- "value": 45,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
-}
-}
- }
-}
-Pig Entity
-{
- "$id": "https://resl.com/farm.schema.json",
- "$schema": "http://json-schema.org/draft-07/schema#",
- "title": "Pig",
- "type": "object",
- "properties": {
-"pigId":{
-"type": "Text",
-"description": "It represents the id of the Pig Entity (the <pigId> contained in the EntityId
-attribute)"
- },
-"type":{
-"type": "Text",
-"value": "Pig",
-"description": "Entity Type"
- },
- "serialNumber": {
- "type": "Text",
- "description": "If a serial number is assigned to the pig by the farm, this field contains such a value",
- "metadata":{}
- },
- "lastUpdate": {
- "type": "DateTime",
- "description": "It represents the timestamp of the last update",
- "metadata":{}
- },
- "penId": {
- "type": "Text",
- "description": "It represents the id of the Farm in which the pen is located (the penId)",
- "metadata":{}
- },
- "weight": {
- "type": "Float",
- "description": "It represents the current weight of the pig (the last measured value)",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
- }
- }
- },
- "totalConsumedWater": {
- "type": "Float",
- "description": "it represents the amount of water that was consumed between the moment in
-which the pig started to drink and the current moment (e.g., if the
-pig started
-to drink 2 minutes ago and is continuing to drink, this value
-contains the
-total amount of water that the pig drunk since 2 minutes ago)",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Litre"
- }
- }
- },
- "totalConsumedFood": {
- "type": "Float",
- "description": "it represents the amount of food that was consumed between the moment
-in which the pig started to eat and the current moment
-(e.g., if the
-pig started to eat 2 minutes ago and is continuing to eat,
-this value
-contains the total amount of food that the pig ate since 2
-minutes ago)",
- "metadata":{
- "uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
- }
- }
- }
- }
-}
-{
-"pigId":"urn:entity:pig:<pigId>",
-"type":"Pig",
-"serialNumber":{
- "type": "Text",
- "value": "8764321000003",
- "metadata": {}
- },
-"lastUpdate":{
- "type": "ISO8601",
- "value": "2018-08-22T05:10:58.00Z",
- "metadata": {}
- },
-"penId":"urn:entity:pen:<penId>",
-"weight":{
- "type": "Float",
- "value": 37.6,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
-}
-}
- },
-"totalConsumedWater":{
- "type": "Float",
- "value": 20,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Litre"
-}
-}
- },
-"totalConsumedFood":{
- "type": "Float",
- "value": 45,
- "metadata": {
-"uom": {
- "type": "string",
- "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
-}
-}
- }
-}
-
-#### Slaughteredpig Entity
+```
 
 ```json
 {
- "$id": "https://resl.com/farm.schema.json",
- "$schema": "http://json-schema.org/draft-07/schema#",
- "title": "SlaughteredPig",
- "type": "object",
- "properties": {
-"lastSlaughteredPigId":{
-"type": "Text",
-"description": "It represents the id of the last Pig that was slaughtered"
- },
-"type":{
-"type": "Text",
-"value": "SlaughteredPig",
-"description": "Entity Type"
- },
- "serialNumber": {
- "type": "Text",
- "description": "It represents the serialNumber (if it exists) of the last Pig that was slaughtered",
- "metadata":{}
- },
- "lastUpdate": {
- "type": "DateTime",
- "description": "It represents the timestamp of the last update",
- "metadata":{}
- },
- "slaughterhouseId": {
- "type": "Text",
- "description": "It represents the id of the slaughterehouse in which the Pig was slaughtered",
- "metadata":{}
- }
- }
+  "pigId": "urn:entity:pig:<pigId>",
+  "type": "Pig",
+  "serialNumber": {
+    "type": "Text",
+    "value": "8764321000003",
+    "metadata": {}
+  },
+  "lastUpdate": {
+    "type": "ISO8601",
+    "value": "2018-08-22T05:10:58.00Z",
+    "metadata": {}
+  },
+  "penId": "urn:entity:pen:<penId>",
+  "weight": {
+    "type": "Float",
+    "value": 37.6,
+    "metadata": {
+      "uom": {
+        "type": "string",
+        "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
+      }
+    }
+  },
+  "totalConsumedWater": {
+    "type": "Float",
+    "value": 20,
+    "metadata": {
+      "uom": {
+        "type": "string",
+        "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Litre"
+      }
+    }
+  },
+  "totalConsumedFood": {
+    "type": "Float",
+    "value": 45,
+    "metadata": {
+      "uom": {
+        "type": "string",
+        "value": "http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram"
+      }
+    }
+  }
 }
+```
+
+#### Slaughtered Pig Entity
+
+```json
 {
-"lastSlaughteredPigId":"urn:entity:pig:<pigId>",
-"type":"Pig",
-"serialNumber":{
- "type": "Text",
- "value": "8764321000003",
- "metadata": {}
- },
-"lastUpdate":{
- "type": "ISO8601",
- "value": "2018-08-22T05:10:58.00Z",
- "metadata": {}
- },
-"slaughterhouseId":"urn:entity:slaughterhouse:<slaughterhouseId>",
+  "$id": "https://resl.com/farm.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SlaughteredPig",
+  "type": "object",
+  "properties": {
+    "lastSlaughteredPigId": {
+      "type": "Text",
+      "description": "It represents the id of the last Pig that was slaughtered"
+    },
+    "type": {
+      "type": "Text",
+      "value": "SlaughteredPig",
+      "description": "Entity Type"
+    },
+    "serialNumber": {
+      "type": "Text",
+      "description": "It represents the serialNumber (if it exists) of the last Pig that was slaughtered",
+      "metadata": {}
+    },
+    "lastUpdate": {
+      "type": "DateTime",
+      "description": "It represents the timestamp of the last update",
+      "metadata": {}
+    },
+    "slaughterhouseId": {
+      "type": "Text",
+      "description": "It represents the id of the slaughterehouse in which the Pig was slaughtered",
+      "metadata": {}
+    }
+  }
 }
-Slaughterhouse Entity
+```
+
+```json
 {
- "$id": "https://resl.com/farm.schema.json",
- "$schema": "http://json-schema.org/draft-07/schema#",
- "title": "slaughterhouse",
- "type": "object",
- "properties": {
-"slaughterhouseId":{
-"type": "Text",
-"description": "it represents the id of the slaughterhouse Entity (the <slaughterhouseId>
-contained in the EntityId attribute)"
- },
-"type":{
-"type": "Text",
-"value": "Slaughterhouse",
-"description": "Entity Type"
- },
-"address:": {
- "type": "Text",
- "description": "It represents the address of the slaughterhouse",
- "metadata":{}
- },
-"name": {
- "type": "Text",
- "description": "It represents the name of the building",
- "metadata":{}
- }
- }
+  "lastSlaughteredPigId": "urn:entity:pig:<pigId>",
+  "type": "Pig",
+  "serialNumber": {
+    "type": "Text",
+    "value": "8764321000003",
+    "metadata": {}
+  },
+  "lastUpdate": {
+    "type": "ISO8601",
+    "value": "2018-08-22T05:10:58.00Z",
+    "metadata": {}
+  },
+  "slaughterhouseId": "urn:entity:slaughterhouse:<slaughterhouseId>"
 }
+```
+
+#### Slaughterhouse Entity
+
+```json
 {
-"slaughterhouseId":"urn:entity:slaughterhouse:<slaughterhouseId>",
-"type":"Slaughterhouse",
-"address":{
- "type": "Text",
- "value": "La Cañada 04120 Almería Spain",
- "metadata": {}
- },
-"name":{
- "type": "Text",
- "value": "pig slaughterhouse",
- "metadata": {}
- }
+  "$id": "https://resl.com/farm.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "slaughterhouse",
+  "type": "object",
+  "properties": {
+    "slaughterhouseId": {
+      "type": "Text",
+      "description": "it represents the id of the slaughterhouse Entity (the <slaughterhouseId> contained in the EntityId attribute)"
+    },
+    "type": {
+      "type": "Text",
+      "value": "Slaughterhouse",
+      "description": "Entity Type"
+    },
+    "address:": {
+      "type": "Text",
+      "description": "It represents the address of the slaughterhouse",
+      "metadata": {}
+    },
+    "name": {
+      "type": "Text",
+      "description": "It represents the name of the building",
+      "metadata": {}
+    }
+  }
 }
-````
+```
+
+```json
+{
+  "slaughterhouseId": "urn:entity:slaughterhouse:<slaughterhouseId>",
+  "type": "Slaughterhouse",
+  "address": {
+    "type": "Text",
+    "value": "La Cañada 04120 Almería Spain",
+    "metadata": {}
+  },
+  "name": {
+    "type": "Text",
+    "value": "pig slaughterhouse",
+    "metadata": {}
+  }
+}
+```
 
 #### Entity List
 
 ```json
 {
- "$id": "https://resl.com/farm.schema.json",
- "$schema": "http://json-schema.org/draft-07/schema#",
- "title": "EntityList",
- "type": "object",
- "properties": {
-"list":{
-"type": "array",
-"maxItems": 3,
-"items": {
- "type": "string"
- }
-},
-"type":{
-"type": "Text",
-"value": "EntityList",
-"description": "Entity Type"
- },
-"lastUpdate": {
- "type": "DateTime",
- "description": "It represents the timestamp of the last update",
- "metadata":{}
- },
-"lastAddedItem": {
- "type": "Text",
- "description": "It contains the <id> of the last added <Entity> entity",
- "metadata":{}
- },
-"lastRemovedItem": {
- "type": "Text",
- "description": "It contains the <id> of the last removed <Entity> entity",
- "metadata":{}
- }
- }
+  "$id": "https://resl.com/farm.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EntityList",
+  "type": "object",
+  "properties": {
+    "list": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "type": {
+      "type": "Text",
+      "value": "EntityList",
+      "description": "Entity Type"
+    },
+    "lastUpdate": {
+      "type": "DateTime",
+      "description": "It represents the timestamp of the last update",
+      "metadata": {}
+    },
+    "lastAddedItem": {
+      "type": "Text",
+      "description": "It contains the <id> of the last added <Entity> entity",
+      "metadata": {}
+    },
+    "lastRemovedItem": {
+      "type": "Text",
+      "description": "It contains the <id> of the last removed <Entity> entity",
+      "metadata": {}
+    }
+  }
 }
+```
+
+```json
 {
-"list":["urn:entity:pen:<penId1>", "urn:entity:pen:<penId2>", "urn:entity:pen:<penId3>"],
-"type":"EntityList",
-"lastUpdate":{
- "type": "ISO8601",
- "value": "2018-08-22T05:10:58.00Z",
- "metadata": {}
- },
-"lastAddedItem":{
- "type": "Text",
- "value": "urn:entity:pen:<penId3>",
- "metadata": {}
- },
-"lastRemovedItem":{
- "type": "Text",
- "value": "urn:entity:pen:<penId0>",
- "metadata": {}
- }
+  "list": [
+    "urn:entity:pen:<penId1>",
+    "urn:entity:pen:<penId2>",
+    "urn:entity:pen:<penId3>"
+  ],
+  "type": "EntityList",
+  "lastUpdate": {
+    "type": "ISO8601",
+    "value": "2018-08-22T05:10:58.00Z",
+    "metadata": {}
+  },
+  "lastAddedItem": {
+    "type": "Text",
+    "value": "urn:entity:pen:<penId3>",
+    "metadata": {}
+  },
+  "lastRemovedItem": {
+    "type": "Text",
+    "value": "urn:entity:pen:<penId0>",
+    "metadata": {}
+  }
 }
 ```
 
