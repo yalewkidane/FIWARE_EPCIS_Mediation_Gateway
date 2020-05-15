@@ -1,0 +1,13 @@
+
+site_name: EPCIS Mediation Gateway
+
+repo_url: https://github.com/yalewkidane/FIWARE_EPCIS_Mediation_Gateway
+repo_name: GitHub
+
+pages:
+    -  Home: index.md
+    - 'Install' : 'install.md'
+    - 'Usage' : 'usage.md'
+    - 'Appendix' : 'appendix.md'
+
+theme: readthedocs
