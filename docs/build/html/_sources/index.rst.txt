@@ -6,6 +6,16 @@
 Documentation for the fiware-epcis-gateway project
 ==================================================
 
+
+Background
+^^^^^^^^^^
+Install
+^^^^^^^
+Usage
+^^^^^
+License
+^^^^^^^
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
