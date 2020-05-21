@@ -1,0 +1,1269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage &mdash; fiware-epcis-gateway 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Install" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> fiware-epcis-gateway
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simple-subscription-example">Simple Subscription example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#check-for-a-specific-entities-on-fiware-before-subscription-eg-room8">1.      Check for a specific entities on FIWARE before subscription (eg. Room8)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-room-entity-to-fiware-before-subscription-eg-room8">2.      Add a Room entity to FIWARE before subscription (eg. Room8)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-the-created-entity">3.      Check the created entity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-sample-subscription">4.      Generate sample subscription.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-if-there-is-epcis-event-related-to-room-8">5.      Check if there is epcis  event related to Room 8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscribe">6.      Subscribe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-if-there-is-epcis-event-related-to-room-8-after-the-subscription">7.      Check if there is epcis  event related to Room 8 after the subscription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-any-value-of-the-room">8.      Update any value of the Room</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-if-there-are-two-room8-events-are-created-in-epcis">9.      Check if there are two Room8 events are created in epcis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix">Appendix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gs1-key-proposal-for-farming">GS1 Key proposal for farming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fiware-data-models-schema-for-farm">FIWARE data models schema for farm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fiware-epcis-gateway</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<span id="id1"></span><h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple-subscription-example">
+<h2>Simple Subscription example<a class="headerlink" href="#simple-subscription-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="check-for-a-specific-entities-on-fiware-before-subscription-eg-room8">
+<h3>1.      Check for a specific entities on FIWARE before subscription (eg. Room8)<a class="headerlink" href="#check-for-a-specific-entities-on-fiware-before-subscription-eg-room8" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server</td>
+<td>[FIWARE ] localhost:1026/v2</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>GET</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td>localhost:1026/v2/entities/Room8</td>
+</tr>
+<tr class="row-even"><td>Headers</td>
+<td>Content-Type: application/json</td>
+</tr>
+<tr class="row-odd"><td>Status</td>
+<td>404 Not Found</td>
+</tr>
+<tr class="row-even"><td>Response</td>
+<td><dl class="first docutils">
+<dt>{</dt>
+<dd><p class="first">“error”: “NotFound”,</p>
+<p class="last">“description”: “The requested entity has not been found. Check type and id”</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</td>
+</tr>
+<tr class="row-odd"><td>Comment</td>
+<td>Entity Room8 doesn’t exist in FIWARE so we need to create it first</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="add-a-room-entity-to-fiware-before-subscription-eg-room8">
+<h3>2.      Add a Room entity to FIWARE before subscription (eg. Room8)<a class="headerlink" href="#add-a-room-entity-to-fiware-before-subscription-eg-room8" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server</td>
+<td>[FIWARE ] localhost:1026/v2</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>POST</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td>localhost:1026/v2/entities</td>
+</tr>
+<tr class="row-even"><td>Headers</td>
+<td>Content-Type: application/json</td>
+</tr>
+<tr class="row-odd"><td>Status</td>
+<td>404 Not Found</td>
+</tr>
+<tr class="row-even"><td>Body</td>
+<td><dl class="first last docutils">
+<dt>{</dt>
+<dd><blockquote class="first">
+<div><p>“id”: “Room8”,</p>
+<p>“type”: “Room”,</p>
+<p>“pressure”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“type”: “Integer”,</p>
+<p>“value”: 123,</p>
+<p>“metadata”: {}</p>
+</div></blockquote>
+<p>},</p>
+</div></blockquote>
+<p>“temperature”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“type”: “Float”,</p>
+<p>“value”: 28,</p>
+<p>“metadata”: {}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>Response</td>
+<td>{ }</td>
+</tr>
+<tr class="row-even"><td>Comment</td>
+<td>Entity Room8 doesn’t exist in FIWARE so we need to create it first</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="check-the-created-entity">
+<h3>3.      Check the created entity<a class="headerlink" href="#check-the-created-entity" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server</td>
+<td>[FIWARE ] localhost:1026/v2</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>GET</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td>localhost:1026/v2/entities/Room8</td>
+</tr>
+<tr class="row-even"><td>Headers</td>
+<td>Content-Type: application/json</td>
+</tr>
+<tr class="row-odd"><td>Status</td>
+<td>200 OK</td>
+</tr>
+<tr class="row-even"><td>Response</td>
+<td><dl class="first last docutils">
+<dt>{</dt>
+<dd><blockquote class="first">
+<div><p>“id”: “Room8”,</p>
+<p>“type”: “Room”,</p>
+<p>“pressure”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“type”: “Integer”,</p>
+<p>“value”: 123,</p>
+<p>“metadata”: {}</p>
+</div></blockquote>
+<p>},</p>
+</div></blockquote>
+<p>“temperature”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“type”: “Float”,</p>
+<p>“value”: 28,</p>
+<p>“metadata”: {}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>Comment</td>
+<td>Entity Room8 created in step 2 is returned</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="generate-sample-subscription">
+<h3>4.      Generate sample subscription.<a class="headerlink" href="#generate-sample-subscription" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><p class="first">How to make</p>
+<p>subscription</p>
+<p class="last">body</p>
+</td>
+<td>Refer <a class="reference external" href="https://fiware-orion.readthedocs.io/en/master/user/walkthrough_apiv2/index.html">FIWARE</a></td>
+</tr>
+<tr class="row-even"><td><p class="first">How to make</p>
+<p>subscription</p>
+<p class="last">URL</p>
+</td>
+<td><p class="first">To use this mediation gateway, you have to follow the following rule to set</p>
+<p>up the notification URL. The notification URL must include “Data</p>
+<p>group name” and “data model name” and it should looks like</p>
+<blockquote class="last">
+<div><p><em>http://{IP}:{PORT}/Subscribe/{DATA MODEL GROUP NAME}/{DATA MODEL NAME}</em></p>
+<p><strong>IP:</strong> IP address of the mediation gateway</p>
+<p><strong>Port:</strong> port address of the mediation gateway running</p>
+<p><strong>DATA MODEL GROUP NAME}/DATA MODEL NAME :</strong> check <em>http://{IP}:{PORT}//FiwareDataModel</em></p>
+<p>example:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://localhost:8081/Subscribe/Test/Room">http://localhost:8081/Subscribe/Test/Room</a></li>
+<li><a class="reference external" href="http://localhost:8081/Subscribe/Test/Car">http://localhost:8081/Subscribe/Test/Car</a></li>
+<li><a class="reference external" href="http://localhost:8081/Subscribe/Farm/Building">http://localhost:8081/Subscribe/Farm/Building</a></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first">Sample</p>
+<p>subscription</p>
+<p class="last">body</p>
+</td>
+<td><p class="first">{</p>
+<blockquote class="last">
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>“description”: “A subscription to get info about Room8”,</p>
+<p>“subject”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“entities”: [</p>
+<blockquote>
+<div><blockquote>
+<div><p>{</p>
+<blockquote>
+<div><p>“id”: “Room8”,</p>
+<p>“type”: “Room”</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>],</p>
+<p>“condition”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“attrs”: [</p>
+<p>“pressure”,</p>
+<p>“temperature”</p>
+<p>]</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>},</p>
+</div></blockquote>
+</div></blockquote>
+<p>“notification”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“http”: {</p>
+<p>“url”: “<a class="reference external" href="http://143.248.57.28:8081/Subscribe/Test/Room">http://143.248.57.28:8081/Subscribe/Test/Room</a>”</p>
+<p>},</p>
+<p>“attrs”: [</p>
+<blockquote>
+<div><blockquote>
+<div><p>“pressure”,</p>
+<p>“temperature”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+</div></blockquote>
+<p>},</p>
+</div></blockquote>
+</div></blockquote>
+<p>“expires”: “2040-01-01T14:00:00.00Z”,</p>
+<p>“throttling”: 5</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>You can use the mediation gateway to generate sample</p>
+<img alt="_images/sample-subscription.png" src="_images/sample-subscription.png" />
+</div></blockquote>
+</div>
+<div class="section" id="check-if-there-is-epcis-event-related-to-room-8">
+<h3>5.      Check if there is epcis  event related to Room 8<a class="headerlink" href="#check-if-there-is-epcis-event-related-to-room-8" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">During translation sample key is generated as follows
+<em>urn:epc:id:sgtin:88000269.[entityID]</em></p>
+</div>
+<p>EPCIS Query</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server</td>
+<td>[EPCIS ] localhost:8080</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>GET</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="http://localhost:8080/epcis/Service/Poll/SimpleEventQuery?MATCH_epc=urn:epc:id:sgtin:88000269.Room8">http://localhost:8080/epcis/Service/Poll/SimpleEventQuery?MATCH_epc=urn:epc:id:sgtin:88000269.Room8</a></td>
+</tr>
+<tr class="row-even"><td>Status</td>
+<td>200 OK</td>
+</tr>
+<tr class="row-odd"><td>Response</td>
+<td><p class="first">&lt;?xml version=”1.0” encoding=”UTF-8” standalone=”yes”?&gt;</p>
+<p>&lt;EPCISQueryDocumentType xmlns:ns2=”http://www.unece.org/cefact/namespaces</p>
+<p>/StandardBusinessDocumentHeader” xmlns:ns4=”urn:epcglobal:epcis:xsd:1”</p>
+<p>xmlns:ns3=”urn:epcglobal:epcis-query:xsd:1”&gt;</p>
+<blockquote>
+<div><p>&lt;EPCISBody&gt;</p>
+<blockquote>
+<div><p>&lt;ns3:QueryResults&gt;</p>
+<blockquote>
+<div><p>&lt;queryName&gt;SimpleEventQuery&lt;/queryName&gt;</p>
+<blockquote>
+<div><p>&lt;resultsBody&gt;</p>
+<blockquote>
+<div>&lt;EventList/&gt;</div></blockquote>
+<p>&lt;/resultsBody&gt;</p>
+</div></blockquote>
+</div></blockquote>
+<p>&lt;/ns3:QueryResults&gt;</p>
+</div></blockquote>
+<p>&lt;/EPCISBody&gt;</p>
+</div></blockquote>
+<p class="last">&lt;/EPCISQueryDocumentType&gt;</p>
+</td>
+</tr>
+<tr class="row-even"><td>Comment</td>
+<td>It returns empty event list</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="subscribe">
+<h3>6.      Subscribe<a class="headerlink" href="#subscribe" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server</td>
+<td>[FIWARE ] localhost:1026/v2</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>POST</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td>localhost:1026/v2/ subscriptions</td>
+</tr>
+<tr class="row-even"><td>Headers</td>
+<td>Content-Type: application/json</td>
+</tr>
+<tr class="row-odd"><td><p class="first">Sample</p>
+<p>subscription</p>
+<p class="last">body</p>
+</td>
+<td><p class="first">{</p>
+<blockquote class="last">
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>“description”: “A subscription to get info about Room8”,</p>
+<p>“subject”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“entities”: [</p>
+<blockquote>
+<div><blockquote>
+<div><p>{</p>
+<blockquote>
+<div><p>“id”: “Room8”,</p>
+<p>“type”: “Room”</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>],</p>
+<p>“condition”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“attrs”: [</p>
+<p>“pressure”,</p>
+<p>“temperature”</p>
+<p>]</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>},</p>
+</div></blockquote>
+</div></blockquote>
+<p>“notification”: {</p>
+<blockquote>
+<div><blockquote>
+<div><p>“http”: {</p>
+<p>“url”: “<a class="reference external" href="http://143.248.57.28:8081/Subscribe/Test/Room">http://143.248.57.28:8081/Subscribe/Test/Room</a>”</p>
+<p>},</p>
+<p>“attrs”: [</p>
+<blockquote>
+<div><blockquote>
+<div><p>“pressure”,</p>
+<p>“temperature”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+</div></blockquote>
+<p>},</p>
+</div></blockquote>
+</div></blockquote>
+<p>“expires”: “2040-01-01T14:00:00.00Z”,</p>
+<p>“throttling”: 5</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>Status</td>
+<td>201 Created</td>
+</tr>
+<tr class="row-odd"><td>Response</td>
+<td>{}</td>
+</tr>
+<tr class="row-even"><td>Comment</td>
+<td>Subscription to Entity Room8 is created</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="check-if-there-is-epcis-event-related-to-room-8-after-the-subscription">
+<h3>7.      Check if there is epcis  event related to Room 8 after the subscription<a class="headerlink" href="#check-if-there-is-epcis-event-related-to-room-8-after-the-subscription" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server</td>
+<td>[EPCIS ] localhost:8080</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>GET</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="http://localhost:8080/epcis/Service/Poll/SimpleEventQuery?MATCH_epc=urn:epc:id:sgtin:88000269.Room8">http://localhost:8080/epcis/Service/Poll/SimpleEventQuery?MATCH_epc=urn:epc:id:sgtin:88000269.Room8</a></td>
+</tr>
+<tr class="row-even"><td>Status</td>
+<td>200 OK</td>
+</tr>
+<tr class="row-odd"><td>Response</td>
+<td><p class="first">&lt;?xml version=”1.0” encoding=”UTF-8” standalone=”yes”?&gt;</p>
+<p>&lt;EPCISQueryDocumentType</p>
+<p>xmlns:ns2=”http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader”</p>
+<p>xmlns:ns4=”urn:epcglobal:epcis:xsd:1” xmlns:ns3=”urn:epcglobal:epcis-query:xsd:1”&gt;</p>
+<p>&lt;EPCISBody&gt;</p>
+<blockquote>
+<div><p>&lt;ns3:QueryResults&gt;</p>
+<blockquote>
+<div><p>&lt;queryName&gt;SimpleEventQuery&lt;/queryName&gt;</p>
+<p>&lt;resultsBody&gt;</p>
+<blockquote>
+<div><p>&lt;EventList&gt;</p>
+<blockquote>
+<div><p>&lt;ObjectEvent&gt;</p>
+<blockquote>
+<div><p>&lt;eventTime&gt;2018-08-28T17:22:09.363Z&lt;/eventTime&gt;</p>
+<p>&lt;recordTime&gt;2018-08-28T17:22:09.417Z&lt;/recordTime&gt;</p>
+<p>&lt;eventTimeZoneOffset&gt;-05:00&lt;/eventTimeZoneOffset&gt;</p>
+<p>&lt;baseExtension&gt;</p>
+<blockquote>
+<div>&lt;eventID&gt;4829cb2a-97a9-43fd-bf31-fb0374a7c792&lt;/eventID&gt;</div></blockquote>
+<p>&lt;/baseExtension&gt;</p>
+<p>&lt;epcList&gt;</p>
+<blockquote>
+<div>&lt;epc&gt;urn:epc:id:sgtin:88000269.Room8&lt;/epc&gt;</div></blockquote>
+<p>&lt;/epcList&gt;</p>
+<p>&lt;action&gt;OBSERVE&lt;/action&gt;</p>
+<p>&lt;bizStep&gt;urn:epcglobal:cbv:bizstep:driving&lt;/bizStep&gt;</p>
+<p>&lt;disposition&gt;urn:epcglobal:cbv:disp:on_the line&lt;/disposition&gt;</p>
+<p>&lt;readPoint&gt;</p>
+<blockquote>
+<div>&lt;id&gt;urn:epc:id:sgln:8800026900016.Room8&lt;/id&gt;</div></blockquote>
+<p>&lt;/readPoint&gt;</p>
+<p>&lt;bizLocation&gt;</p>
+<blockquote>
+<div>&lt;id&gt;urn:epc:id:sgln:8800026900016.103.Room8&lt;/id&gt;</div></blockquote>
+<p>&lt;/bizLocation&gt;</p>
+<p>&lt;bizTransactionList&gt;</p>
+<blockquote>
+<div><p>&lt;bizTransaction type=”<a class="reference external" href="urn:epcglobal:cbv:Bus:status">urn:epcglobal:cbv:Bus:status</a>”&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><a class="reference external" href="http://transaction.acme.com/po/urn:epcglobal:cbv:bizstep:Sensing">http://transaction.acme.com/po/urn:epcglobal:cbv:bizstep:Sensing</a></div></blockquote>
+<p>&lt;/bizTransaction&gt;</p>
+</div></blockquote>
+</div></blockquote>
+<p>&lt;/bizTransactionList&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/id”&gt;Room8&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/type”&gt;Room&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature”&gt;</p>
+<blockquote>
+<div><p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature/type”&gt;Float</p>
+<p>&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature/value”&gt;28.0</p>
+<p>&lt;/oliot:Fiware&gt;</p>
+</div></blockquote>
+<p>&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/Pressure”&gt;</p>
+<blockquote>
+<div><p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/Pressure/type”&gt;Float</p>
+<p>&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/pressure/value”&gt;28.0</p>
+<p>&lt;/oliot:Fiware&gt;</p>
+</div></blockquote>
+<p>&lt;/oliot:Fiware&gt;</p>
+</div></blockquote>
+<p>&lt;/ObjectEvent&gt;</p>
+</div></blockquote>
+<p>&lt;/EventList&gt;</p>
+</div></blockquote>
+<p>&lt;/resultsBody&gt;</p>
+</div></blockquote>
+<p>&lt;/ns3:QueryResults&gt;</p>
+</div></blockquote>
+<p>&lt;/EPCISBody&gt;</p>
+<p class="last">&lt;/EPCISQueryDocumentType&gt;</p>
+</td>
+</tr>
+<tr class="row-even"><td>Comment</td>
+<td>One event is returned</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="update-any-value-of-the-room">
+<h3>8.      Update any value of the Room<a class="headerlink" href="#update-any-value-of-the-room" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server</td>
+<td>[FIWARE ] localhost:1026/v2</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>PATCH</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td>localhost:1026/v2/entities/Room8/attrs</td>
+</tr>
+<tr class="row-even"><td>Headers</td>
+<td>Accept: application/json</td>
+</tr>
+<tr class="row-odd"><td>Content-Type:</td>
+<td>application/json</td>
+</tr>
+<tr class="row-even"><td>Body</td>
+<td><p class="first">{</p>
+<blockquote class="last">
+<div><p>“pressure”: {</p>
+<p>”        “type”: “Integer”,</p>
+<p>”        “value”: 123,</p>
+<p>”        “metadata”: {}</p>
+<p>”    },</p>
+<p>”    “temperature”: {</p>
+<p>”        “type”: “Float”,</p>
+<p>”        “value”: 40,</p>
+<p>”        “metadata”: {}</p>
+<p>”    }</p>
+<p>“}</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>Status</td>
+<td>204 No Content</td>
+</tr>
+<tr class="row-even"><td>Comment</td>
+<td>Temperature value of Entity Room8 is updated to 40</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="check-if-there-are-two-room8-events-are-created-in-epcis">
+<h3>9.      Check if there are two Room8 events are created in epcis<a class="headerlink" href="#check-if-there-are-two-room8-events-are-created-in-epcis" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server</td>
+<td>[EPCIS ] localhost:8080</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>GET</td>
+</tr>
+<tr class="row-odd"><td>URL</td>
+<td><a class="reference external" href="http://localhost:8080/epcis/Service/Poll/SimpleEventQuery?MATCH_epc=urn:epc:id:sgtin:88000269.Room8">http://localhost:8080/epcis/Service/Poll/SimpleEventQuery?MATCH_epc=urn:epc:id:sgtin:88000269.Room8</a></td>
+</tr>
+<tr class="row-even"><td>Status</td>
+<td>200 OK</td>
+</tr>
+<tr class="row-odd"><td>Response</td>
+<td><p class="first">&lt;?xml version=”1.0” encoding=”UTF-8” standalone=”yes”?&gt;</p>
+<p>&lt;EPCISQueryDocumentType</p>
+<blockquote>
+<div><p>xmlns:ns2=”http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader”</p>
+<p>xmlns:ns4=”urn:epcglobal:epcis:xsd:1” xmlns:ns3=”urn:epcglobal:epcis-query:xsd:1”&gt;</p>
+<blockquote>
+<div><p>&lt;EPCISBody&gt;</p>
+<blockquote>
+<div><p>&lt;ns3:QueryResults&gt;</p>
+<blockquote>
+<div><p>&lt;queryName&gt;SimpleEventQuery&lt;/queryName&gt;</p>
+<p>&lt;resultsBody&gt;</p>
+<blockquote>
+<div><p>&lt;EventList&gt;</p>
+<blockquote>
+<div><p>&lt;ObjectEvent&gt;</p>
+<blockquote>
+<div><p>&lt;eventTime&gt;2018-08-28T17:22:09.363Z&lt;/eventTime&gt;</p>
+<p>&lt;recordTime&gt;2018-08-28T17:22:09.417Z&lt;/recordTime&gt;</p>
+<p>&lt;eventTimeZoneOffset&gt;-05:00&lt;/eventTimeZoneOffset&gt;</p>
+<p>&lt;baseExtension&gt;</p>
+<blockquote>
+<div>&lt;eventID&gt;4829cb2a-97a9-43fd-bf31-fb0374a7c792&lt;/eventID&gt;</div></blockquote>
+<p>&lt;/baseExtension&gt;</p>
+<p>&lt;epcList&gt;</p>
+<blockquote>
+<div>&lt;epc&gt;urn:epc:id:sgtin:88000269.Room8&lt;/epc&gt;</div></blockquote>
+<p>&lt;/epcList&gt;</p>
+<p>&lt;action&gt;OBSERVE&lt;/action&gt;</p>
+<p>&lt;bizStep&gt;urn:epcglobal:cbv:bizstep:driving&lt;/bizStep&gt;</p>
+<p>&lt;disposition&gt;urn:epcglobal:cbv:disp:on_the line&lt;/disposition&gt;</p>
+<p>&lt;readPoint&gt;</p>
+<blockquote>
+<div>&lt;id&gt;urn:epc:id:sgln:8800026900016.Room8&lt;/id&gt;</div></blockquote>
+<p>&lt;/readPoint&gt;</p>
+<p>&lt;bizLocation&gt;</p>
+<blockquote>
+<div>&lt;id&gt;urn:epc:id:sgln:8800026900016.103.Room8&lt;/id&gt;</div></blockquote>
+<p>&lt;/bizLocation&gt;</p>
+<p>&lt;bizTransactionList&gt;</p>
+<blockquote>
+<div><p>&lt;bizTransaction type=”<a class="reference external" href="urn:epcglobal:cbv:Bus:status">urn:epcglobal:cbv:Bus:status</a>”&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><a class="reference external" href="http://transaction.acme.com/po/urn:epcglobal:bizstep:Sensing">http://transaction.acme.com/po/urn:epcglobal:bizstep:Sensing</a></div></blockquote>
+<p>&lt;/bizTransaction&gt;</p>
+</div></blockquote>
+</div></blockquote>
+<p>&lt;/bizTransactionList&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/id”&gt;Room8&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/type”&gt;Room&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature”&gt;</p>
+<blockquote>
+<div><p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature/type”&gt;</p>
+<blockquote>
+<div>Float&lt;/oliot:Fiware&gt;</div></blockquote>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature/value”&gt;</p>
+<blockquote>
+<div>28.0&lt;/oliot:Fiware&gt;</div></blockquote>
+</div></blockquote>
+<p>&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/Pressure”&gt;</p>
+<blockquote>
+<div><p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/Pressure/type”&gt;</p>
+<blockquote>
+<div>Float&lt;/oliot:Fiware&gt;</div></blockquote>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/pressure/value”&gt;</p>
+<blockquote>
+<div>28.0&lt;/oliot:Fiware&gt;</div></blockquote>
+</div></blockquote>
+<p>&lt;/oliot:Fiware&gt;</p>
+</div></blockquote>
+<p>&lt;/ObjectEvent&gt;</p>
+<p>&lt;ObjectEvent&gt;</p>
+<blockquote>
+<div><p>&lt;eventTime&gt;2018-08-28T17:32:24.632Z&lt;/eventTime&gt;</p>
+<p>&lt;recordTime&gt;2018-08-28T17:32:24.689Z&lt;/recordTime&gt;</p>
+<p>&lt;eventTimeZoneOffset&gt;-05:00&lt;/eventTimeZoneOffset&gt;</p>
+<p>&lt;baseExtension&gt;</p>
+<blockquote>
+<div>&lt;eventID&gt;13baa91d-44ac-4a9e-a7ac-b10d6a10a464&lt;/eventID&gt;</div></blockquote>
+<p>&lt;/baseExtension&gt;</p>
+<p>&lt;epcList&gt;</p>
+<blockquote>
+<div>&lt;epc&gt;urn:epc:id:sgtin:88000269.Room8&lt;/epc&gt;</div></blockquote>
+<p>&lt;/epcList&gt;</p>
+<p>&lt;action&gt;OBSERVE&lt;/action&gt;</p>
+<p>&lt;bizStep&gt;urn:epcglobal:cbv:bizstep:driving&lt;/bizStep&gt;</p>
+<p>&lt;disposition&gt;urn:epcglobal:cbv:disp:on_the line&lt;/disposition&gt;</p>
+<p>&lt;readPoint&gt;</p>
+<blockquote>
+<div>&lt;id&gt;urn:epc:id:sgln:8800026900016.Room8&lt;/id&gt;</div></blockquote>
+<p>&lt;/readPoint&gt;</p>
+<p>&lt;bizLocation&gt;</p>
+<blockquote>
+<div>&lt;id&gt;urn:epc:id:sgln:8800026900016.103.Room8&lt;/id&gt;</div></blockquote>
+<p>&lt;/bizLocation&gt;</p>
+<p>&lt;bizTransactionList&gt;</p>
+<blockquote>
+<div><p>&lt;bizTransaction type=”<a class="reference external" href="urn:epcglobal:cbv:Bus:status">urn:epcglobal:cbv:Bus:status</a>”&gt;</p>
+<blockquote>
+<div><a class="reference external" href="http://transaction.acme.com/po/urn:epcglobal:cbv:bizstep:Sensing">http://transaction.acme.com/po/urn:epcglobal:cbv:bizstep:Sensing</a></div></blockquote>
+<p>&lt;/bizTransaction&gt;</p>
+</div></blockquote>
+<p>&lt;/bizTransactionList&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/id”&gt;Room8&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/type”&gt;Room&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature”&gt;</p>
+<blockquote>
+<div><p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature/type”&gt;</p>
+<blockquote>
+<div>Float&lt;/oliot:Fiware&gt;</div></blockquote>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/temprature/value”&gt;</p>
+<blockquote>
+<div>40.0&lt;/oliot:Fiware&gt;</div></blockquote>
+</div></blockquote>
+<p>&lt;/oliot:Fiware&gt;</p>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/Pressure”&gt;</p>
+<blockquote>
+<div><p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/Pressure/type”&gt;</p>
+<blockquote>
+<div>Float&lt;/oliot:Fiware&gt;</div></blockquote>
+<p>&lt;oliot:Fiware xmlns:oliot=”http://ns.oliot.com/pressure/value”&gt;</p>
+<blockquote>
+<div>40.0&lt;/oliot:Fiware&gt;</div></blockquote>
+</div></blockquote>
+<p>&lt;/oliot:Fiware&gt;</p>
+</div></blockquote>
+<p>&lt;/ObjectEvent&gt;</p>
+</div></blockquote>
+<p>&lt;/EventList&gt;</p>
+</div></blockquote>
+<p>&lt;/resultsBody&gt;</p>
+</div></blockquote>
+<p>&lt;/ns3:QueryResults&gt;</p>
+</div></blockquote>
+<p>&lt;/EPCISBody&gt;</p>
+</div></blockquote>
+</div></blockquote>
+<p class="last">&lt;/EPCISQueryDocumentType&gt;</p>
+</td>
+</tr>
+<tr class="row-even"><td>Comment</td>
+<td>One event is returned</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gs1-key-proposal-for-farming">
+<h3>GS1 Key proposal for farming<a class="headerlink" href="#gs1-key-proposal-for-farming" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/ID.png" src="_images/ID.png" />
+<div class="section" id="fiware-data-models-schema-for-farm">
+<h4>FIWARE data models schema for farm<a class="headerlink" href="#fiware-data-models-schema-for-farm" title="Permalink to this headline">¶</a></h4>
+<p>Farm Entity</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://resl.com/farm.schema.json&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-07/schema#&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Farm&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;farmId&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the id of the Farm Entity (the &lt;farmId&gt; contained in the EntityId)&quot;</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Farm&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Entity Type&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the address of the farm&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the name of the farm&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ownerCompany&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the name of the company that owns the farm&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+        <span class="nt">&quot;farmId&quot;</span><span class="p">:</span><span class="s2">&quot;urn:entity:farm:&lt;farmID&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Farm&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="s2">&quot;La Cañada 04120 Almería Spain&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Greenhouse agriculture&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ownerCompany&quot;</span><span class="p">:</span><span class="s2">&quot;Maria&quot;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Building Entity</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://resl.com/farm.schema.json&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-07/schema#&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Building&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;buildingId&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the id of the Building Entity (the &lt;buildingId&gt; contained in the EntityId attribute)&quot;</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Building&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Entity Type&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the name of the building&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;lastUpdate&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;DateTime&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the timestamp of the last update&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;farmId&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the id of the Farm in which the Building is located (the farmId)&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the last value of the temperature registered within the Building&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{</span>
+           <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#DegreeCelsius&quot;</span>
+                <span class="p">}</span>
+          <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the last value of the humidity registered within the Building&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{</span>
+           <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Humidity&quot;</span>
+                <span class="p">}</span>
+          <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;luminosity&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the last value of the luminosity registered within the Building&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{</span>
+           <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LuminousIntensity&quot;</span>
+                <span class="p">}</span>
+          <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+        <span class="nt">&quot;buildingId&quot;</span><span class="p">:</span><span class="s2">&quot;urn:entity:building:&lt;buildingId&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Building&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;La Cañada 04120 Almería Spain&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;lastUpdate&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ISO8601&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-08-22T05:10:58.00Z&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;farmId&quot;</span><span class="p">:</span><span class="s2">&quot;urn:entity:farm:&lt;farmID&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;temperature&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mf">37.6</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#DegreeCelsius&quot;</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;humidity&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Humidity&quot;</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;luminosity&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#LuminousIntensity&quot;</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Pen Entity</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://resl.com/farm.schema.json&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-07/schema#&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Pig&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;pigId&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the id of the Pig Entity (the &lt;pigId&gt; contained in the EntityId attribute)&quot;</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Pig&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Entity Type&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;serialNumber&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;If a serial number is assigned to the pig by the farm, this field contains such a value&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;lastUpdate&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;DateTime&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the timestamp of the last update&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;penId&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the id of the Farm in which the pen is located (the penId)&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;weight&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;It represents the current weight of the pig (the last measured value)&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{</span>
+           <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram&quot;</span>
+                <span class="p">}</span>
+          <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;totalConsumedWater&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;it represents the amount of water that was consumed between the moment in</span>
+<span class="s2">                                        which the pig started to drink and the current moment (e.g., if the pig started</span>
+<span class="s2">                                        to drink 2 minutes ago and is continuing to drink, this value contains the</span>
+<span class="s2">                                        total amount of water that the pig drunk since 2 minutes ago)&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{</span>
+           <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Litre&quot;</span>
+                <span class="p">}</span>
+          <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;totalConsumedFood&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;it represents the amount of food that was consumed between the moment</span>
+<span class="s2">                                                in which the pig started to eat and the current moment (e.g., if the</span>
+<span class="s2">                                                pig started to eat 2 minutes ago and is continuing to eat, this value</span>
+<span class="s2">                                                contains the total amount of food that the pig ate since 2 minutes ago)&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;metadata&quot;</span><span class="p">:{</span>
+           <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram&quot;</span>
+                <span class="p">}</span>
+          <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+        <span class="nt">&quot;pigId&quot;</span><span class="p">:</span><span class="s2">&quot;urn:entity:pig:&lt;pigId&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Pig&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;serialNumber&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;8764321000003&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;lastUpdate&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ISO8601&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-08-22T05:10:58.00Z&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;penId&quot;</span><span class="p">:</span><span class="s2">&quot;urn:entity:pen:&lt;penId&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;weight&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mf">37.6</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram&quot;</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;totalConsumedWater&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Litre&quot;</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;totalConsumedFood&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Float&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+            <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;uom&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://ontology.fiesta-iot.eu/ontologyDocs/m3-lite.owl#Kilogram&quot;</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Yalew Kidane
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
