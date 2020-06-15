@@ -2,6 +2,7 @@
 
 [![FIWARE Third Party](https://nexus.lab.fiware.org/static/badges/chapters/third-party.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: Apache](https://img.shields.io/github/license/yalewkidane/FIWARE_EPCIS_Mediation_Gateway.svg)](https://opensource.org/licenses/Apache-2.0)
+[![SOF support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/fiware.svg)](http://stackoverflow.com/questions/tagged/fiware)
 <br/>
 [![Documentation badge](https://img.shields.io/readthedocs/fiware-epcis-gateway.svg)](https://fiware-epcis-gateway.readthedocs.io/en/latest/?badge=latest)
 ![Status](https://nexus.lab.fiware.org/static/badges/statuses/incubating.svg)
