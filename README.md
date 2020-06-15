@@ -14,8 +14,8 @@
 This project is part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for
 [Third Party Tools](https://github.com/Fiware/catalogue/tree/master/third-party).
 
-| :books: [Documentation](https://fiware-epcis-gateway.io) |
-| -------------------------------------------------------- |
+| :books: [Documentation](https://fiware-epcis-gateway.readthedocs.io) |
+| -------------------------------------------------------------------- |
 
 ## Contents
 
