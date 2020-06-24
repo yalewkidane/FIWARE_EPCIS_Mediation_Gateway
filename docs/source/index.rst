@@ -6,6 +6,31 @@
 FIWARE EPCIS Mediation Gateway
 ==============================
 
+  |FIWAREThirdParty|_
+  |License|_
+  |OFSupportBadge|_ 
+
+  |DocumentationBadge|_
+  |Status|_
+
+.. |FIWAREThirdParty| image:: https://nexus.lab.fiware.org/static/badges/chapters/third-party.svg
+.. _FIWAREThirdParty: https://www.fiware.org/developers/catalogue/
+
+.. |License| image:: https://img.shields.io/github/license/yalewkidane/FIWARE_EPCIS_Mediation_Gateway.svg
+.. _License: https://opensource.org/licenses/Apache-2.0
+
+.. |OFSupportBadge| image:: https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/fiware.svg
+.. _OFSupportBadge: http://stackoverflow.com/questions/tagged/fiware
+
+
+
+.. |DocumentationBadge| image:: https://img.shields.io/readthedocs/fiware-epcis-gateway.svg
+.. _DocumentationBadge: https://opensource.org/licenses/Apache-2.0
+
+.. |Status| image:: https://nexus.lab.fiware.org/static/badges/statuses/incubating.svg
+.. _Status: https://nexus.lab.fiware.org/static/badges/statuses/incubating.svg
+
+
 Oliot-MG is a mediation gateway which translates information from NGSI based IoT platform to EPCIS based IoT platform. This enables capturing state change in FIWARE context broker in the form of EPCIS Event.
 
 .. image:: ../img/FIware_EPCIS_Mediation_Gateway.png

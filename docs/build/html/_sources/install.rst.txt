@@ -7,7 +7,7 @@ Install
 
 Install FIWARE server 
 -----------------------
-Use the following page to install FIWARE: `FIWARE Insatall <https://github.com/telefonicaid/fiware-orion/blob/master/doc/manuals/admin/yum.md>`_
+Use the following page to install FIWARE: `FIWARE Install <https://github.com/telefonicaid/fiware-orion/blob/master/doc/manuals/admin/yum.md>`_
 
 Install EPCIS server 
 ----------------------
