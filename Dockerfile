@@ -82,6 +82,8 @@ LABEL "org.opencontainers.image.title"="Oliot-MG (FIWARE EPCIS Mediation Gateway
 LABEL "org.opencontainers.image.description"="Oliot-MG is a mediation gateway which translates information from NGSI based IoT platform to EPCIS based IoT platform. This enables capturing state change in FIWARE context broker in the form of EPCIS Event."
 LABEL "org.opencontainers.image.source"="https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}"
 LABEL "com.java.version"="${JAVA_VERSION}"
+
+COPY --from=anon-user /etc/passwd /etc/shadow /etc/group /etc/
 COPY --from=builder /fiware_oiliot_mediation.jar /app/fiware_oiliot_mediation.jar
 WORKDIR /app
 
