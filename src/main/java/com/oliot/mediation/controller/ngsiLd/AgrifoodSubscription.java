@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+//import com.google.gson.Gson;
+//import com.google.gson.GsonBuilder;
+import com.oliot.mediation.service.ngsild.MasterDataFactory.agrifood.AgrifoodMasterDataProcessor;
 import com.oliot.mediation.service.ngsild.eventFactory.agrifood.AgrifoodEventProcessor;
 import com.oliot.model.ngsi_ld.Agrifood.Animal;
 import com.oliot.model.ngsi_ld.Subscriptions.AnimalSubscription;
-import com.oliot.model.ngsi_ld.Subscriptions.RoomSubscription;
 
 
 
@@ -25,7 +25,7 @@ public class AgrifoodSubscription {
 	@ResponseBody
 	public void SubscribeAnimal(@RequestBody String body){
 		System.out.println(body);
-		AnimalSubscription animalSubscription = new AnimalSubscription();
+		//AnimalSubscription animalSubscription = new AnimalSubscription();
 		if(body!=null) {
 			//Gson gson = new GsonBuilder().serializeNulls().create();
 			//roomSubscription = gson.fromJson(body, RoomSubscription.class); 
@@ -53,106 +53,129 @@ public class AgrifoodSubscription {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-//			Gson gson = new GsonBuilder().serializeNulls().create();
-//			animalSubscription = gson.fromJson(body, AnimalSubscription.class); 
-			
-			
-			//System.out.println(roomSubscription.getNotifiedAt());
-			//room = (Room) gson.fromJson(body, Subscribition.class).getData()[0];
-			//System.out.println("****");
-			//System.out.println(gson.fromJson(body, Subscribition.class).getData()[0]);
-			//System.out.println(animalSubscription.getId());
 		}
 	}
 	@RequestMapping(value="/ngsi-ld/Subscribe/Animal/CalvedBy", method = RequestMethod.POST)
 	@ResponseBody
 	public void SubscribeAnimalCalvedBy(@RequestBody String body){
+		System.out.println("/ngsi-ld/Subscribe/Animal/PhenologicalCondition");
 		System.out.println(body);
 		AnimalSubscription animalSubscription = new AnimalSubscription();
 		if(body!=null) {
-			Gson gson = new GsonBuilder().serializeNulls().create();
-			animalSubscription = gson.fromJson(body, AnimalSubscription.class); 
-			//System.out.println(roomSubscription.getNotifiedAt());
-			//room = (Room) gson.fromJson(body, Subscribition.class).getData()[0];
-			//System.out.println("****");
-			//System.out.println(gson.fromJson(body, Subscribition.class).getData()[0]);
-			System.out.println(animalSubscription.getId());
+			ObjectMapper om = new ObjectMapper();
+			try {
+				animalSubscription = om.readValue(body, AnimalSubscription.class);
+				List<Animal> animals = animalSubscription.getData();
+				AgrifoodMasterDataProcessor agrifoodMDP = new AgrifoodMasterDataProcessor();
+				String status = agrifoodMDP.animalMasterData(animals);
+				System.out.println(status);
+				AgrifoodEventProcessor agrifoodEP = new AgrifoodEventProcessor();
+				status = agrifoodEP.calve(animals);
+				System.out.println(status);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	@RequestMapping(value="/ngsi-ld/Subscribe/Animal/Weight", method = RequestMethod.POST)
 	@ResponseBody
 	public void SubscribeAnimalWeight(@RequestBody String body){
+		System.out.println("/ngsi-ld/Subscribe/Animal/Weight");
 		System.out.println(body);
 		AnimalSubscription animalSubscription = new AnimalSubscription();
 		if(body!=null) {
-			Gson gson = new GsonBuilder().serializeNulls().create();
-			animalSubscription = gson.fromJson(body, AnimalSubscription.class); 
-			//System.out.println(roomSubscription.getNotifiedAt());
-			//room = (Room) gson.fromJson(body, Subscribition.class).getData()[0];
-			//System.out.println("****");
-			//System.out.println(gson.fromJson(body, Subscribition.class).getData()[0]);
-			System.out.println(animalSubscription.getId());
+			ObjectMapper om = new ObjectMapper();
+			try {
+				animalSubscription = om.readValue(body, AnimalSubscription.class);
+				List<Animal> animals = animalSubscription.getData();
+				AgrifoodEventProcessor agrifoodEP = new AgrifoodEventProcessor();
+				String status = agrifoodEP.growthEvent(animals);
+				System.out.println(status);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	@RequestMapping(value="/ngsi-ld/Subscribe/Animal/LocatedAt", method = RequestMethod.POST)
 	@ResponseBody
 	public void SubscribeAnimalLocatedAt(@RequestBody String body){
+		System.out.println("/ngsi-ld/Subscribe/Animal/LocatedAt");
 		System.out.println(body);
 		AnimalSubscription animalSubscription = new AnimalSubscription();
 		if(body!=null) {
-			Gson gson = new GsonBuilder().serializeNulls().create();
-			animalSubscription = gson.fromJson(body, AnimalSubscription.class); 
-			//System.out.println(roomSubscription.getNotifiedAt());
-			//room = (Room) gson.fromJson(body, Subscribition.class).getData()[0];
-			//System.out.println("****");
-			//System.out.println(gson.fromJson(body, Subscribition.class).getData()[0]);
-			System.out.println(animalSubscription.getId());
+			ObjectMapper om = new ObjectMapper();
+			try {
+				animalSubscription = om.readValue(body, AnimalSubscription.class);
+				List<Animal> animals = animalSubscription.getData();
+				AgrifoodEventProcessor agrifoodEP = new AgrifoodEventProcessor();
+				String status = agrifoodEP.transportation(animals);
+				System.out.println(status);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	@RequestMapping(value="/ngsi-ld/Subscribe/Animal/OwnedBy", method = RequestMethod.POST)
 	@ResponseBody
 	public void SubscribeAnimalOwnedBy(@RequestBody String body){
+		System.out.println("/ngsi-ld/Subscribe/Animal/OwnedBy");
 		System.out.println(body);
 		AnimalSubscription animalSubscription = new AnimalSubscription();
 		if(body!=null) {
-			Gson gson = new GsonBuilder().serializeNulls().create();
-			animalSubscription = gson.fromJson(body, AnimalSubscription.class); 
-			//System.out.println(roomSubscription.getNotifiedAt());
-			//room = (Room) gson.fromJson(body, Subscribition.class).getData()[0];
-			//System.out.println("****");
-			//System.out.println(gson.fromJson(body, Subscribition.class).getData()[0]);
-			System.out.println(animalSubscription.getId());
+			ObjectMapper om = new ObjectMapper();
+			try {
+				animalSubscription = om.readValue(body, AnimalSubscription.class);
+				List<Animal> animals = animalSubscription.getData();
+				AgrifoodEventProcessor agrifoodEP = new AgrifoodEventProcessor();
+				String status = agrifoodEP.transaction(animals);
+				System.out.println(status);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	@RequestMapping(value="/ngsi-ld/Subscribe/Animal/PhenologicalCondition", method = RequestMethod.POST)
 	@ResponseBody
 	public void SubscribeAnimalPhenologicalCondition(@RequestBody String body){
+		System.out.println("/ngsi-ld/Subscribe/Animal/PhenologicalCondition");
 		System.out.println(body);
 		AnimalSubscription animalSubscription = new AnimalSubscription();
 		if(body!=null) {
-			Gson gson = new GsonBuilder().serializeNulls().create();
-			animalSubscription = gson.fromJson(body, AnimalSubscription.class); 
-			//System.out.println(roomSubscription.getNotifiedAt());
-			//room = (Room) gson.fromJson(body, Subscribition.class).getData()[0];
-			//System.out.println("****");
-			//System.out.println(gson.fromJson(body, Subscribition.class).getData()[0]);
-			System.out.println(animalSubscription.getId());
+			ObjectMapper om = new ObjectMapper();
+			try {
+				animalSubscription = om.readValue(body, AnimalSubscription.class);
+				List<Animal> animals = animalSubscription.getData();
+				AgrifoodEventProcessor agrifoodEP = new AgrifoodEventProcessor();
+				String status = agrifoodEP.phenology(animals);
+				System.out.println(status);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	@RequestMapping(value="/ngsi-ld/Subscribe/Animal/ReproductiveCondition", method = RequestMethod.POST)
 	@ResponseBody
 	public void SubscribeAnimalReproductiveCondition(@RequestBody String body){
+		System.out.println("/ngsi-ld/Subscribe/Animal/ReproductiveCondition");
 		System.out.println(body);
 		AnimalSubscription animalSubscription = new AnimalSubscription();
 		if(body!=null) {
-			Gson gson = new GsonBuilder().serializeNulls().create();
-			animalSubscription = gson.fromJson(body, AnimalSubscription.class); 
-			//System.out.println(roomSubscription.getNotifiedAt());
-			//room = (Room) gson.fromJson(body, Subscribition.class).getData()[0];
-			//System.out.println("****");
-			//System.out.println(gson.fromJson(body, Subscribition.class).getData()[0]);
-			System.out.println(animalSubscription.getId());
+			ObjectMapper om = new ObjectMapper();
+			try {
+				animalSubscription = om.readValue(body, AnimalSubscription.class);
+				List<Animal> animals = animalSubscription.getData();
+				AgrifoodEventProcessor agrifoodEP = new AgrifoodEventProcessor();
+				String status = agrifoodEP.breading(animals);
+				System.out.println(status);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	@RequestMapping(value="/ngsi-ld/Subscribe/Animal/HealthCondition", method = RequestMethod.POST)
@@ -175,6 +198,7 @@ public class AgrifoodSubscription {
 			}
 		}
 	}
+	
 	
 	
 	
