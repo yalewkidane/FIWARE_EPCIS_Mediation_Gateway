@@ -41,6 +41,9 @@ public class CaptureUtility implements HostnameVerifier{
 	public static int registerEPCIS(String data) {
 
 		String url = "http://" + Configuration.epcisURL + "/epcis/Service/EventCapture";
+		
+		System.out.println("epcis url : "+ url);
+		
 
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(url);

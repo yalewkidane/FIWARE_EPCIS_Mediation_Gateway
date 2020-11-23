@@ -20,7 +20,7 @@ import redis.clients.jedis.Jedis;
 
 public class Configuration {
 	public static String fiwareURL="143.248.57.28:1026";
-	public static String epcisURL="143.248.55.183:8080";
+	public static String epcisURL="localhost:8080";//"143.248.55.183:8080";
 	public static String mediationGatewayPort="8081";//"8092";8081
 	public static String mediationGatewayURL="127.0.0.1:8081";
 	public static Logger logger;
@@ -54,7 +54,7 @@ public class Configuration {
 		setLogger();
 		
 		// set  Login page 
-		setServerURL();
+		//setServerURL();
 		
 	}
 	
