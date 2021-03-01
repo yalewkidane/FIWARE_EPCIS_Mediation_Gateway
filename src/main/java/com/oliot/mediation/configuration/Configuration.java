@@ -54,7 +54,7 @@ public class Configuration {
 		setLogger();
 		
 		// set  Login page 
-		//setServerURL();
+		setServerURL();
 		
 	}
 	

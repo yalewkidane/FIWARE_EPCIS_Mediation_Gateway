@@ -3,6 +3,7 @@ org/gs1/epcglobal/epcis/QuantityEventType.class
 com/oliot/model/epcis/SubscriptionControlsExtensionType.class
 com/oliot/model/epcis/EPCListType.class
 com/oliot/model/ngsi_ld/Subscriptions/RoomSubscription.class
+com/oliot/mediation/service/ngsild/MasterDataFactory/agrifood/AgrifoodMasterDataProcessor.class
 com/oliot/model/epcis/ReadPointExtensionType.class
 com/oliot/model/fiware/Parking/ParkingAccess.class
 com/oliot/model/fiware/core/AddressAttr.class
@@ -33,6 +34,7 @@ com/oliot/model/fiware/StreetLighting/StreetlightControlCabinet.class
 com/oliot/model/fiware/ParksAndGardens/GreenspaceRecord.class
 com/oliot/model/epcis/QueryTooLargeException.class
 com/oliot/model/epcis/BusinessTransactionType.class
+com/oliot/mediation/service/epcis/EPCISVocabularyMarshaller.class
 org/gs1/epcglobal/epcis/VocabularyElementListType.class
 com/oliot/model/epcis/QueryResultsExtensionType.class
 com/oliot/model/epcis/EPCISQueryDocumentExtensionType.class
@@ -181,6 +183,7 @@ com/oliot/mediation/controller/ngsiLd/AgrifoodSubscription.class
 com/oliot/model/epcis/AggregationEventExtension2Type.class
 com/oliot/model/epcis/ObjectEventExtensionType.class
 org/unece/cefact/namespaces/standardbusinessdocumentheader/ManifestItem.class
+com/oliot/mediation/service/epcis/MasterDataManager.class
 com/oliot/model/epcis/EPCISBodyType.class
 org/unece/cefact/namespaces/standardbusinessdocumentheader/Manifest.class
 com/oliot/model/epcis/Unsubscribe.class

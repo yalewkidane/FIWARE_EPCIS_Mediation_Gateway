@@ -477,6 +477,8 @@ http://143.248.57.28:8080/epcis/Service/Poll/SimpleEventQuery?MATCH_epc=urn:epc:
 			theUrl = "http://" + ip + "/Post?url="+URL;
 			var xmlHttp = new XMLHttpRequest();
 			xmlHttp.open("POST", theUrl, false); // false for synchronous requestddd
+			request.setRequestHeader('Content-Type', 'application/ld+json');
+			alert(theUrl);
 			var body = document.getElementById(bodyTextAreaID).value;
 			xmlHttp.send(body);
 			var response = xmlHttp.responseText;

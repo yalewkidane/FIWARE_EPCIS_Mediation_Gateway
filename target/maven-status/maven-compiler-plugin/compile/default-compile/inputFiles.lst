@@ -7,6 +7,7 @@
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/epcis/EPCISQueryDocumentType.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/mediation/service/epcis/EventDataManager.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/mediation/service/epcis/CaptureUtility.java
+/root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/mediation/service/epcis/MasterDataManager.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/org/gs1/epcglobal/epcis/package-info.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/epcis/Document.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/epcis/TransformationEventType.java
@@ -19,6 +20,7 @@
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/epcis/TransactionEventExtension2Type.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/ngsi_ld/Agrifood/PhenologicalCondition.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/org/gs1/epcglobal/epcis/EPCISHeaderType.java
+/root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/mediation/service/ngsild/MasterDataFactory/agrifood/AgrifoodMasterDataProcessor.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/epcis/EPCISQueryBodyType.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/epcis/EmptyParms.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/org/unece/cefact/namespaces/standardbusinessdocumentheader/Manifest.java
@@ -272,6 +274,7 @@
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/org/gs1/epcglobal/epcis/VocabularyElementListType.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/org/gs1/epcglobal/epcis/EPCISEventType.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/fiware/Transportation/Road.java
+/root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/mediation/service/epcis/EPCISVocabularyMarshaller.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/com/oliot/model/fiware/Environment/AeroAllergenObserved.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/org/gs1/epcglobal/epcis/BusinessTransactionListType.java
 /root/Documents/Temp/FIWARE_EPCIS_Mediation_Gateway/src/main/java/org/gs1/epcglobal/epcis/AggregationEventType.java
