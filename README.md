@@ -46,6 +46,10 @@ docker run -p 8081:8081 fiware_oiliot_mediation
 ## Usage
 
 Detail information about how to use the mediation gatway is provide in [FIWARE-EPCIS MEDIATION GATEWAY DEVELOPER GUIDE](./src/main/resources/templates/Guide.pdf)
+### Paper
+[Towards Interoperability of Entity-Based and Event-Based IoT Platforms: The Case of NGSI and EPCIS Standards](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9388690)
+### Video 
+[How it works](https://drive.google.com/file/d/1TsRI_cbWmLY9gSA2hNP6UzybOGGOx6d_/view?usp=sharing)
 
 ## License
 
