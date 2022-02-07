@@ -6,6 +6,7 @@
 <br/>
 [![Documentation badge](https://img.shields.io/readthedocs/fiware-epcis-gateway.svg)](https://fiware-epcis-gateway.readthedocs.io/en/latest/?badge=latest)
 ![Status](https://nexus.lab.fiware.org/static/badges/statuses/incubating.svg)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5324/badge)](https://bestpractices.coreinfrastructure.org/projects/5324)
 
  Oliot-MG is a mediation gateway which translates information from NGSI based IoT platform to EPCIS based IoT platform. This enables capturing state change in FIWARE context broker in the form of EPCIS Event.
 
