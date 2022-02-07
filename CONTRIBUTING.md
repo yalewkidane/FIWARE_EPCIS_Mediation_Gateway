@@ -25,6 +25,12 @@ The *FIWARE_EPCIS_Mediation_Gateway team will review your pull requests. Once th
 Contribution guidelines and standards
 Before sending your pull request for review, make sure your changes are consistent with the guidelines and follow the coding style below.
 
+
+### Guideline for major new contribution
+<ul>
+<li>Make sure to provide testing units along with new functionality. This new test will be added to the automated test suit.</li>
+</ul>
+
 ### General guidelines and philosophy for contribution
 <ul>
 <li>Include unit tests when you contribute new features, as they help to a) prove that your code works correctly, and b) guard against future breaking changes to lower the maintenance cost.</li>
